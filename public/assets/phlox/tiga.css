@@ -1,0 +1,174 @@
+.aux-logo-header .aux-logo-anchor {
+    max-width: 228px
+}
+
+.aux-logo-header .aux-logo-anchor>img {
+    max-height: 100px
+}
+
+body:before {
+    height: 100%;
+    background-image: url()
+}
+
+body {
+    background-size: auto
+}
+
+body {
+    background-repeat: no-repeat
+}
+
+body {
+    background-position: left top
+}
+
+body {
+    background-attachment: scroll
+}
+
+@media screen and (min-width:700px) {
+    .aux-framed .aux-side-frames,
+    body.aux-framed:after,
+    .aux-framed .aux-side-frames:before,
+    .aux-framed .aux-side-frames:after {
+        background-color: #111
+    }
+}
+
+.site-header-section .aux-header-elements:not(.aux-vertical-menu-elements),
+.site-header-section .aux-fill .aux-menu-depth-0>.aux-item-content {
+    height: 100px
+}
+
+.site-header-section {
+    background-color: #fff
+}
+
+.aux-top-sticky .site-header-section.aux-sticky .aux-fill .aux-menu-depth-0>.aux-item-content,
+.aux-top-sticky .site-header-section.aux-sticky .aux-header-elements {
+    height: 80px
+}
+
+.site-header-section.aux-sticky {
+    background-color: #fff
+}
+
+.aux-vertical-menu-side {
+    background-color: #fff
+}
+
+.site-header-section .aux-middle .aux-menu-depth-0>.aux-item-content {
+    height: 60px
+}
+
+.site-header-section .aux-header .aux-burger:before,
+.site-header-section .aux-header .aux-burger:after,
+.site-header-section .aux-header .aux-burger .mid-line {
+    border-color: #3d3d3d
+}
+
+#fs-menu-search:before {
+    background-color: rgba(255, 255, 255, .95)
+}
+
+#top-header {
+    background-color: #fff
+}
+
+.aux-top-header {
+    background-image: -webkit-linear-gradient(left, #8c33f8 1%, #2b7ffc 99%)
+}
+
+.aux-top-header,
+.aux-top-header a {
+    color: #fff !important
+}
+
+.single-post .aux-overlay-bg-hash:before {
+    opacity: .15
+}
+
+.page .aux-overlay-bg-hash:before {
+    opacity: .5
+}
+
+.aux-subfooter-bar {
+    background-color: #fafafa
+}
+
+.aux-subfooter-bar {
+    border-top: 1px solid #eaeaea
+}
+
+.aux-subfooter {
+    background-position: center center
+}
+
+.aux-subfooter {
+    background-size: cover
+}
+
+.aux-subfooter {
+    background-repeat: no-repeat
+}
+
+.aux-subfooter {
+    border-top: 1px solid #eaeaea
+}
+
+.aux-site-footer {
+    background-color: #f9f9f9
+}
+
+.aux-site-footer {
+    border-top: 1px solid rgba(234, 234, 234, 0)
+}
+
+.aux-site-footer {
+    border-top-width: 0
+}
+
+.aux-logo-footer .aux-logo-anchor img {
+    max-height: 50px
+}
+
+body {
+    font-family: "Rubik";
+    font-weight: 300
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.aux-h1,
+.aux-h2,
+.aux-h3,
+.aux-h4,
+.aux-h5,
+.aux-h6 {
+    font-family: "Playfair Display";
+    font-weight: 700
+}
+
+.page-title {
+    font-family: "Playfair Display";
+    font-weight: 700
+}
+
+.aux-master-menu {
+    font-family: "Rubik";
+    font-weight: regular
+}
+
+.aux-button {
+    font-family: "Rubik";
+    font-weight: 300
+}
+
+.aux-subfooter {
+    background-color: #f9f9f9
+}

@@ -1,7 +1,12 @@
-lokasihunian.com
+# lokasihunian.com
 
-tech :
-    laravel laravel
-    laravel fortify
+### tech :
+- laravel laravel
+- laravel fortify
+- Font Awesome 5 Pro
+- Bulma CSS
 
-soon :
+### soon :
+- vue js
+- phlox assets
+- homepage
