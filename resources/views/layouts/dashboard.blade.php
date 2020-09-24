@@ -36,17 +36,23 @@
         }
     </style>
 </head>
+
 <body>
     @yield('dashboard_sidenav', View::make('layouts.dashboard_sidenav'))
     <!-- Main content -->
     <div class="main-content" id="panel">
         @yield('dashboard_topnav', View::make('layouts.dashboard_topnav'))
-        @yield('dashboard_page_header', View::make('layouts.dashboard_page_header'))
         <div class="container-fluid mt--6">
-            @yield('dashboard_page_content', View::make('layouts.dashboard_page_content'))
+            <br>
+            <br>
+            <br>
+            <br>
+            @yield('content', '')
+            <br>
             @yield('dashboard_footer', View::make('layouts.dashboard_footer'))
         </div>
     </div>
+
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>

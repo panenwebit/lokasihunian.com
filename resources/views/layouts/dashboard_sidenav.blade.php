@@ -4,7 +4,7 @@
         <!-- Brand -->
         <div class="sidenav-header d-flex align-items-center">
             <a class="navbar-brand" href="../../pages/dashboards/dashboard.html">
-                <img src="../../assets/argon/img/brand/blue.png" class="navbar-brand-img" alt="..." />
+                <img src="{{ asset('assets/img/logo/logo.png') }}" class="navbar-brand-img" alt="..." />
             </a>
             <div class="ml-auto">
                 <!-- Sidenav toggler -->
@@ -23,166 +23,136 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#navbar-dashboards" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-dashboards">
+                        <a class="nav-link" href="#">
                             <i class="ni ni-shop text-primary"></i>
-                            <span class="nav-link-text">Dashboards</span>
+                            <span class="nav-link-text">Dashboard</span>
                         </a>
-                        <div class="collapse show" id="navbar-dashboards">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="../../pages/dashboards/dashboard.html" class="nav-link">Dashboard</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../pages/dashboards/alternative.html" class="nav-link">Alternative</a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+                        <a class="nav-link" href="#navbar-properti" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-properti">
                             <i class="ni ni-ungroup text-orange"></i>
-                            <span class="nav-link-text">Examples</span>
+                            <span class="nav-link-text">Properti Saya</span>
                         </a>
-                        <div class="collapse" id="navbar-examples">
+                        <div class="collapse" id="navbar-properti">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/examples/pricing.html" class="nav-link">Pricing</a>
+                                    <a href="#" class="nav-link">Tambah Baru</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/examples/login.html" class="nav-link">Login</a>
+                                    <a href="#" class="nav-link">Semua</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/examples/register.html" class="nav-link">Register</a>
+                                    <a href="#" class="nav-link">Tayang</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/examples/lock.html" class="nav-link">Lock</a>
+                                    <a href="#" class="nav-link">Pending</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/examples/timeline.html" class="nav-link">Timeline</a>
+                                    <a href="#" class="nav-link">Kadaluarsa</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/examples/profile.html" class="nav-link">Profile</a>
+                                    <a href="#" class="nav-link">Draft</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#navbar-components" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-components">
-                            <i class="ni ni-ui-04 text-info"></i>
-                            <span class="nav-link-text">Components</span>
+                        <a class="nav-link" href="#">
+                            <i class="ni ni-shop text-primary"></i>
+                            <span class="nav-link-text">Properti Favorit</span>
                         </a>
-                        <div class="collapse" id="navbar-components">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="ni ni-shop text-primary"></i>
+                            <span class="nav-link-text">Membership</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#navbar-artikel" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-artikel">
+                            <i class="ni ni-ungroup text-orange"></i>
+                            <span class="nav-link-text">Artikel Saya</span>
+                        </a>
+                        <div class="collapse" id="navbar-artikel">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/components/buttons.html" class="nav-link">Buttons</a>
+                                    <a href="#" class="nav-link">Semua</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/components/cards.html" class="nav-link">Cards</a>
+                                    <a href="#" class="nav-link">Tayang</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/components/grid.html" class="nav-link">Grid</a>
+                                    <a href="#" class="nav-link">Pending</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/components/notifications.html" class="nav-link">Notifications</a>
+                                    <a href="#" class="nav-link">Kadaluarsa</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/components/icons.html" class="nav-link">Icons</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="../../pages/components/typography.html" class="nav-link">Typography</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#navbar-multilevel" class="nav-link" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-multilevel">Multi level</a>
-                                    <div class="collapse show" id="navbar-multilevel" style="">
-                                        <ul class="nav nav-sm flex-column">
-                                            <li class="nav-item">
-                                                <a href="#!" class="nav-link">Third level menu</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#!" class="nav-link">Just another link</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#!" class="nav-link">One last link</a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <a href="#" class="nav-link">Draft</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#navbar-forms" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-forms">
-                            <i class="ni ni-single-copy-04 text-pink"></i>
-                            <span class="nav-link-text">Forms</span>
+                        <a class="nav-link" href="#navbar-invoice" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-invoice">
+                            <i class="ni ni-ungroup text-orange"></i>
+                            <span class="nav-link-text">Invoices</span>
                         </a>
-                        <div class="collapse" id="navbar-forms">
+                        <div class="collapse" id="navbar-invoice">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/forms/elements.html" class="nav-link">Elements</a>
+                                    <a href="#" class="nav-link">Semua</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/forms/components.html" class="nav-link">Components</a>
+                                    <a href="#" class="nav-link">Lunas</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/forms/validation.html" class="nav-link">Validation</a>
+                                    <a href="#" class="nav-link">Pending</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">Kadaluarsa</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#navbar-tables" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-tables">
-                            <i class="ni ni-align-left-2 text-default"></i>
-                            <span class="nav-link-text">Tables</span>
+                        <a class="nav-link" href="#navbar-follow-up" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-follow-up">
+                            <i class="ni ni-ungroup text-orange"></i>
+                            <span class="nav-link-text">Data Follow Up</span>
                         </a>
-                        <div class="collapse" id="navbar-tables">
+                        <div class="collapse" id="navbar-follow-up">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/tables/tables.html" class="nav-link">Tables</a>
+                                    <a href="#" class="nav-link">Follow up saya</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/tables/sortable.html" class="nav-link">Sortable</a>
+                                    <a href="#" class="nav-link">Follow up admin</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/tables/datatables.html" class="nav-link">Datatables</a>
+                                    <a href="#" class="nav-link">Tampilkan semua</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#navbar-maps" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-maps">
-                            <i class="ni ni-map-big text-primary"></i>
-                            <span class="nav-link-text">Maps</span>
+                        <a class="nav-link" href="#navbar-database" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-database">
+                            <i class="ni ni-ungroup text-orange"></i>
+                            <span class="nav-link-text">Database</span>
                         </a>
-                        <div class="collapse" id="navbar-maps">
+                        <div class="collapse" id="navbar-database">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="../../pages/maps/google.html" class="nav-link">Google</a>
+                                    <a href="#" class="nav-link">Import</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/maps/vector.html" class="nav-link">Vector</a>
+                                    <a href="#" class="nav-link">Export</a>
                                 </li>
                             </ul>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../pages/widgets.html">
-                            <i class="ni ni-archive-2 text-green"></i>
-                            <span class="nav-link-text">Widgets</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../pages/charts.html">
-                            <i class="ni ni-chart-pie-35 text-info"></i>
-                            <span class="nav-link-text">Charts</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../pages/calendar.html">
-                            <i class="ni ni-calendar-grid-58 text-red"></i>
-                            <span class="nav-link-text">Calendar</span>
-                        </a>
                     </li>
                 </ul>
+
+                
                 <!-- Divider -->
                 <hr class="my-3" />
                 <!-- Heading -->

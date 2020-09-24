@@ -8,6 +8,10 @@
 - Argon Admin Template
 
 ### soon :
-- vue js
-- phlox assets
 - homepage
+- list properti
+- detail properti
+- list agen
+- detail agen
+- contact us
+- about us 
