@@ -2,15 +2,28 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Lokasihunian.com">
+    <meta name="author" content="PanenWeb">
+    <title>@yield('page_title', 'LokasiHunian.com')</title>
 
-    <title>Laravel</title>
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('assets/img/favicon/favicon-32x32.png') }}" type="image/png">
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="{{ asset('assets/argon/vendor/nucleo/css/nucleo.css') }}" type="text/css">
+    <script src="{{ asset('assets/js/fa-min.js') }}"></script>
+    <!-- Page plugins -->
 
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="{{ asset('assets/argon/css/argon.css?v=1.1.0') }}" type="text/css">
+    
     <!-- Bulma CSS -->
-    <link rel="stylesheet" href="{{ url('assets/css/bulma.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bulma.css') }}">
 
     <!-- Styles -->
     <style>
@@ -22,76 +35,19 @@
             font-family: 'Roboto';
         }
     </style>
-    <!-- Font Awesome -->
-    <script src="{{ url('assets/js/fa-min.js') }}"></script>
 
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/argon/vendor/js-cookie/js.cookie.js') }}"></script>
+    <script src="{{ asset('assets/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
+    <script src="{{ asset('assets/argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
+    <!-- Argon JS -->
+    <script src="{{ asset('assets/argon/js/argon.js?v=1.1.0') }}"></script>
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="https://lokasihunian.com/">
-                    <img src="{{ asset('assets/img/logo/logoh.png') }}">
-                </a>
-
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div id="navbarBasicExample" class="navbar-menu">
-                <!-- <div class="navbar-start">
-                    <a class="navbar-item">
-                        Home
-                    </a>
-
-                    <a class="navbar-item">
-                        Documentation
-                    </a>
-
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            More
-                        </a>
-
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                About
-                            </a>
-                            <a class="navbar-item">
-                                Jobs
-                            </a>
-                            <a class="navbar-item">
-                                Contact
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item">
-                                Report an issue
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
-
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="buttons">
-                            <a class="button is-primary">
-                                <strong>Sign up</strong>
-                            </a>
-                            <a class="button is-light">
-                                Log in
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    @yield('dashboard_sidenav', View::make('layouts.dashboard_sidenav'))
+    
 </body>
 </html>
