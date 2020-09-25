@@ -15,15 +15,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     
     <!-- Icons -->
-    <link rel="stylesheet" href="{{ asset('assets/argon/vendor/nucleo/css/nucleo.css') }}" type="text/css">
-    <script src="{{ asset('assets/js/fa-min.js') }}"></script>
+    <!-- <link rel="stylesheet" href="{{ asset('assets/argon/vendor/nucleo/css/nucleo.css') }}" type="text/css"> -->
+    <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/all.min.css') }}" type="text/css">
     <!-- Page plugins -->
 
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('assets/argon/css/argon.css?v=1.1.0') }}" type="text/css">
     
     <!-- Bulma CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bulma.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('assets/css/bulma.css') }}"> -->
 
     <!-- Styles -->
     <style>
@@ -36,6 +36,17 @@
         }
     </style>
 
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+
+</head>
+<body>
+    @yield('dashboard_sidenav', View::make('layouts.app_nav'))
+    <br>
+    <br>
+    <div style="margin-top:1.45rem;"></div>
+    @yield('content')
+
+    <script src="{{ asset('assets/font-awesome/js/all.min.js') }}"></script>
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
@@ -45,9 +56,5 @@
     <script src="{{ asset('assets/argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
     <!-- Argon JS -->
     <script src="{{ asset('assets/argon/js/argon.js?v=1.1.0') }}"></script>
-</head>
-<body>
-    @yield('dashboard_sidenav', View::make('layouts.dashboard_sidenav'))
-    
 </body>
 </html>

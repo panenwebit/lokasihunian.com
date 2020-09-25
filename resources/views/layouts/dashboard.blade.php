@@ -16,7 +16,7 @@
     
     <!-- Icons -->
     <link rel="stylesheet" href="{{ asset('assets/argon/vendor/nucleo/css/nucleo.css') }}" type="text/css">
-    <script src="{{ asset('assets/js/fa-min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/all.min.css') }}" type="text/css">
     <!-- Page plugins -->
 
     <!-- Argon CSS -->
@@ -53,6 +53,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('assets/font-awesome/js/all.min.js') }}"></script>
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
