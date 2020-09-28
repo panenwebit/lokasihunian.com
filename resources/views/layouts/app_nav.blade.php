@@ -104,7 +104,7 @@
                         <span class="btn-inner--icon"><img src="{{ asset('assets/argon/img/icons/common/facebook.svg') }}"></span>
                         <span class="btn-inner--text text-default">Facebook</span>
                     </a>
-                    <a href="#" class="btn btn-neutral btn-icon">
+                    <a href="{{ url('/auth/google') }}" class="btn btn-neutral btn-icon">
                         <span class="btn-inner--icon"><img src="{{ asset('assets/argon/img/icons/common/google.svg') }}"></span>
                         <span class="btn-inner--text text-default">Google</span>
                     </a>

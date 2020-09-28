@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('auth/{provider}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');
+
 Route::get('/', function () {
     return view('welcome');
 });
