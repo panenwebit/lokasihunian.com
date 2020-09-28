@@ -35,6 +35,9 @@
             font-family: 'Roboto';
         }
     </style>
+
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+
 </head>
 
 <body>
@@ -53,7 +56,6 @@
         </div>
     </div>
 
-    <script src="{{ asset('assets/font-awesome/js/all.min.js') }}"></script>
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
@@ -66,5 +68,12 @@
     <script src="{{ asset('assets/argon/vendor/chart.js/dist/Chart.extension.js') }}"></script>
     <!-- Argon JS -->
     <script src="{{ asset('assets/argon/js/argon.js?v=1.1.0') }}"></script>
+
+    <!-- font-awesome -->
+    <script src="{{ asset('assets/font-awesome/js/all.min.js') }}"></script>
+    <!-- bootstrap-select -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 </html>

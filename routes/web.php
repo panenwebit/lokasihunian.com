@@ -17,6 +17,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/property/{slug}', function () {
+    return view('property.detail_property');
+});
+
+Route::get('/property', function () {
+    return view('property.list_property');
+});
+
+Route::get('/profile/{username}', function () {
+    return view('profiles.user_profile');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard.dashboard');
+});
+
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth');
