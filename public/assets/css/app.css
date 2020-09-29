@@ -1,3 +1,24 @@
+@media only screen and (max-width: 1148px) {
+    #form-search-utama{
+        display: none;
+    }
+
+    #form-search-secondary{
+        display: block;
+    }
+}
+
+@media only screen and (min-width: 1147px) {
+    #form-search-utama{
+        display: block;
+    }
+
+    #form-search-secondary{
+        display: none;
+    }
+}
+
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -13,16 +34,80 @@
     }
 }
 
-.overlay {
-    position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0;
+.parlax {
+    /* The image used */
+    background-image: url("../img/banner/banner_2.jpg");
+  
+    /* Set a specific height */
+    height: 500px;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parlax-caption {
+    position: absolute;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+}
+  
+.parlax-caption span.border {
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+}
+
+.form-control {
+    color: #000;
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #000;
+    opacity: 1; /* Firefox */
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: auto;
+}
+
+.back-to-top {
+    background-color: #000000;
+    color: #FFFFFF;
+    opacity: 0;
+    transition: opacity .6s ease-in-out;
+    z-index: 999;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 15%;
+}
+
+a.back-to-top {
+    font-weight: 1000;
+    letter-spacing: 2px;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.6;
+    padding-left: 2px;
+    padding-top: 14px;
+}
+
+.back-to-top:hover, .back-to-top:focus, .back-to-top:visited {
+    color: #FFFFFF;
+}
+
+.back-to-top.show {
+    opacity: 1;
 }

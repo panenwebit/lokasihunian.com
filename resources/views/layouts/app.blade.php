@@ -19,6 +19,13 @@
     <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/all.min.css') }}" type="text/css">
     <!-- Page plugins -->
 
+    <!-- bootstrap-select -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- fancy box -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('assets/argon/css/argon.css?v=1.1.0') }}" type="text/css">
     
@@ -40,13 +47,13 @@
 
 </head>
 <body>
-    @yield('dashboard_sidenav', View::make('layouts.app_nav'))
+    @yield('app_nav', View::make('layouts.app_nav'))
     <br>
     <br>
     <div style="margin-top:1.45rem;"></div>
     @yield('content')
 
-    <script src="{{ asset('assets/font-awesome/js/all.min.js') }}"></script>
+    @yield('app_footer', View::make('layouts.app_footer'))
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
@@ -56,5 +63,14 @@
     <script src="{{ asset('assets/argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
     <!-- Argon JS -->
     <script src="{{ asset('assets/argon/js/argon.js?v=1.1.0') }}"></script>
+
+    <!-- font-awesome -->
+    <script src="{{ asset('assets/font-awesome/js/all.min.js') }}"></script>
+    <!-- bootstrap-select -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <!-- fancy box -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 </html>
