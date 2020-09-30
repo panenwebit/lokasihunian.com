@@ -20,11 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('tentang_kami', function(){
+    return 'Tentang';
+    // return view('');
+});
+Route::get('hubungi_kami', function(){
+    return view('lainnya.hubungi_kami');
+});
 
 Route::get('/property/{slug}', function () {
     return view('property.detail_property');
 });
-
 Route::get('/property', function () {
     return view('property.list_property');
 });
@@ -33,9 +39,10 @@ Route::get('/profile/{username}', function () {
     return view('profiles.user_profile');
 });
 
+
 Route::get('/dashboard', function () {
     return view('dashboard.dashboard');
-});
+})->middleware(['auth', 'verified']);
 
 Route::get('/home', function () {
     return view('home');

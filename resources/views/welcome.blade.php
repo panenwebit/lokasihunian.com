@@ -15,64 +15,64 @@
                     <div class="carousel-caption text-center">
                         <div class="container bg-default rounded" id="form-search-utama">
                             <br>
-                            <form action="#" method="get">
+                            <form action="{{ url('property') }}" method="get">
                                 <div class="d-flex">
                                     <div class="form-group mr-3" style="min-width:10rem;">
-                                        <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                                            <option value="#">Beli / Sewa</option>
-                                            <option value="#">Beli</option>
-                                            <option value="#">Sewa</option>
+                                        <select name="buy" id="property-search-buy" class="form-control selectpicker" data-style="btn-secondary">
+                                            <option value="all">Beli / Sewa</option>
+                                            <option value="buy">Beli</option>
+                                            <option value="rent">Sewa</option>
                                         </select>
                                     </div>
                                     <div class="form-group input-group input-group-merge">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-search"></i></span>
                                         </div>
-                                        <input class="form-control" placeholder="Cari Hunian terbaik anda" type="text">
+                                        <input class="form-control" name="keyword" id="property-search-keyword" placeholder="Cari Hunian terbaik anda" type="text">
                                     </div>
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-group mr-3">
-                                        <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                                            <option value="#">Baru / Bekas</option>
-                                            <option value="#">Baru</option>
-                                            <option value="#">Bekas</option>
+                                        <select name="new" id="property-search-new" class="form-control selectpicker" data-style="btn-secondary">
+                                            <option value="all">Baru / Bekas</option>
+                                            <option value="new">Baru</option>
+                                            <option value="second">Bekas</option>
                                         </select>
                                     </div>
                                     <div class="form-group mr-3">
-                                        <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                                            <option value="#">Jenis Hunian</option>
-                                            <option value="#">Apartemen</option>
-                                            <option value="#">Rumah</option>
-                                            <option value="#">Tanah</option>
-                                            <option value="#">Ruko</option>
-                                            <option value="#">Vila</option>
+                                        <select name="hunian" id="property-search-hunian" class="form-control selectpicker" data-style="btn-secondary">
+                                            <option value="all">Jenis Hunian</option>
+                                            <option value="Apartemen">Apartemen</option>
+                                            <option value="Rumah">Rumah</option>
+                                            <option value="Tanah">Tanah</option>
+                                            <option value="Ruko">Ruko</option>
+                                            <option value="Vila">Vila</option>
                                         </select>
                                     </div>
                                     <div class="form-group mr-3">
-                                        <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                                            <option value="#">Harga Minimal</option>
-                                            <option value="#">50 Juta</option>
-                                            <option value="#">100 Juta</option>
-                                            <option value="#">200 Juta</option>
-                                            <option value="#">500 Juta</option>
-                                            <option value="#">1 Milyar</option>
-                                            <option value="#">2 Milyar</option>
+                                        <select name="lprice" id="property-search-lprice" class="form-control selectpicker" data-style="btn-secondary">
+                                            <option value="all">Harga Minimal</option>
+                                            <option value="50000000">50 Juta</option>
+                                            <option value="100000000">100 Juta</option>
+                                            <option value="200000000">200 Juta</option>
+                                            <option value="500000000">500 Juta</option>
+                                            <option value="1000000000">1 Milyar</option>
+                                            <option value="2000000000">2 Milyar</option>
                                         </select>
                                     </div>
                                     <div class="form-group mr-3">
-                                        <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                                            <option value="#">Harga Maksimal</option>
-                                            <option value="#">50 Juta</option>
-                                            <option value="#">100 Juta</option>
-                                            <option value="#">200 Juta</option>
-                                            <option value="#">500 Juta</option>
-                                            <option value="#">1 Milyar</option>
-                                            <option value="#">2 Milyar+</option>
+                                        <select name="hprice" id="property-search-hprice" class="form-control selectpicker" data-style="btn-secondary">
+                                            <option value="all">Harga Minimal</option>
+                                            <option value="50000000">50 Juta</option>
+                                            <option value="100000000">100 Juta</option>
+                                            <option value="200000000">200 Juta</option>
+                                            <option value="500000000">500 Juta</option>
+                                            <option value="1000000000">1 Milyar</option>
+                                            <option value="all">2 Milyar+</option>
                                         </select>
                                     </div>
                                     <div class="form-group flex-fill">
-                                        <button type="button" class="btn btn-secondary btn-block" style="height:2.7rem;"><i class="fa fas fa-search"></i> Search</button>
+                                        <button type="submit" class="btn btn-secondary btn-block" style="height:2.7rem;"><i class="fa fas fa-search"></i> Search</button>
                                     </div>
                                 </div>
                             </form>
@@ -353,63 +353,63 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="get">
+                <form action="{{ url('property') }}" method="get">
                     <div class="form-group input-group input-group-merge">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-search"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Cari Hunian terbaik anda" type="text">
+                        <input class="form-control" name="keyword" id="properti-search2-keyword" placeholder="Cari Hunian terbaik anda" type="text">
                     </div>
                     <div class="form-group mr-3">
-                        <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                            <option value="#">Beli / Sewa</option>
-                            <option value="#">Beli</option>
-                            <option value="#">Sewa</option>
+                        <select name="buy" id="property-search2-buy" class="form-control selectpicker" data-style="btn-secondary">
+                            <option value="all">Beli / Sewa</option>
+                            <option value="buy">Beli</option>
+                            <option value="rent">Sewa</option>
                         </select>
                     </div>
                     <div class="form-group mr-3">
-                        <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                            <option value="#">Baru / Bekas</option>
-                            <option value="#">Baru</option>
-                            <option value="#">Bekas</option>
+                        <select name="new" id="property-search2-new" class="form-control selectpicker" data-style="btn-secondary">
+                            <option value="all">Baru / Bekas</option>
+                            <option value="new">Baru</option>
+                            <option value="second">Bekas</option>
                         </select>
                     </div>
                     <div class="form-group mr-3">
-                        <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                            <option value="#">Jenis Hunian</option>
-                            <option value="#">Apartemen</option>
-                            <option value="#">Rumah</option>
-                            <option value="#">Tanah</option>
-                            <option value="#">Ruko</option>
-                            <option value="#">Vila</option>
+                        <select name="hunian" id="property-search2-hunian" class="form-control selectpicker" data-style="btn-secondary">
+                            <option value="all">Jenis Hunian</option>
+                            <option value="Apartemen">Apartemen</option>
+                            <option value="Rumah">Rumah</option>
+                            <option value="Tanah">Tanah</option>
+                            <option value="Ruko">Ruko</option>
+                            <option value="Vila">Vila</option>
                         </select>
                     </div>
                     <div class="form-group mr-3 row">
                         <div class="col-6">
-                            <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                                <option value="#">Harga Minimal</option>
-                                <option value="#">50 Juta</option>
-                                <option value="#">100 Juta</option>
-                                <option value="#">200 Juta</option>
-                                <option value="#">500 Juta</option>
-                                <option value="#">1 Milyar</option>
-                                <option value="#">2 Milyar</option>
+                            <select name="lprice" id="property-search2-lprice" class="form-control selectpicker" data-style="btn-secondary">
+                                <option value="all">Harga Minimal</option>
+                                <option value="50000000">50 Juta</option>
+                                <option value="100000000">100 Juta</option>
+                                <option value="200000000">200 Juta</option>
+                                <option value="500000000">500 Juta</option>
+                                <option value="1000000000">1 Milyar</option>
+                                <option value="2000000000">2 Milyar</option>
                             </select>
                         </div>
                         <div class="col-6">
-                            <select name="" id="" class="form-control selectpicker" data-style="btn-secondary">
-                                <option value="#">Harga Maksimal</option>
-                                <option value="#">50 Juta</option>
-                                <option value="#">100 Juta</option>
-                                <option value="#">200 Juta</option>
-                                <option value="#">500 Juta</option>
-                                <option value="#">1 Milyar</option>
-                                <option value="#">2 Milyar+</option>
+                            <select name="hprice" id="property-search2-hprice" class="form-control selectpicker" data-style="btn-secondary">
+                                <option value="all">Harga Minimal</option>
+                                <option value="50000000">50 Juta</option>
+                                <option value="100000000">100 Juta</option>
+                                <option value="200000000">200 Juta</option>
+                                <option value="500000000">500 Juta</option>
+                                <option value="1000000000">1 Milyar</option>
+                                <option value="all">2 Milyar+</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-default btn-block" style="height:2.7rem;"><i class="fa fas fa-search"></i> Search</button>
+                        <button type="submit" class="btn btn-default btn-block" style="height:2.7rem;"><i class="fa fas fa-search"></i> Search</button>
                     </div>
                 </form>
             </div>

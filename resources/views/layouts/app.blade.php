@@ -21,7 +21,7 @@
 
     <!-- bootstrap-select -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script> -->
 
     <!-- fancy box -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -52,8 +52,9 @@
     <br>
     <div style="margin-top:1.45rem;"></div>
     @yield('content')
-
+    
     @yield('app_footer', View::make('layouts.app_footer'))
+    <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7KXDCH8pYaoOycJTAkhER2f-QzCRgI8&callback=initMap"></script> -->
     <!-- Argon Scripts -->
     <!-- Core -->
     <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
