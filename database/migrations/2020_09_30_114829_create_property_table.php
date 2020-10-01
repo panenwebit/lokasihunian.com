@@ -14,28 +14,30 @@ class CreatePropertyTable extends Migration
     public function up()
     {
         Schema::create('property', function (Blueprint $table) {
-            // $table->id();
-            $table->string('username');
+            $table->id();
+            $table->string('username', 64);
             $table->foreign('username')
                 ->references('username')
                 ->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('property_title');
-            $table->string('property_description');
-            $table->string('property_condition');
+            $table->text('property_description');
+            $table->enum('property_term', ['Beli', 'Sewa']);
+            $table->enum('property_condition', ['Baru', 'Bekas']);
+            $table->enum('property_type', ['Apartemen', 'Rumah', 'Tanah', 'Ruko', 'Vila']);
             $table->string('property_price');
-            $table->string('property_address');
-            $table->string('property_latitude');
-            $table->string('property_longitude');
+            $table->text('property_address');
+            $table->string('property_latitude', 20);
+            $table->string('property_longitude', 20);
             $table->string('property_pronvece');
             $table->string('property_city');
             $table->string('property_district');
-            $table->string('property_surface_area');
-            $table->string('property_building_area');
-            $table->string('property_bedroom_count');
-            $table->string('property_bathroom_count');
-            $table->string('property_parking_count');
+            $table->string('property_surface_area', 5);
+            $table->string('property_building_area', 5);
+            $table->string('property_bedroom_count', 5);
+            $table->string('property_bathroom_count', 5);
+            $table->string('property_parking_count', 5);
             $table->json('property_feature')->nullable();
             $table->timestamps();
         });

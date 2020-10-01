@@ -135,6 +135,29 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="#navbar-setting" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-setting">
+                            <span class="nav-link-text">Setting</span>
+                            <i class="far fa-users-cog text-info ml-auto"></i>
+                        </a>
+                        <div class="collapse" id="navbar-setting">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/setting/users') }}" class="nav-link">Users</a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/setting/roles') }}" class="nav-link">Roles</a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/setting/permissions') }}" class="nav-link">Permissions</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#navbar-database" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-database">
                             <span class="nav-link-text">Database</span>
                             <i class="far fa-database text-default ml-auto text-left"></i>

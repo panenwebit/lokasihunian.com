@@ -18,6 +18,7 @@
     <!-- <link rel="stylesheet" href="{{ asset('assets/argon/vendor/nucleo/css/nucleo.css') }}" type="text/css"> -->
     <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/all.min.css') }}" type="text/css">
     <!-- Page plugins -->
+    @yield('page_css_plugins', '')
 
     <!-- bootstrap-select -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
@@ -62,6 +63,7 @@
     <script src="{{ asset('assets/argon/vendor/js-cookie/js.cookie.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
+    @yield('page_js_plugins', '')
     <!-- Argon JS -->
     <script src="{{ asset('assets/argon/js/argon.js?v=1.1.0') }}"></script>
 

@@ -18,6 +18,7 @@
     <!-- <link rel="stylesheet" href="{{ asset('assets/argon/vendor/nucleo/css/nucleo.css') }}" type="text/css"> -->
     <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/all.min.css') }}" type="text/css">
     <!-- Page plugins -->
+    @yield('page_css_plugins', '')
 
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('assets/argon/css/argon.css?v=1.1.0') }}" type="text/css">
@@ -68,9 +69,11 @@
     <!-- Optional JS -->
     <script src="{{ asset('assets/argon/vendor/chart.js/dist/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/chart.js/dist/Chart.extension.js') }}"></script>
+    @yield('page_js_plugins', '')
+    
     <!-- Argon JS -->
     <script src="{{ asset('assets/argon/js/argon.js?v=1.1.0') }}"></script>
-
+    
     <!-- font-awesome -->
     <script src="{{ asset('assets/font-awesome/js/all.min.js') }}"></script>
     <!-- bootstrap-select -->

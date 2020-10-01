@@ -15,7 +15,7 @@ class CreateProfileTable extends Migration
     {
         Schema::create('profile', function (Blueprint $table) {
             // $table->id();
-            $table->string('username');
+            $table->string('username', 64);
             $table->foreign('username')
                 ->references('username')
                 ->on('users')
@@ -23,17 +23,17 @@ class CreateProfileTable extends Migration
                 ->onDelete('cascade');
             $table->string('fullname');
             $table->string('photo');
-            $table->string('address');
-            $table->string('wa_number');
-            $table->string('about_me')->nullable();
+            $table->text('address');
+            $table->string('wa_number', 15);
+            $table->text('about_me')->nullable();
             $table->string('web_address')->nullable();
             $table->string('fb_profile')->nullable();
             $table->string('twitter_profile')->nullable();
             $table->string('ig_profile')->nullable();
             $table->string('yt_profile')->nullable();
             $table->string('company_name')->nullable();
-            $table->string('company_address')->nullable();
-            $table->string('company_phone')->nullable();
+            $table->text('company_address')->nullable();
+            $table->string('company_phone', 15)->nullable();
             $table->timestamps();
         });
     }
