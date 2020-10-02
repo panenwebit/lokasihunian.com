@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,24 +24,54 @@ Route::get('auth/{provider}/callback', 'App\Http\Controllers\Auth\LoginControlle
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-Route::get('/property/{slug}', function () {
-    return view('property.detail_property');
+Route::get('tentang_kami', function(){
+    return view('lainnya.tentang_kami');
+});
+Route::get('hubungi_kami', function(){
+    return view('lainnya.hubungi_kami');
 });
 
-Route::get('/property', function () {
-    return view('property.list_property');
+Route::prefix('property')->group(function(){
+    Route::get('/', function () {
+        return view('property.list_property');
+    });
+
+    Route::get('/buat_listing', function () {
+        return view('property.create_property');
+    });
+    Route::post('/buat_listing', [PropertyController::class, 'create']);
+
+    Route::get('/{slug}', function () {
+        return view('property.detail_property');
+    });
 });
 
-Route::get('/profile/{username}', function () {
-    return view('profiles.user_profile');
+Route::prefix('profile')->group(function(){
+    Route::get('/', function () {
+        return view('profiles.list_profile');
+    });
+
+    Route::get('/{username}', [ProfileController::class, 'show']);
+
+    Route::get('/{username}/create', function () {
+        return view('profiles.create_profile');
+    });
+    Route::post('/{username}/create', [ProfileController::class, 'create']);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.dashboard');
+Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->group(function () {
+
+    Route::get('/', function() {
+        return view('dashboard.dashboard');
+    });
+
+    Route::prefix('/setting')->group(function () {
+        Route::get('users', [UserController::class, 'index']);
+        Route::get('roles', [RoleController::class, 'index']);
+        Route::get('permissions', [PermissionController::class, 'index']);
+    });
 });
 
-Route::get('/home', function () {
-    return view('home');
-})->middleware('auth');
+Route::get('test', function() {
+    return 'test';
+});

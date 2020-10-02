@@ -2,9 +2,9 @@
 <footer class="footer pt-0 container fixed-bottom">
     <div class="row align-items-center justify-content-lg-between">
         <div class="col-lg-6">
-            <div class="copyright text-center text-lg-left text-muted">&copy; 2019 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a></div>
+            <div class="copyright text-center text-lg-left text-muted">&copy; 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">PanenWeb Group</a></div>
         </div>
-        <div class="col-lg-6">
+        <!-- <div class="col-lg-6">
             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                 <li class="nav-item">
                     <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
@@ -19,7 +19,7 @@
                     <a href="https://www.creative-tim.com/license" class="nav-link" target="_blank">License</a>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </footer>
 <a href="#" id="back-to-top" class="back-to-top" style="display: inline;"><i class="fa fas fa-angle-up"></i></a>

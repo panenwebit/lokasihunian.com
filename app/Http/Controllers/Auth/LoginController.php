@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\Models\User;
+use App\Models\Profile;
 use Auth;
 
 class LoginController extends Controller
@@ -60,6 +61,7 @@ class LoginController extends Controller
     public function handleProviderCallback($provider)
     {
         $user = Socialite::driver($provider)->user();
+        // dd($user->avatar);
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
         return redirect($this->redirectTo);
@@ -78,11 +80,29 @@ class LoginController extends Controller
         if ($authUser) {
             return $authUser;
         }
-        return User::create([
-            'name'     => $user->name,
+        
+        $username = strtolower(preg_replace("/\s+/", "", $user->name));
+        $uid = substr($user->id, -3);
+        $final_username = $username.$uid;
+        $avatar = $user->avatar;
+
+        $justCreatedUser =  User::create([
+            'username'     => $final_username,
             'email'    => $user->email,
             'provider' => $provider,
             'provider_id' => $user->id
         ]);
+
+        Profile::create([
+            'username'  => $final_username,
+            'fullname'  => '',
+            'photo'     => $avatar,
+            'address'   => '',
+            'wa_number' => '',
+            'about_me'  => '',
+            'address_location' => '',
+        ]);
+
+        return $justCreatedUser;
     }
 }

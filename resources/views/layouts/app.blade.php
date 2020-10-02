@@ -18,10 +18,11 @@
     <!-- <link rel="stylesheet" href="{{ asset('assets/argon/vendor/nucleo/css/nucleo.css') }}" type="text/css"> -->
     <link rel="stylesheet" href="{{ asset('assets/font-awesome/css/all.min.css') }}" type="text/css">
     <!-- Page plugins -->
+    @yield('page_css_plugins', '')
 
     <!-- bootstrap-select -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script> -->
 
     <!-- fancy box -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
@@ -44,6 +45,7 @@
     </style>
 
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
 
 </head>
 <body>
@@ -52,15 +54,17 @@
     <br>
     <div style="margin-top:1.45rem;"></div>
     @yield('content')
-
+    
     @yield('app_footer', View::make('layouts.app_footer'))
+    <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7KXDCH8pYaoOycJTAkhER2f-QzCRgI8&callback=initMap"></script> -->
     <!-- Argon Scripts -->
     <!-- Core -->
-    <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script> -->
     <script src="{{ asset('assets/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/js-cookie/js.cookie.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
+    @yield('page_js_plugins', '')
     <!-- Argon JS -->
     <script src="{{ asset('assets/argon/js/argon.js?v=1.1.0') }}"></script>
 
