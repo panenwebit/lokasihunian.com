@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PropertyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,11 @@ Route::prefix('property')->group(function(){
         return view('property.list_property');
     });
 
+    Route::get('/buat_listing', function () {
+        return view('property.create_property');
+    });
+    Route::post('/buat_listing', [PropertyController::class, 'create']);
+
     Route::get('/{slug}', function () {
         return view('property.detail_property');
     });
@@ -44,18 +51,12 @@ Route::prefix('profile')->group(function(){
         return view('profiles.list_profile');
     });
 
-    Route::get('/{slug}', function () {
-        return view('profiles.user_profile');
-    });
+    Route::get('/{username}', [ProfileController::class, 'show']);
 
-    Route::get('/{slug}/create', function () {
+    Route::get('/{username}/create', function () {
         return view('profiles.create_profile');
     });
-});
-
-
-Route::get('/profile/{username}', function () {
-    return view('profiles.user_profile');
+    Route::post('/{username}/create', [ProfileController::class, 'create']);
 });
 
 Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->group(function () {

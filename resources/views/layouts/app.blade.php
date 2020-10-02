@@ -45,6 +45,7 @@
     </style>
 
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
 
 </head>
 <body>
@@ -58,7 +59,7 @@
     <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7KXDCH8pYaoOycJTAkhER2f-QzCRgI8&callback=initMap"></script> -->
     <!-- Argon Scripts -->
     <!-- Core -->
-    <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script> -->
     <script src="{{ asset('assets/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/js-cookie/js.cookie.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>

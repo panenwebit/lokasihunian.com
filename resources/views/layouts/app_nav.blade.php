@@ -78,7 +78,7 @@
                     </li>
                     @else
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">
-                        <i class="fa fas fa-user"></i>&nbsp; Login / Daftar
+                        <i class="fa fas fa-user"></i><span id="login-button-text">&nbsp; Login / Daftar</span>
                     </button>
                     @endif
                 </li>
@@ -103,7 +103,7 @@
                                 <input class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" type="email"  value="{{ old('email') }}" autocomplete="email" required autofocus>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback login-error" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -117,7 +117,7 @@
                                 <input class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" type="password" required autocomplete="current-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback login-error" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -169,7 +169,7 @@
                                 <input class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Username" type="text"  value="{{ old('username') }}" autocomplete="username" required autofocus>
 
                                 @error('username')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback  register-error" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -184,7 +184,7 @@
                                 <input class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" type="email"  value="{{ old('email') }}" autocomplete="email" required autofocus>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback register-error" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -198,7 +198,7 @@
                                 <input class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" type="password" required autocomplete="current-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback register-error" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -212,7 +212,7 @@
                                 <input class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" placeholder="Konfirmasi Password" type="password" required autocomplete="confirm-password">
 
                                 @error('password_confirmation')
-                                    <span class="invalid-feedback" role="alert">
+                                    <span class="invalid-feedback register-error" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
@@ -276,3 +276,37 @@
         </div>
     </div>
 </div> -->
+@if ((count($errors) > 0) && ($errors->has('email') && ($errors->first('email') == "The email has already been taken.")))
+    <script>
+        $(document).ready(function() {
+            $('#registerModal').modal('show');
+        });
+    </script>
+@elseif ((count($errors) > 0) && $errors->has('username'))
+    <script>
+        $(document).ready(function() {
+            $('#registerModal').modal('show');
+        });
+    </script>
+@elseif((count($errors) > 0) && ($errors->has('email') && ($errors->first('email') == "These credentials do not match our records.")))
+    <script>
+        $(document).ready(function() {
+            $('#loginModal').modal('show');
+        });
+    </script>
+<!-- @elseif((count($errors) > 0) && ($errors->has('email') && ($errors->first('email') == "We can't find a user with that e-mail address.")))
+    <script>
+        $(document).ready(function() {
+            $('#resetModal').modal('show');
+        });
+    </script>
+@endif -->
+<script>
+    $('#registerModal').on('show.bs.modal', function (e) {
+        $('.login-error').empty();
+        // $('#loginModal').hide();
+    })
+    $('#loginModal').on('show.bs.modal', function (e) {
+        $('.register-error').empty();
+    })
+</script>

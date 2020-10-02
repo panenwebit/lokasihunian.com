@@ -100,6 +100,7 @@ class LoginController extends Controller
             'address'   => '',
             'wa_number' => '',
             'about_me'  => '',
+            'address_location' => '',
         ]);
 
         return $justCreatedUser;

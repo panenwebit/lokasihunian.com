@@ -22,18 +22,21 @@ class CreateProfileTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('fullname');
-            $table->string('photo');
-            $table->text('address');
             $table->string('wa_number', 15);
+            $table->text('address');
+            $table->string('address_location', 13);
             $table->text('about_me')->nullable();
+            $table->string('photo');
+            $table->string('company_name')->nullable();
+            $table->text('company_address')->nullable();
+            $table->string('company_location', 13)->nullable();
+            $table->string('company_phone', 15)->nullable();
             $table->string('web_address')->nullable();
             $table->string('fb_profile')->nullable();
             $table->string('twitter_profile')->nullable();
+            $table->string('linkedin_profile')->nullable();
             $table->string('ig_profile')->nullable();
             $table->string('yt_profile')->nullable();
-            $table->string('company_name')->nullable();
-            $table->text('company_address')->nullable();
-            $table->string('company_phone', 15)->nullable();
             $table->timestamps();
         });
     }

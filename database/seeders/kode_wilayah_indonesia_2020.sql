@@ -1,43 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Oct 01, 2020 at 03:40 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `wilayah`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kode_wilayah_indonesia_2020`
---
-
-CREATE TABLE `kode_wilayah_indonesia_2020` (
-  `kode` varchar(13) NOT NULL,
-  `nama` varchar(100) DEFAULT NULL,
-  `tipe` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `kode_wilayah_indonesia_2020`
---
-
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('11', 'ACEH', 'provinsi'),
 ('11.01', 'KAB. ACEH SELATAN', 'kabupaten'),
 ('11.01.01', 'Bakongan', 'kecamatan'),
@@ -1130,7 +1091,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('11.03.15.2013', 'Panton Rayeuk B', 'kelurahan'),
 ('11.03.15.2014', 'Panton Rayeuk M', 'kelurahan'),
 ('11.03.15.2015', 'Panton Rayeuk T', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('11.03.15.2016', 'Paya Laman', 'kelurahan'),
 ('11.03.16', 'Peudawa', 'kecamatan'),
 ('11.03.16.2001', 'Gampong Keude', 'kelurahan'),
@@ -2249,7 +2210,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('11.06.10.2032', 'Meunasah Manyet', 'kelurahan'),
 ('11.06.10.2033', 'Santan', 'kelurahan'),
 ('11.06.10.2034', 'Tanjong', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('11.06.10.2035', 'Reuloh', 'kelurahan'),
 ('11.06.10.2041', 'Paleuh Blang', 'kelurahan'),
 ('11.06.10.2042', 'Cot Mentiwan', 'kelurahan'),
@@ -3375,7 +3336,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('11.08.03.2010', 'Meunye Cut Bahagia', 'kelurahan'),
 ('11.08.03.2011', 'Lhok Jok', 'kelurahan'),
 ('11.08.03.2012', 'Alue Rambee', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('11.08.03.2013', 'Blang Riek', 'kelurahan'),
 ('11.08.03.2014', 'Cempeudak', 'kelurahan'),
 ('11.08.03.2015', 'Seuneubok  Drien', 'kelurahan'),
@@ -4489,7 +4450,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('11.11.01.2040', 'Tanjong Baro', 'kelurahan'),
 ('11.11.01.2041', 'Angkieng Barat', 'kelurahan'),
 ('11.11.01.2042', 'Meunasah Lincah', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('11.11.01.2043', 'Meunasah Lancok', 'kelurahan'),
 ('11.11.01.2044', 'Meunasah Puuk', 'kelurahan'),
 ('11.11.01.2045', 'Tonjongan Idem', 'kelurahan'),
@@ -5603,7 +5564,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('11.15.02.2016', 'Gampong Cot', 'kelurahan'),
 ('11.15.02.2017', 'Blang Pateuk', 'kelurahan'),
 ('11.15.02.2018', 'Blang Puuk Nigan', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('11.15.02.2019', 'Krueng Ceh', 'kelurahan'),
 ('11.15.02.2020', 'Bantan', 'kelurahan'),
 ('11.15.02.2021', 'Cot Lhe-Lhe', 'kelurahan'),
@@ -6715,7 +6676,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('11.74.02.2005', 'Lhok Banie', 'kelurahan'),
 ('11.74.02.2006', 'PB. Teungoh', 'kelurahan'),
 ('11.74.02.2007', 'PB. Beuramo', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('11.74.02.2008', 'Simpang Lhee', 'kelurahan'),
 ('11.74.02.2009', 'Seuriget', 'kelurahan'),
 ('11.74.02.2015', 'Matang Seulimeng', 'kelurahan'),
@@ -7817,7 +7778,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('12.05.01.2009', 'Perkebunan B. Lawang', 'kelurahan'),
 ('12.05.01.2011', 'Empus', 'kelurahan'),
 ('12.05.01.2012', 'Simpang Pulo Rambung', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('12.05.01.2013', 'Perkebunan Sei Musam', 'kelurahan'),
 ('12.05.01.2014', 'Batu Jong - Jong', 'kelurahan'),
 ('12.05.01.2015', 'Sematar', 'kelurahan'),
@@ -8934,7 +8895,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('12.08.08.2016', 'Mekar Rejo', 'kelurahan'),
 ('12.08.08.2017', 'Nanggar Bayu', 'kelurahan'),
 ('12.08.09', 'Sidamanik', 'kecamatan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('12.08.09.1013', 'Sarimatondang', 'kelurahan'),
 ('12.08.09.2001', 'Bah Butong I', 'kelurahan'),
 ('12.08.09.2002', 'Sidamanik', 'kelurahan'),
@@ -10031,7 +9992,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('12.12.23.2015', 'Nagatimbul Timur', 'kelurahan'),
 ('12.12.24', 'Parmaksian', 'kecamatan'),
 ('12.12.24.2001', 'Siantar Utara', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('12.12.24.2002', 'Lumban Sitorus', 'kelurahan'),
 ('12.12.24.2003', 'Banjar Ganjang', 'kelurahan'),
 ('12.12.24.2004', 'Tangga Batu I', 'kelurahan'),
@@ -11136,7 +11097,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('12.16.06.2026', 'Aek Lung', 'kelurahan'),
 ('12.16.06.2027', 'Simangaronsang', 'kelurahan'),
 ('12.16.06.2028', 'Sosortolong Sihite III', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('12.16.07', 'Sijamapolang', 'kecamatan'),
 ('12.16.07.2001', 'Batunajagar', 'kelurahan'),
 ('12.16.07.2002', 'Sanggaran I', 'kelurahan'),
@@ -12242,7 +12203,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('12.21.03.2011', 'Tar Sihoda-Hoda', 'kelurahan'),
 ('12.21.03.2012', 'Huta Pasir Ulak Tano', 'kelurahan'),
 ('12.21.03.2013', 'Tobing Jae', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('12.21.03.2014', 'Pasar Huristak', 'kelurahan'),
 ('12.21.03.2015', 'Sipirok Baru', 'kelurahan'),
 ('12.21.03.2016', 'Pasir Lancat Baru', 'kelurahan'),
@@ -13356,7 +13317,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('12.78.01.2004', 'Dahana Tabaloho', 'kelurahan'),
 ('12.78.01.2005', 'Fadoro Lasara', 'kelurahan'),
 ('12.78.01.2006', 'Hilihao', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('12.78.01.2007', 'Hilimbaruzo', 'kelurahan'),
 ('12.78.01.2008', 'Hilina\'a', 'kelurahan'),
 ('12.78.01.2009', 'Iraonogeba', 'kelurahan'),
@@ -14442,7 +14403,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('13.12.04', 'Talamau', 'kecamatan'),
 ('13.12.04.2001', 'Kajai', 'kelurahan'),
 ('13.12.04.2002', 'Talu', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('13.12.04.2003', 'Sinuruik', 'kelurahan'),
 ('13.12.05', 'Kinali', 'kecamatan'),
 ('13.12.05.2001', 'Kinali', 'kelurahan'),
@@ -15545,7 +15506,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('14.04.07.2009', 'Bekawan', 'kelurahan'),
 ('14.04.07.2010', 'Bantayan', 'kelurahan'),
 ('14.04.07.2011', 'Batang Sari', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('14.04.07.2012', 'Bolak Raya', 'kelurahan'),
 ('14.04.07.2013', 'Cahaya Baru', 'kelurahan'),
 ('14.04.07.2014', 'Belaras Barat', 'kelurahan'),
@@ -16647,7 +16608,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('14.10.03.2020', 'Tanjung Gemuk', 'kelurahan'),
 ('14.10.04', 'Tebing Tinggi Barat', 'kecamatan'),
 ('14.10.04.2001', 'Alai', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('14.10.04.2002', 'Tenan', 'kelurahan'),
 ('14.10.04.2003', 'Insit', 'kelurahan'),
 ('14.10.04.2004', 'Tanjung', 'kelurahan'),
@@ -17756,7 +17717,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('15.05.03.2013', 'Rantau Panjang', 'kelurahan'),
 ('15.05.03.2014', 'Londerang', 'kelurahan'),
 ('15.05.03.2016', 'Petanang', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('15.05.03.2017', 'Mekar Sari', 'kelurahan'),
 ('15.05.03.2018', 'Rondang', 'kelurahan'),
 ('15.05.03.2019', 'Maju Jaya', 'kelurahan'),
@@ -18868,7 +18829,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('16.02.11.2018', 'Simpang Tiga Sakti', 'kelurahan'),
 ('16.02.11.2019', 'Tulung Seluang', 'kelurahan'),
 ('16.02.11.2020', 'Rantau Lurus', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('16.02.11.2021', 'Kuala Dua Belas', 'kelurahan'),
 ('16.02.11.2022', 'Simpang Tiga Abadi', 'kelurahan'),
 ('16.02.11.2023', 'Tulung Selapan Timur', 'kelurahan'),
@@ -19988,7 +19949,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('16.06', 'KAB. MUSI BANYUASIN', 'kabupaten'),
 ('16.06.01', 'Sekayu', 'kecamatan'),
 ('16.06.01.1009', 'Kayu Ara', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('16.06.01.1010', 'Serasan Jaya', 'kelurahan'),
 ('16.06.01.1011', 'Soak baru', 'kelurahan'),
 ('16.06.01.1012', 'Balai Agung', 'kelurahan'),
@@ -21103,7 +21064,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('16.09.12.2017', 'Simpang Sender Utara', 'kelurahan'),
 ('16.09.12.2018', 'Simpang Sender Timur', 'kelurahan'),
 ('16.09.12.2019', 'Simpang Sender Tengah', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('16.09.12.2020', 'Sumber Jaya', 'kelurahan'),
 ('16.09.12.2021', 'Pakhda Suka', 'kelurahan'),
 ('16.09.12.2022', 'Serumpun Jaya', 'kelurahan'),
@@ -22217,7 +22178,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('17.01.09.2002', 'Batu Kuning', 'kelurahan'),
 ('17.01.09.2003', 'Bandar Agung', 'kelurahan'),
 ('17.01.09.2004', 'Merambung', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('17.01.09.2005', 'Simpang Pino', 'kelurahan'),
 ('17.01.09.2006', 'Talang Tinggi', 'kelurahan'),
 ('17.01.09.2007', 'Keban Jati', 'kelurahan'),
@@ -23332,7 +23293,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('17.07.08.2007', 'Tabeak Kauk', 'kelurahan'),
 ('17.07.08.2008', 'Tabeak Dipoa', 'kelurahan'),
 ('17.07.08.2009', 'Suka Bumi', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('17.07.09', 'Pelabai', 'kecamatan'),
 ('17.07.09.1001', 'Tanjung Agung', 'kelurahan'),
 ('17.07.09.2002', 'Sukau Datang', 'kelurahan'),
@@ -24449,7 +24410,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('18.03.07.2019', 'Kalibening Raya', 'kelurahan'),
 ('18.03.07.2020', 'Way Lunik', 'kelurahan'),
 ('18.03.08', 'Sungkai Utara', 'kecamatan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('18.03.08.2005', 'Ogan Jaya', 'kelurahan'),
 ('18.03.08.2009', 'Ciamis', 'kelurahan'),
 ('18.03.08.2010', 'Padang Ratu', 'kelurahan'),
@@ -25567,7 +25528,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('18.08.01.2013', 'Sangkaran Bhakti', 'kelurahan'),
 ('18.08.01.2014', 'Bumi Baru', 'kelurahan'),
 ('18.08.01.2015', 'Tanjung Sari', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('18.08.01.2016', 'Sri Rejeki', 'kelurahan'),
 ('18.08.01.2017', 'Karang Umpu', 'kelurahan'),
 ('18.08.01.2018', 'Umpu Kencana', 'kelurahan'),
@@ -26686,7 +26647,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('19.01.06.2006', 'Mangka', 'kelurahan'),
 ('19.01.06.2007', 'Mabat', 'kelurahan'),
 ('19.01.06.2008', 'Bukit Layang', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('19.01.06.2009', 'Maras Senang', 'kelurahan'),
 ('19.01.07', 'Riau Silip', 'kecamatan'),
 ('19.01.07.2001', 'Riau', 'kelurahan'),
@@ -27843,7 +27804,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('31.75.05.1004', 'Kalisari', 'kelurahan'),
 ('31.75.05.1005', 'Pekayon', 'kelurahan'),
 ('31.75.06', 'Cakung', 'kecamatan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('31.75.06.1001', 'Jatinegara', 'kelurahan'),
 ('31.75.06.1002', 'Rawa Terate', 'kelurahan'),
 ('31.75.06.1003', 'Penggilingan', 'kelurahan'),
@@ -29011,7 +28972,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('32.03.17.2019', 'Wargasari', 'kelurahan'),
 ('32.03.17.2020', 'Sukaraja', 'kelurahan'),
 ('32.03.17.2021', 'Kadupandak', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('32.03.17.2022', 'Gandasari', 'kelurahan'),
 ('32.03.17.2023', 'Sindangsari', 'kelurahan'),
 ('32.03.18', 'Pagelaran', 'kecamatan'),
@@ -30179,7 +30140,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('32.06.19.2005', 'Jatiwaras', 'kelurahan'),
 ('32.06.19.2006', 'Papayan', 'kelurahan'),
 ('32.06.19.2007', 'Ciwarak', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('32.06.19.2008', 'Kersagalih', 'kelurahan'),
 ('32.06.19.2009', 'Mandalamekar', 'kelurahan'),
 ('32.06.19.2010', 'Kertarahayu', 'kelurahan'),
@@ -31346,7 +31307,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('32.09.22.2014', 'Karangkendal', 'kelurahan'),
 ('32.09.22.2015', 'Grogol', 'kelurahan'),
 ('32.09.22.2016', 'Kapetakan', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('32.09.22.2017', 'Bungko', 'kelurahan'),
 ('32.09.22.2018', 'Bungko Lor', 'kelurahan'),
 ('32.09.23', 'Klangenan', 'kecamatan'),
@@ -32512,7 +32473,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('32.12.26', 'Trisi', 'kecamatan'),
 ('32.12.26.2001', 'Cikawung', 'kelurahan'),
 ('32.12.26.2002', 'Jatimulya', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('32.12.26.2003', 'Jatimunggul', 'kelurahan'),
 ('32.12.26.2004', 'Plosokerep', 'kelurahan'),
 ('32.12.26.2005', 'Rajasinga', 'kelurahan'),
@@ -33671,7 +33632,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('32.17.05.2008', 'Nanggeleng', 'kelurahan'),
 ('32.17.05.2009', 'Nyenang', 'kelurahan'),
 ('32.17.05.2010', 'Sirnaraja', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('32.17.05.2011', 'Sirnagalih', 'kelurahan'),
 ('32.17.05.2012', 'Sukahaji', 'kelurahan'),
 ('32.17.06', 'Ngamprah', 'kecamatan'),
@@ -34838,7 +34799,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('33.02.03.2003', 'Karanglewas', 'kelurahan'),
 ('33.02.03.2004', 'Karanganyar', 'kelurahan'),
 ('33.02.03.2005', 'Margasana', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('33.02.03.2006', 'Adisara', 'kelurahan'),
 ('33.02.03.2007', 'Kedungwringin', 'kelurahan'),
 ('33.02.03.2008', 'Bantar', 'kelurahan'),
@@ -36005,7 +35966,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('33.05.13.2007', 'Karangpoh', 'kelurahan'),
 ('33.05.13.2008', 'Jemur', 'kelurahan'),
 ('33.05.13.2009', 'Prigi', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('33.05.13.2010', 'Kebagoran', 'kelurahan'),
 ('33.05.13.2011', 'Pengaringan', 'kelurahan'),
 ('33.05.13.2012', 'Peniron', 'kelurahan'),
@@ -37183,7 +37144,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('33.08.11.2015', 'Tugurejo', 'kelurahan'),
 ('33.08.12', 'Kajoran', 'kecamatan'),
 ('33.08.12.2001', 'Wonogiri', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('33.08.12.2002', 'Kwaderan', 'kelurahan'),
 ('33.08.12.2003', 'Madukoro', 'kelurahan'),
 ('33.08.12.2004', 'Bumiayu', 'kelurahan'),
@@ -38389,7 +38350,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('33.12.07.2008', 'Saradan', 'kelurahan'),
 ('33.12.07.2009', 'Temon', 'kelurahan'),
 ('33.12.07.2010', 'Setrorejo', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('33.12.07.2011', 'Sendangrejo', 'kelurahan'),
 ('33.12.07.2012', 'Boto', 'kelurahan'),
 ('33.12.07.2013', 'Kedungombo', 'kelurahan'),
@@ -39589,7 +39550,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('33.16.13.2019', 'Sambiroto', 'kelurahan'),
 ('33.16.13.2020', 'Bejirejo', 'kelurahan'),
 ('33.16.13.2021', 'Jetak', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('33.16.13.2022', 'Karanggeneng', 'kelurahan'),
 ('33.16.13.2023', 'Balong', 'kelurahan'),
 ('33.16.13.2024', 'Ngawenombo', 'kelurahan'),
@@ -40774,7 +40735,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('33.21.02.2004', 'Teluk', 'kelurahan'),
 ('33.21.02.2005', 'Tlogorejo', 'kelurahan'),
 ('33.21.02.2006', 'Rejosari', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('33.21.02.2007', 'Karangawen', 'kelurahan'),
 ('33.21.02.2008', 'Kuripan', 'kelurahan'),
 ('33.21.02.2009', 'Bumirejo', 'kelurahan'),
@@ -41965,7 +41926,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('33.25.05.2005', 'Kebaturan', 'kelurahan'),
 ('33.25.05.2006', 'Kalirejo', 'kelurahan'),
 ('33.25.05.2007', 'Sangubanyu', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('33.25.05.2008', 'Wonosari', 'kelurahan'),
 ('33.25.05.2009', 'Jlamprang', 'kelurahan'),
 ('33.25.05.2010', 'Bawang', 'kelurahan'),
@@ -43141,7 +43102,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('33.29.08.2019', 'Tegalgandu', 'kelurahan'),
 ('33.29.08.2020', 'Wanasari', 'kelurahan'),
 ('33.29.09', 'Brebes', 'kecamatan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('33.29.09.1002', 'Brebes', 'kelurahan'),
 ('33.29.09.1003', 'Gandasuli', 'kelurahan'),
 ('33.29.09.1011', 'Limbangan Kulon', 'kelurahan'),
@@ -44319,7 +44280,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('35.01.07.2008', 'Pakis Baru', 'kelurahan'),
 ('35.01.07.2009', 'Ngromo', 'kelurahan'),
 ('35.01.08', 'Bandar', 'kecamatan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('35.01.08.2001', 'Petungsinarang', 'kelurahan'),
 ('35.01.08.2002', 'Ngunut', 'kelurahan'),
 ('35.01.08.2003', 'Bandar', 'kelurahan'),
@@ -45523,7 +45484,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('35.06.05.2001', 'Sumberejo', 'kelurahan'),
 ('35.06.05.2002', 'Selosari', 'kelurahan'),
 ('35.06.05.2003', 'Karangrejo', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('35.06.05.2004', 'Kandat', 'kelurahan'),
 ('35.06.05.2005', 'Cendono', 'kelurahan'),
 ('35.06.05.2006', 'Ringinsari', 'kelurahan'),
@@ -46711,7 +46672,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('35.09.27.2012', 'Sebanen', 'kelurahan'),
 ('35.09.28', 'Ledokombo', 'kecamatan'),
 ('35.09.28.2001', 'Lembengan', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('35.09.28.2002', 'Suren', 'kelurahan'),
 ('35.09.28.2003', 'Karangpaiton', 'kelurahan'),
 ('35.09.28.2004', 'Sumberanget', 'kelurahan'),
@@ -47887,7 +47848,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('35.14.09.2010', 'Ngadimulyo', 'kelurahan'),
 ('35.14.09.2011', 'Tanjungarum', 'kelurahan'),
 ('35.14.09.2012', 'Suwayuwo', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('35.14.09.2013', 'Mojotengah', 'kelurahan'),
 ('35.14.09.2014', 'Kalirejo', 'kelurahan'),
 ('35.14.09.2015', 'Candibinangun', 'kelurahan'),
@@ -49063,7 +49024,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('35.17.14.2004', 'Ploso', 'kelurahan'),
 ('35.17.14.2005', 'Jatigedong', 'kelurahan'),
 ('35.17.14.2006', 'Daditunggal', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('35.17.14.2007', 'Gedungombo', 'kelurahan'),
 ('35.17.14.2008', 'Jatibanjar', 'kelurahan'),
 ('35.17.14.2009', 'Pagertanjung', 'kelurahan'),
@@ -50263,7 +50224,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('35.22.06.2011', 'Sumberagung', 'kelurahan'),
 ('35.22.06.2012', 'Somodikaran', 'kelurahan'),
 ('35.22.06.2013', 'Ngumpakdalem', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('35.22.06.2014', 'Sumbertlaseh', 'kelurahan'),
 ('35.22.06.2015', 'Ngulanan', 'kelurahan'),
 ('35.22.06.2016', 'Ngablak', 'kelurahan'),
@@ -51451,7 +51412,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('35.24.25.2013', 'Tukkerto', 'kelurahan'),
 ('35.24.25.2014', 'Weduni', 'kelurahan'),
 ('35.24.25.2015', 'Rejotengah', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('35.24.25.2016', 'Srirande', 'kelurahan'),
 ('35.24.25.2017', 'Plosobuden', 'kelurahan'),
 ('35.24.26', 'Glagah', 'kecamatan'),
@@ -52625,7 +52586,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('35.29.05.2002', 'Kapedi', 'kelurahan'),
 ('35.29.05.2003', 'Pakandangan Barat', 'kelurahan'),
 ('35.29.05.2004', 'Pakandangan Tengah', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('35.29.05.2005', 'Pakandangan Sangra', 'kelurahan'),
 ('35.29.05.2006', 'Aeng Dake', 'kelurahan'),
 ('35.29.05.2007', 'Aeng Baja Kenek', 'kelurahan'),
@@ -53794,7 +53755,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('36.02', 'KAB. LEBAK', 'kabupaten'),
 ('36.02.01', 'Malingping', 'kecamatan'),
 ('36.02.01.2002', 'Cilangkahan', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('36.02.01.2003', 'Pagelaran', 'kelurahan'),
 ('36.02.01.2004', 'Sukaraja', 'kelurahan'),
 ('36.02.01.2005', 'Malingping Utara', 'kelurahan'),
@@ -54963,7 +54924,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('36.72.03.1002', 'Lebakgede', 'kelurahan'),
 ('36.72.03.1003', 'Mekarsari', 'kelurahan'),
 ('36.72.03.1004', 'Suralaya', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('36.72.04', 'Ciwandan', 'kecamatan'),
 ('36.72.04.1001', 'Banjar Negara', 'kelurahan'),
 ('36.72.04.1002', 'Tegal Ratu', 'kelurahan'),
@@ -56144,7 +56105,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('52.02.07.2011', 'Jango', 'kelurahan'),
 ('52.02.07.2012', 'Setuta', 'kelurahan'),
 ('52.02.08', 'Pringgarata', 'kecamatan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('52.02.08.2001', 'Pringarata', 'kelurahan'),
 ('52.02.08.2002', 'Sepakek', 'kelurahan'),
 ('52.02.08.2003', 'Murbaya', 'kelurahan'),
@@ -57340,7 +57301,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('53.01.22.2003', 'Oelfatu', 'kelurahan'),
 ('53.01.22.2004', 'Timau', 'kelurahan'),
 ('53.01.22.2005', 'Honuk', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('53.01.22.2006', 'Faumes', 'kelurahan'),
 ('53.01.23', 'Semau Selatan', 'kecamatan'),
 ('53.01.23.2001', 'Akle', 'kelurahan'),
@@ -58543,7 +58504,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('53.07.07.2006', 'Manubura', 'kelurahan'),
 ('53.07.08', 'Talibura', 'kecamatan'),
 ('53.07.08.2001', 'Darat Gunung', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('53.07.08.2002', 'Ojang', 'kelurahan'),
 ('53.07.08.2003', 'Hikong', 'kelurahan'),
 ('53.07.08.2006', 'Nebe', 'kelurahan'),
@@ -59732,7 +59693,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('53.14.01.2006', 'Oebou', 'kelurahan'),
 ('53.14.01.2007', 'Lalukoen', 'kelurahan'),
 ('53.14.01.2008', 'Oehandi', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('53.14.01.2009', 'Oetefu', 'kelurahan'),
 ('53.14.01.2010', 'Batutua', 'kelurahan'),
 ('53.14.01.2011', 'Meoain', 'kelurahan'),
@@ -60907,7 +60868,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('61.01.02.2011', 'Sepadu', 'kelurahan'),
 ('61.01.02.2012', 'Tambatan', 'kelurahan'),
 ('61.01.02.2013', 'Kubangga', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('61.01.02.2020', 'Sungai Serabek', 'kelurahan'),
 ('61.01.02.2021', 'Sayang Sedayu', 'kelurahan'),
 ('61.01.02.2022', 'Pipit Teja', 'kelurahan'),
@@ -62037,7 +61998,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('61.05.20.2020', 'Penjernang Hulu', 'kelurahan'),
 ('61.05.20.2021', 'Riam Kijang', 'kelurahan'),
 ('61.05.20.2022', 'Baya Mulya', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('61.05.20.2023', 'Laman Raya', 'kelurahan'),
 ('61.05.20.2024', 'Sabang Surai', 'kelurahan'),
 ('61.05.20.2025', 'Balai Agung', 'kelurahan'),
@@ -63179,7 +63140,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('61.72.03.1002', 'Nyarumkop', 'kelurahan'),
 ('61.72.03.1003', 'Maya Sopa', 'kelurahan'),
 ('61.72.03.1004', 'Bagak Sahwa', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('61.72.03.1005', 'Sanggau Kulor', 'kelurahan'),
 ('61.72.04', 'Singkawang Utara', 'kecamatan'),
 ('61.72.04.1001', 'Sungai Garam Hilir', 'kelurahan'),
@@ -64299,7 +64260,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('62.09.01.2009', 'Bakonsu', 'kelurahan'),
 ('62.09.01.2022', 'Samu Jaya', 'kelurahan'),
 ('62.09.02', 'Delang', 'kecamatan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('62.09.02.1017', 'Kudangan', 'kelurahan'),
 ('62.09.02.2004', 'Riam Panahan', 'kelurahan'),
 ('62.09.02.2005', 'Sepoyu', 'kelurahan'),
@@ -65426,7 +65387,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('63.03.07.2008', 'Pingaran Ulu', 'kelurahan'),
 ('63.03.07.2009', 'Astambul Kota', 'kelurahan'),
 ('63.03.07.2010', 'Astambul Seberang', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('63.03.07.2011', 'Sungai Tuan Ulu', 'kelurahan'),
 ('63.03.07.2012', 'Benua Anyar ST', 'kelurahan'),
 ('63.03.07.2013', 'Kelampaian Ilir', 'kelurahan'),
@@ -66542,7 +66503,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('63.09', 'KAB. TABALONG', 'kabupaten'),
 ('63.09.01', 'Banua Lawas', 'kecamatan'),
 ('63.09.01.2001', 'Hapalah', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('63.09.01.2002', 'Bangkiling', 'kelurahan'),
 ('63.09.01.2003', 'Sungai Durian', 'kelurahan'),
 ('63.09.01.2004', 'Pematang', 'kelurahan'),
@@ -67684,7 +67645,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('64.07.08.2009', 'Lumpat Dahuq', 'kelurahan'),
 ('64.07.08.2010', 'Muara Tokong', 'kelurahan'),
 ('64.07.08.2011', 'Jengan Danum', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('64.07.08.2012', 'Keay', 'kelurahan'),
 ('64.07.08.2013', 'Tapulang', 'kelurahan'),
 ('64.07.08.2014', 'Benung', 'kelurahan'),
@@ -68826,7 +68787,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('71.01.10.2013', 'Pinonobatuan', 'kelurahan'),
 ('71.01.10.2017', 'Dumoga II', 'kelurahan'),
 ('71.01.10.2018', 'Pinonobatuan Barat', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('71.01.10.2019', 'Amertha Sari', 'kelurahan'),
 ('71.01.10.2020', 'Kembang Sari', 'kelurahan'),
 ('71.01.10.2021', 'Amertha Buana', 'kelurahan'),
@@ -69989,7 +69950,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('71.06.09.2010', 'Teepwarisa', 'kelurahan'),
 ('71.06.09.2011', 'Warisa Kampung Baru', 'kelurahan'),
 ('71.06.09.2012', 'Paniki Baru', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('71.06.10', 'Likupang Selatan', 'kecamatan'),
 ('71.06.10.2001', 'Kokoleh Satu', 'kelurahan'),
 ('71.06.10.2002', 'Kokoleh Dua', 'kelurahan'),
@@ -71148,7 +71109,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('72.01.21.1011', 'Kilongan Permai', 'kelurahan'),
 ('72.01.21.2001', 'Biak', 'kelurahan'),
 ('72.01.21.2002', 'Bunga', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('72.01.21.2003', 'Kamumu', 'kelurahan'),
 ('72.01.21.2004', 'Salodik', 'kelurahan'),
 ('72.01.21.2005', 'Lenyek', 'kelurahan'),
@@ -72341,7 +72302,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('72.08.18', 'Palasa', 'kecamatan'),
 ('72.08.18.2001', 'Bobalo', 'kelurahan'),
 ('72.08.18.2002', 'Dongkalan', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('72.08.18.2003', 'Eeya', 'kelurahan'),
 ('72.08.18.2004', 'Ulatan', 'kelurahan'),
 ('72.08.18.2005', 'Palasa Tangki', 'kelurahan'),
@@ -73521,7 +73482,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('73.05.04.2015', 'Parang Baddo', 'kelurahan'),
 ('73.05.04.2016', 'Lassang Barat', 'kelurahan'),
 ('73.05.04.2017', 'Balangtanaya', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('73.05.04.2018', 'Kale Ko\'mara', 'kelurahan'),
 ('73.05.05', 'Galesong Selatan', 'kecamatan'),
 ('73.05.05.2006', 'Bonto Kanang', 'kelurahan'),
@@ -74695,7 +74656,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('73.13.04.2006', 'Barangmamase', 'kelurahan'),
 ('73.13.04.2007', 'Salobulo', 'kelurahan'),
 ('73.13.04.2008', 'Towalida', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('73.13.04.2009', 'Alewadeng', 'kelurahan'),
 ('73.13.05', 'Majauleng', 'kecamatan'),
 ('73.13.05.1001', 'Paria', 'kelurahan'),
@@ -75880,7 +75841,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('73.24.03.2015', 'Tole', 'kelurahan'),
 ('73.24.03.2016', 'Libukan Mandiri', 'kelurahan'),
 ('73.24.03.2017', 'Kalosi', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('73.24.03.2018', 'Buangin', 'kelurahan'),
 ('73.24.04', 'Malili', 'kecamatan'),
 ('73.24.04.1003', 'Malili', 'kelurahan'),
@@ -77056,7 +77017,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('74.03.26.2009', 'Oelongko', 'kelurahan'),
 ('74.03.26.2010', 'Matombura', 'kelurahan'),
 ('74.03.27', 'Tongkuno', 'kecamatan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('74.03.27.1005', 'Danagoa', 'kelurahan'),
 ('74.03.27.1007', 'Kontumolepe', 'kelurahan'),
 ('74.03.27.1008', 'Tombula', 'kelurahan'),
@@ -78242,7 +78203,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('74.10.03.1006', 'Buranga', 'kelurahan'),
 ('74.10.03.1010', 'Bonegunu', 'kelurahan'),
 ('74.10.03.2001', 'Gunung Sari', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('74.10.03.2002', 'Ronta', 'kelurahan'),
 ('74.10.03.2003', 'Waode Angkalo', 'kelurahan'),
 ('74.10.03.2004', 'Langere', 'kelurahan'),
@@ -79430,7 +79391,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('75.03.17.2006', 'Mamungaa Timur', 'kelurahan'),
 ('75.03.17.2007', 'Dunggilata', 'kelurahan'),
 ('75.03.17.2008', 'Pinomotiga', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('75.03.17.2009', 'Patoa', 'kelurahan'),
 ('75.03.18', 'Pinogu', 'kecamatan'),
 ('75.03.18.2001', 'Pinogu', 'kelurahan'),
@@ -80621,7 +80582,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('81.01.20.2004', 'Paa', 'kelurahan'),
 ('81.01.20.2005', 'Karlutu Kara', 'kelurahan'),
 ('81.01.20.2006', 'Pasanea', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('81.01.20.2007', 'Labuan', 'kelurahan'),
 ('81.01.20.2008', 'Gale-gale', 'kelurahan'),
 ('81.01.20.2009', 'Latea', 'kelurahan'),
@@ -81820,7 +81781,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('81.72.02.2001', 'Tual', 'kelurahan'),
 ('81.72.02.2002', 'Taar', 'kelurahan'),
 ('81.72.03', 'Tayando Tam', 'kecamatan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('81.72.03.2001', 'Tam Ngurhir', 'kelurahan'),
 ('81.72.03.2002', 'Tayando Langgiar', 'kelurahan'),
 ('81.72.03.2003', 'Tayando Yamtel', 'kelurahan'),
@@ -83024,7 +82985,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('82.71.06.1003', 'Muhajirin', 'kelurahan'),
 ('82.71.06.1004', 'Stadion', 'kelurahan'),
 ('82.71.06.1005', 'Maliaro', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('82.71.06.1006', 'Kampung Pisang', 'kelurahan'),
 ('82.71.06.1007', 'Marikurubu', 'kelurahan'),
 ('82.71.06.1008', 'Kota Baru', 'kelurahan'),
@@ -84245,7 +84206,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('91.06.03.2037', 'Waderbo', 'kelurahan'),
 ('91.06.03.2038', 'Afefbo', 'kelurahan'),
 ('91.06.03.2039', 'Inmdi', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('91.06.04', 'Numfor Barat', 'kecamatan'),
 ('91.06.04.2003', 'Namber', 'kelurahan'),
 ('91.06.04.2004', 'Baruki', 'kelurahan'),
@@ -85462,7 +85423,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('91.12.04.2013', 'Ewenkatop', 'kelurahan'),
 ('91.12.04.2015', 'Ulkubi', 'kelurahan'),
 ('91.12.04.2016', 'Dipol', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('91.12.04.2017', 'Nenginum', 'kelurahan'),
 ('91.12.04.2018', 'Narnger', 'kelurahan'),
 ('91.12.04.2019', 'Kamyoim', 'kelurahan'),
@@ -86705,7 +86666,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('91.14.31.2008', 'Warka', 'kelurahan'),
 ('91.14.31.2010', 'Pakare', 'kelurahan'),
 ('91.14.31.2011', 'Tigu', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('91.14.31.2012', 'Bire', 'kelurahan'),
 ('91.14.31.2013', 'Itoli', 'kelurahan'),
 ('91.14.31.2014', 'Vokuyo', 'kelurahan'),
@@ -87946,7 +87907,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('91.22.04.2002', 'Trikora', 'kelurahan'),
 ('91.22.04.2003', 'Ampera', 'kelurahan'),
 ('91.22.04.2004', 'Pepera', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('91.22.04.2005', 'Naira', 'kelurahan'),
 ('91.22.04.2006', 'Siwa', 'kelurahan'),
 ('91.22.04.2007', 'Tiwayi', 'kelurahan'),
@@ -89177,7 +89138,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('91.28.02.2006', 'Bagou', 'kelurahan'),
 ('91.28.02.2007', 'Dagokebo', 'kelurahan'),
 ('91.28.02.2008', 'Ipoke', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('91.28.02.2009', 'Waitakotu', 'kelurahan'),
 ('91.28.02.2010', 'Pekepa', 'kelurahan'),
 ('91.28.02.2011', 'Bagumoma', 'kelurahan'),
@@ -90397,7 +90358,7 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('92.07.10.2002', 'Syabes', 'kelurahan'),
 ('92.07.10.2003', 'Menarbu', 'kelurahan'),
 ('92.07.10.2004', 'Niab', 'kelurahan');
-INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
+INSERT INTO `lokasi_indonesia` (`kode`, `wilayah`, `tingkat`) VALUES
 ('92.07.10.2005', 'Inday', 'kelurahan'),
 ('92.07.10.2006', 'Sariay', 'kelurahan'),
 ('92.07.10.2007', 'Mena', 'kelurahan'),
@@ -91335,8 +91296,3 @@ INSERT INTO `kode_wilayah_indonesia_2020` (`kode`, `nama`, `tipe`) VALUES
 ('92.71.10.1002', 'Tampa Garam', 'kelurahan'),
 ('92.71.10.1003', 'Saoka', 'kelurahan'),
 ('92.71.10.1004', 'Tanjung Kasuari', 'kelurahan');
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
