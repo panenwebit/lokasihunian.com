@@ -53,10 +53,10 @@ Route::prefix('profile')->group(function(){
 
     Route::get('/{username}', [ProfileController::class, 'show']);
 
-    Route::get('/{username}/create', function () {
+    Route::middleware(['auth', 'verified'])->get('/{username}/create', function () {
         return view('profiles.create_profile');
     });
-    Route::post('/{username}/create', [ProfileController::class, 'create']);
+    Route::middleware(['auth', 'verified'])->post('/{username}/create', [ProfileController::class, 'create']);
 });
 
 Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->group(function () {
@@ -74,4 +74,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
 
 Route::get('test', function() {
     return 'test';
+});
+
+Route::get('test_map', function() {
+    return view('test.map');
 });

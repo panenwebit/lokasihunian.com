@@ -15,7 +15,15 @@ class LokasiIndonesiaSeeder extends Seeder
     public function run()
     {
         //Sometimes it doesnt work
-        $path = './database/seeders/kode_wilayah_indonesia_2020.sql';
+        $path = './database/seeders/sql/lokasi_indonesia/lokasi_indonesia_part_1.sql';
+        DB::unprepared(DB::raw(file_get_contents($path)));
+        $path = './database/seeders/sql/lokasi_indonesia/lokasi_indonesia_part_2.sql';
+        DB::unprepared(DB::raw(file_get_contents($path)));
+        $path = './database/seeders/sql/lokasi_indonesia/lokasi_indonesia_part_3.sql';
+        DB::unprepared(DB::raw(file_get_contents($path)));
+        $path = './database/seeders/sql/lokasi_indonesia/lokasi_indonesia_part_4.sql';
+        DB::unprepared(DB::raw(file_get_contents($path)));
+        $path = './database/seeders/sql/lokasi_indonesia/lokasi_indonesia_part_5.sql';
         DB::unprepared(DB::raw(file_get_contents($path)));
         $this->command->info('Lokasi_Indonesia table seeded!');
     }
