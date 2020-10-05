@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="container my-3">
+        <div class="card">
+            <!-- Card header -->
+            <div class="card-header">
+                <h3 class="mb-0">Pengaturan Akun</h3>
+                <p class="text-sm mb-0">
+                    Halaman ini digunakan untuk memperbarui informasi akun anda.
+                </p>
+            </div>
+        </div>
         <h3>Ganti Username</h3>
         <form action="{{ url('account/username') }}" method="post">
             @csrf

@@ -32,18 +32,16 @@ Route::get('hubungi_kami', function(){
 });
 
 Route::prefix('property')->group(function(){
-    Route::get('/', function () {
-        return view('property.list_property');
-    });
+    Route::get('/', [PropertyController::class, 'propertyList']);
 
-    Route::get('/buat_listing', function () {
-        return view('property.create_property');
-    });
-    Route::post('/buat_listing', [PropertyController::class, 'create']);
+    Route::middleware(['auth', 'verified'])->get('/listing', [PropertyController::class, 'index']);
+    Route::middleware(['auth', 'verified'])->get('/listing/create', [PropertyController::class, 'create']);
+    Route::middleware(['auth', 'verified'])->post('/listing', [PropertyController::class, 'store']);
 
-    Route::get('/{slug}', function () {
-        return view('property.detail_property');
-    });
+    Route::middleware(['auth', 'verified'])->get('/my_listing/{status}', [PropertyController::class, 'myListing']);
+    Route::middleware(['auth', 'verified'])->get('/my_listing', [PropertyController::class, 'myListing']);
+
+    Route::get('/{slug}', [PropertyController::class, 'propertyDetail']);
 });
 
 Route::prefix('profile')->group(function(){

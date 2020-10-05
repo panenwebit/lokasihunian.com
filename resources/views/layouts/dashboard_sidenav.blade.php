@@ -36,22 +36,25 @@
                         <div class="collapse" id="navbar-properti">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Tambah Baru</a>
+                                    <a href="{{ url('property/listing/create') }}" class="nav-link">Tambah Baru</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Semua</a>
+                                    <a href="{{ url('property/my_listing') }}" class="nav-link">Semua</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Tayang</a>
+                                    <a href="{{ url('property/my_listing/Live') }}" class="nav-link">Tayang</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Pending</a>
+                                    <a href="{{ url('property/my_listing/Pending') }}" class="nav-link">Pending</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Kadaluarsa</a>
+                                    <a href="{{ url('property/my_listing/Expired') }}" class="nav-link">Kadaluarsa</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Draft</a>
+                                    <a href="{{ url('property/my_listing/Sold') }}" class="nav-link">Terjual</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('property/my_listing/Archived') }}" class="nav-link">di-Arsipkan</a>
                                 </li>
                             </ul>
                         </div>

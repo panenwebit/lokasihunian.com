@@ -55,9 +55,9 @@
             <br>
             @yield('content', '')
             <br>
-            @yield('dashboard_footer', View::make('layouts.dashboard_footer'))
         </div>
     </div>
+    @yield('dashboard_footer', View::make('layouts.dashboard_footer'))
 
     <!-- Argon Scripts -->
     <!-- Core -->

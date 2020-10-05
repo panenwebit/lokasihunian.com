@@ -2,6 +2,16 @@
 
 @section('content')
     <div class="container mt-5">
+        <div class="card">
+            <!-- Card header -->
+            <div class="card-header">
+                <h3 class="mb-0">Buat Profil</h3>
+                <p class="text-sm mb-0">
+                    Satu langkah lagi. Isi profil anda, dan mulai nikmati semua layanan dari lokasihunian.com  <br>
+                    Ini adalah formulir untuk pembuatan profil anda pada website lokasihunian.com.
+                </p>
+            </div>
+        </div>
         <div class="d-flex justify-content-center my-3">
             <img src="{{ auth()->user()->profile->photo }}" id="create_profile_user_avatar" alt="user_avatar" class="rounded-circle user_avatar" style="width:15rem;height:15rem;">
         </div>
