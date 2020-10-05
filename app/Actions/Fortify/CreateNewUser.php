@@ -27,13 +27,13 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         $justCreatedUser =  User::create([
-            'username' => $input['username'],
-            'email' => $input['email'],
+            'username' => strtolower($input['username']),
+            'email' => strtolower($input['email']),
             'password' => Hash::make($input['password']),
         ]);
 
         Profile::create([
-            'username'  => $input['username'],
+            'username'  => strtolower($input['username']),
             'fullname'  => '',
             'photo'     => asset('assets/img/agen/user_default.png'),
             'address'   => '',

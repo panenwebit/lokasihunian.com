@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\User;
+
 class Profile extends Model
 {
     use HasFactory, HasRoles;
 
     protected $table = 'profile';
+    protected $keyType = 'string';
+    public $incrementing = false;
     protected $primaryKey = 'username';
     protected $guard = 'web';
 
@@ -19,8 +23,8 @@ class Profile extends Model
         'username',
         'fullname',
         'photo',
-        'address',
-        'address_location',
+        // 'address',
+        // 'address_location',
         'wa_number',
         'about_me',
         'web_address',
@@ -40,7 +44,7 @@ class Profile extends Model
     }
 
     public function addressLocation() {
-        $kode = $this->address_location;
+        $kode = $this->company_location;
         $kode_provinsi = substr($kode,0,2);
         $kode_kabupaten = substr($kode,0,5);
         $kode_kecamatan = substr($kode,0,8);

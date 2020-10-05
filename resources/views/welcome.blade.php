@@ -28,7 +28,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-search"></i></span>
                                         </div>
-                                        <input class="form-control" name="keyword" id="property-search-keyword" placeholder="Cari Hunian terbaik anda" type="text">
+                                        <input class="form-control form-control-black" name="keyword" id="property-search-keyword" placeholder="Cari Hunian terbaik anda" type="text">
                                     </div>
                                 </div>
                                 <div class="d-flex">

@@ -69,11 +69,11 @@
     letter-spacing: 10px;
 }
 
-.form-control {
+.form-control-black {
     color: #000;
 }
 
-.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.form-control-black::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #000;
     opacity: 1; /* Firefox */
 }

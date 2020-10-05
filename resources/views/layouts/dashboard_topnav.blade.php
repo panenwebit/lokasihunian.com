@@ -206,21 +206,17 @@
                         <div class="dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-single-02"></i>
-                            <span>My profile</span>
+                        <a href="{{ url('dashboard') }}" class="dropdown-item">
+                            <i class="far fa-tachometer-fastest text-primary"></i>
+                            <span>Dashboard</span>
                         </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-settings-gear-65"></i>
-                            <span>Settings</span>
+                        <a href="{{ url('profile/'.auth()->user()->username) }}" class="dropdown-item">
+                            <i class="far fa-id-card text-primary"></i>
+                            <span>Profil Saya</span>
                         </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-calendar-grid-58"></i>
-                            <span>Activity</span>
-                        </a>
-                        <a href="#!" class="dropdown-item">
-                            <i class="ni ni-support-16"></i>
-                            <span>Support</span>
+                        <a href="{{ url('account/setting') }}" class="dropdown-item">
+                            <i class="far fa-key text-primary"></i>
+                            <span>Pengaturan Akun</span>
                         </a>
                         <div class="dropdown-divider"></div>
                         <a href="#!" class="dropdown-item">

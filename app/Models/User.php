@@ -12,7 +12,9 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRoles;
 
-    // protected $primaryKey = 'username';
+    protected $keyType = 'string';
+    public $incrementing = false;
+    protected $primaryKey = 'username';
     /**
      * The attributes that are mass assignable.
      *

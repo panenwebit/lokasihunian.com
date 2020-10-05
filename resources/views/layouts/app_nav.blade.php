@@ -56,12 +56,16 @@
                                 <h6 class="text-overflow m-0">Welcome!</h6>
                             </div> -->
                             <a href="{{ url('dashboard') }}" class="dropdown-item">
-                                <i class="ni ni-single-02"></i>
+                                <i class="far fa-tachometer-fastest text-primary"></i>
                                 <span>Dashboard</span>
                             </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-single-02"></i>
-                                <span>My profile</span>
+                            <a href="{{ url('profile/'.auth()->user()->username) }}" class="dropdown-item">
+                                <i class="far fa-id-card text-primary"></i>
+                                <span>Profil Saya</span>
+                            </a>
+                            <a href="{{ url('account/setting') }}" class="dropdown-item">
+                                <i class="far fa-key text-primary"></i>
+                                <span>Pengaturan Akun</span>
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -245,37 +249,6 @@
     </div>
 </div>
 
-<!-- <div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="text-muted text-center mt-2 mb-3"><small>Reset Password</small></div>
-                <div class="container">
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-                        <div class="form-group mb-3">
-                            <div class="input-group input-group-merge input-group-alternative">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa far fa-envelope"></i></span>
-                                </div>
-                                <input class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" type="email"  value="{{ old('email') }}" autocomplete="email" required autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-default my-4 btn-block"><i class="fa far fa-key"></i> Reset Password</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 @if ((count($errors) > 0) && ($errors->has('email') && ($errors->first('email') == "The email has already been taken.")))
     <script>
         $(document).ready(function() {
@@ -294,13 +267,7 @@
             $('#loginModal').modal('show');
         });
     </script>
-<!-- @elseif((count($errors) > 0) && ($errors->has('email') && ($errors->first('email') == "We can't find a user with that e-mail address.")))
-    <script>
-        $(document).ready(function() {
-            $('#resetModal').modal('show');
-        });
-    </script>
-@endif -->
+@endif
 <script>
     $('#registerModal').on('show.bs.modal', function (e) {
         $('.login-error').empty();

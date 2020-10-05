@@ -47,16 +47,19 @@ Route::prefix('property')->group(function(){
 });
 
 Route::prefix('profile')->group(function(){
-    Route::get('/', function () {
-        return view('profiles.list_profile');
-    });
+    Route::middleware(['auth', 'verified'])->get('/create', [ProfileController::class, 'create']);
+    Route::middleware(['auth', 'verified'])->get('/edit', [ProfileController::class, 'edit']);
+    Route::middleware(['auth', 'verified'])->post('/', [ProfileController::class, 'store']);
+    Route::middleware(['auth', 'verified'])->patch('/', [ProfileController::class, 'update']);
+    Route::middleware(['auth', 'verified'])->post('/image', [ProfileController::class, 'imageUpdate']);
 
     Route::get('/{username}', [ProfileController::class, 'show']);
+});
 
-    Route::middleware(['auth', 'verified'])->get('/{username}/create', function () {
-        return view('profiles.create_profile');
-    });
-    Route::middleware(['auth', 'verified'])->post('/{username}/create', [ProfileController::class, 'create']);
+Route::prefix('account')->middleware(['auth', 'verified'])->group(function(){
+    Route::get('/setting', [UserController::class, 'settingForm']);
+    Route::patch('/password', [UserController::class, 'passwordUpdate']);
+    Route::patch('/username', [UserController::class, 'usernameUpdate']);
 });
 
 Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->group(function () {
@@ -70,10 +73,6 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
         Route::get('roles', [RoleController::class, 'index']);
         Route::get('permissions', [PermissionController::class, 'index']);
     });
-});
-
-Route::get('test', function() {
-    return 'test';
 });
 
 Route::get('test_map', function() {

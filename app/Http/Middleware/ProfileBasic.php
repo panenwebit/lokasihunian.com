@@ -17,7 +17,7 @@ class ProfileBasic
     public function handle(Request $request, Closure $next)
     {
         if(auth()->user()->profile->fullname == ''){
-            return redirect('profile/'.auth()->user()->username.'/create');
+            return redirect('profile/create');
         }
         return $next($request);
     }
