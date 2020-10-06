@@ -44,7 +44,7 @@ class Property extends Model
     }
 
     public function propertyLocation() {
-        $kode = $this->address_location;
+        $kode = $this->property_location;
         $kode_provinsi = substr($kode,0,2);
         $kode_kabupaten = substr($kode,0,5);
         $kode_kecamatan = substr($kode,0,8);

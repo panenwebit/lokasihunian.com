@@ -2,14 +2,8 @@
 
 @section('content')  
     <div id="myCarousel" class="carousel slide" data-ride="carousel" style="">
-        <!-- <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol> -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <!-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777" /></svg> -->
                 <img src="{{ asset('assets/img/banner/banner_1.jpg') }}" class="w-100" alt="">
                 <div class="container">
                     <div class="carousel-caption text-center">
@@ -18,10 +12,10 @@
                             <form action="{{ url('property') }}" method="get">
                                 <div class="d-flex">
                                     <div class="form-group mr-3" style="min-width:10rem;">
-                                        <select name="buy" id="property-search-buy" class="form-control selectpicker" data-style="btn-secondary">
+                                        <select name="term" id="property-search-term" class="form-control selectpicker" data-style="btn-secondary">
                                             <option value="all">Beli / Sewa</option>
-                                            <option value="buy">Beli</option>
-                                            <option value="rent">Sewa</option>
+                                            <option value="Beli">Beli</option>
+                                            <option value="Sewa">Sewa</option>
                                         </select>
                                     </div>
                                     <div class="form-group input-group input-group-merge">
@@ -33,14 +27,14 @@
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-group mr-3">
-                                        <select name="new" id="property-search-new" class="form-control selectpicker" data-style="btn-secondary">
+                                        <select name="condition" id="property-search-condition" class="form-control selectpicker" data-style="btn-secondary">
                                             <option value="all">Baru / Bekas</option>
-                                            <option value="new">Baru</option>
-                                            <option value="second">Bekas</option>
+                                            <option value="Baru">Baru</option>
+                                            <option value="Bekas">Bekas</option>
                                         </select>
                                     </div>
                                     <div class="form-group mr-3">
-                                        <select name="hunian" id="property-search-hunian" class="form-control selectpicker" data-style="btn-secondary">
+                                        <select name="type" id="property-search-type" class="form-control selectpicker" data-style="btn-secondary">
                                             <option value="all">Jenis Hunian</option>
                                             <option value="Apartemen">Apartemen</option>
                                             <option value="Rumah">Rumah</option>
@@ -62,13 +56,13 @@
                                     </div>
                                     <div class="form-group mr-3">
                                         <select name="hprice" id="property-search-hprice" class="form-control selectpicker" data-style="btn-secondary">
-                                            <option value="all">Harga Minimal</option>
+                                            <option value="all">Harga Maximal</option>
                                             <option value="50000000">50 Juta</option>
                                             <option value="100000000">100 Juta</option>
                                             <option value="200000000">200 Juta</option>
                                             <option value="500000000">500 Juta</option>
                                             <option value="1000000000">1 Milyar</option>
-                                            <option value="all">2 Milyar+</option>
+                                            <option value="2000000000">2 Milyar</option>
                                         </select>
                                     </div>
                                     <div class="form-group flex-fill">
@@ -87,14 +81,6 @@
                 </div>
             </div>
         </div>
-        <!-- <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a> -->
     </div>
     <br>
     <div class="container-fluid">
@@ -361,21 +347,21 @@
                         <input class="form-control" name="keyword" id="properti-search2-keyword" placeholder="Cari Hunian terbaik anda" type="text">
                     </div>
                     <div class="form-group mr-3">
-                        <select name="buy" id="property-search2-buy" class="form-control selectpicker" data-style="btn-secondary">
+                        <select name="term" id="property-search2-term" class="form-control selectpicker" data-style="btn-secondary">
                             <option value="all">Beli / Sewa</option>
-                            <option value="buy">Beli</option>
-                            <option value="rent">Sewa</option>
+                            <option value="Beli">Beli</option>
+                            <option value="Sewa">Sewa</option>
                         </select>
                     </div>
                     <div class="form-group mr-3">
-                        <select name="new" id="property-search2-new" class="form-control selectpicker" data-style="btn-secondary">
+                        <select name="condition" id="property-search2-condition" class="form-control selectpicker" data-style="btn-secondary">
                             <option value="all">Baru / Bekas</option>
-                            <option value="new">Baru</option>
-                            <option value="second">Bekas</option>
+                            <option value="Baru">Baru</option>
+                            <option value="Bekas">Bekas</option>
                         </select>
                     </div>
                     <div class="form-group mr-3">
-                        <select name="hunian" id="property-search2-hunian" class="form-control selectpicker" data-style="btn-secondary">
+                        <select name="type" id="property-search2-type" class="form-control selectpicker" data-style="btn-secondary">
                             <option value="all">Jenis Hunian</option>
                             <option value="Apartemen">Apartemen</option>
                             <option value="Rumah">Rumah</option>
@@ -398,13 +384,13 @@
                         </div>
                         <div class="col-6">
                             <select name="hprice" id="property-search2-hprice" class="form-control selectpicker" data-style="btn-secondary">
-                                <option value="all">Harga Minimal</option>
+                                <option value="all">Harga Maximal</option>
                                 <option value="50000000">50 Juta</option>
                                 <option value="100000000">100 Juta</option>
                                 <option value="200000000">200 Juta</option>
                                 <option value="500000000">500 Juta</option>
                                 <option value="1000000000">1 Milyar</option>
-                                <option value="all">2 Milyar+</option>
+                                <option value="2000000000">2 Milyar</option>
                             </select>
                         </div>
                     </div>
@@ -416,4 +402,26 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('page_js_plugins')
+<script>
+    $(document).ready(function(){
+        // $('#property-search-lprice').on('change', function(){
+        //     var lprice = $('#property-search-lprice').val();
+        //     var hprice = $('#property-search-hprice').val();
+        //     if(lprice!='all'){
+        //         if(lprice > hprice){
+        //             $("#property-search-hprice > option").each(function() {
+        //                 if(this.value > lprice){
+        //                     $('#property-search-hprice option').removeAttr('selected');
+        //                     $('#property-search-hprice option').text(this.text);
+        //                     $('#property-search-hprice option[value='+this.value+']').attr('selected','selected');
+        //                 }
+        //             });
+        //         }
+        //     }
+        // });
+    });
+</script>
 @endsection

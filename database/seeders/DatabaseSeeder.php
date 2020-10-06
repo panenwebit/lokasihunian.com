@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             LokasiIndonesiaSeeder::class,
             RolesSeeder::class,
             UsersSeeder::class,
+            DummyPropertySeeder::class,
         ]);
     }
 }

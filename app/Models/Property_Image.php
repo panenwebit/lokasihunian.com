@@ -18,6 +18,6 @@ class Property_Image extends Model
     ];
 
     public function property(){
-        return $this->belongsTo('App\Models\Property', 'property_id', 'id');
+        return $this->belongsTo('App\Models\Property', 'id', 'property_id');
     }
 }

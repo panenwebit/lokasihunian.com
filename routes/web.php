@@ -33,15 +33,20 @@ Route::get('hubungi_kami', function(){
 
 Route::prefix('property')->group(function(){
     Route::get('/', [PropertyController::class, 'propertyList']);
-
+    
     Route::middleware(['auth', 'verified'])->get('/listing', [PropertyController::class, 'index']);
     Route::middleware(['auth', 'verified'])->get('/listing/create', [PropertyController::class, 'create']);
     Route::middleware(['auth', 'verified'])->post('/listing', [PropertyController::class, 'store']);
-
+    Route::middleware(['auth', 'verified'])->post('/listing/images', [PropertyController::class, 'storeImages']);
+    
     Route::middleware(['auth', 'verified'])->get('/my_listing/{status}', [PropertyController::class, 'myListing']);
     Route::middleware(['auth', 'verified'])->get('/my_listing', [PropertyController::class, 'myListing']);
-
+    
     Route::get('/{slug}', [PropertyController::class, 'propertyDetail']);
+});
+
+Route::prefix('agen')->group(function(){
+    Route::get('/{username}', [ProfileController::class, 'agenList']);
 });
 
 Route::prefix('profile')->group(function(){
@@ -71,6 +76,11 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
         Route::get('roles', [RoleController::class, 'index']);
         Route::get('permissions', [PermissionController::class, 'index']);
     });
+});
+
+Route::get('test', function(){
+    $random = Str::random(32);
+    return $random;
 });
 
 Route::get('test_map', function() {

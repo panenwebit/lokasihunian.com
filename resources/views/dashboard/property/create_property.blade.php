@@ -13,6 +13,14 @@
                 </p>
             </div>
         </div>
+
+        <form action="{{ url('property/listing/images') }}" method="post" class="dropzone mb-3" id="drop" style="flex-direction:row;overflow-x: scroll;">
+            @csrf
+            <div class="fallback">
+                <input type="file" name="property_image" multiple>
+            </div>
+        </form>
+
         <form action="{{ url('property/listing') }}" method="post">
             @csrf
             <div class="input-group input-group-merge input-group-alternative mb-3">
@@ -159,15 +167,25 @@
 @endsection
 @section('page_css_plugins')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets/dropzonejs/dropzone.css') }}">
 @endsection
 
 @section('page_js_plugins')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="{{ asset('assets/dropzonejs/min/dropzone.min.js') }}"></script>
     <script src="{{ asset('assets/js/widget_lokasi.js') }}"></script>
     <script>
         $('.select2').select2();
         $(document).ready(function(){
             widgetlokasi('property_provinsi', 'property_kabupaten', 'property_kecamatan', 'property_kelurahan');
+        });
+        Dropzone.autoDiscover = false;
+        var myDropzone = new Dropzone("#drop", { 
+            url: "{{ url('property/listing/images') }}",
+            acceptedFiles : "image/png, image/jpeg",
+            // autoProcessQueue : false,
+            addRemoveLinks : true,
+            dictDefaultMessage : "klik untuk menambahkan gambar untuk property anda. <br> gambar paling awal akan digunakan sebagai thumbnail / gambar utama.",
         });
     </script>
 @endsection

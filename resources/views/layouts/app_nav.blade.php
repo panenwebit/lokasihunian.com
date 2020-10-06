@@ -10,18 +10,18 @@
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_property" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Properti</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_property">
-                        <a class="dropdown-item" href="{{ url('property') }}?hunian=Apartemen">Apartemen</a>
-                        <a class="dropdown-item" href="{{ url('property') }}?hunian=Rumah">Rumah</a>
-                        <a class="dropdown-item" href="{{ url('property') }}?hunian=Tanah">Tanah</a>
-                        <a class="dropdown-item" href="{{ url('property') }}?hunian=Ruko">Ruko</a>
-                        <a class="dropdown-item" href="{{ url('property') }}?hunian=Vila">Vila</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Apartemen">Apartemen</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Rumah">Rumah</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Tanah">Tanah</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Ruko">Ruko</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Vila">Vila</a>
                     </div>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('property') }}?buy=buy">Jual</a>
+                    <a class="nav-link" href="{{ url('property') }}?term=Beli">Jual</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('property') }}?buy=rent">Sewa</a>
+                    <a class="nav-link" href="{{ url('property') }}?term=Sewa">Sewa</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ url('property') }}?latest=latest">Terbaru</a>
@@ -271,7 +271,9 @@
 <script>
     $('#registerModal').on('show.bs.modal', function (e) {
         $('.login-error').empty();
-        // $('#loginModal').hide();
+        $('#loginModal').hide();
+        // $('div.modal-backdrop').removeClass('stype
+        $('div.modal-backdrop').hide();
     })
     $('#loginModal').on('show.bs.modal', function (e) {
         $('.register-error').empty();

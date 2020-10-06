@@ -50,6 +50,13 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                @foreach($profile->user->property as $prop)
+                    <p>{{ $prop->property_title }}</p>
+                @endforeach
+            </div>
+        </div>
     </div>
     <br>
     <br>

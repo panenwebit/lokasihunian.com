@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+
 use App\Models\Property;
+use App\Models\Property_Image;
 
 class PropertyController extends Controller
 {
@@ -46,8 +49,75 @@ class PropertyController extends Controller
         return redirect('dashboard');
     }
 
+    public function storeImages(Request $request){
+        // $property = new Property_Image;
+        $image = $request->file('file');
+        $image_path = $image->store('images/property/'.auth()->user()->username.'/'.date('Y').'/'.date('m').'/'.date('d'), 'public');
+        $watermark = Image::make(public_path('assets/img/logo/wmark_sm.png'));
+        $image_fit = Image::make(public_path('storage/'.$image_path))->fit(900, 675);
+        $image_fit->insert($watermark, 'center');
+        $image_fit->save();
+
+        return $image->getClientOriginalName();
+    }
+
     public function propertyList(){
-        return view('property.list_property');
+        $SQL = "SELECT 
+                a.id, a.username, a.property_title, a.property_term, a.property_condition, a.property_type, a.property_price, a.property_surface_area, a.property_building_area, a.property_bedroom_count, a.property_bathroom_count, a.property_parking_count, a.property_slug, a.property_status,
+                b.fullname, b.wa_number, b.photo,
+                (SELECT c.images FROM property_images c WHERE c.property_id=a.id LIMIT 1) as images
+                FROM property a 
+                INNER JOIN `profile` b ON a.username = b.username ";
+        if(isset($_GET['term']) || isset($_GET['condition']) || isset($_GET['type']) || isset($_GET['keyword']) || isset($_GET['lprice']) || isset($_GET['hprice']) ) {
+
+            if(isset($_GET['term']) && $_GET['term']!='' && $_GET['term']!='all'){
+                $term = $_GET['term'];
+                $SQL .= "WHERE a.property_term='$term' ";
+            } else {
+                $SQL .= "WHERE 1=1 ";
+            }
+
+            if(isset($_GET['condition']) && $_GET['condition']!='' && $_GET['condition']!='all'){
+                $condition = $_GET['condition'];
+                $SQL .= "AND a.property_condition='$condition' ";
+            }
+    
+            if(isset($_GET['type']) && $_GET['type']!='' && $_GET['type']!='all'){
+                $type = $_GET['type'];
+                $SQL .= "AND a.property_type='$type' ";
+            }
+    
+            if(isset($_GET['keyword']) && $_GET['keyword']!=''){
+                $keyword = $_GET['keyword'];
+                $SQL .= "AND a.property_title LIKE '%$keyword%' OR a.property_description LIKE '%$keyword%' ";
+            }
+
+            if(isset($_GET['lprice']) || isset($_GET['hprice'])){
+                $lprice = $_GET['lprice'];
+                $hprice = $_GET['hprice'];
+                
+                if($_GET['lprice']!='all' && $_GET['hprice']!='all'){
+                    if($hprice<$lprice){
+                        $temp = $hprice;
+                        $hprice = $lprice;
+                        $lprice = $hprice;
+                    }
+
+                    $SQL .= "AND a.property_price BETWEEN '$lprice' AND '$hprice' ";
+                } else if($_GET['lprice']=='all' && $_GET['hprice']!='all'){
+                    $SQL .= "AND a.property_price < '$hprice' ";
+                } else if($_GET['lprice']!='all' && $_GET['hprice']=='all'){
+                    $SQL .= "AND a.property_price > '$lprice' ";
+                } else {
+                    $SQL .= "";
+                }
+            }   
+        }
+        $SQL .= " AND a.property_status='Live'";
+        $property = DB::select($SQL);
+        // dd($property);
+        // dd($SQL);
+        return view('property.list_property', ['property' => $property]);
     }
 
     public function propertyDetail($slug){
