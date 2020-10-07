@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
-    <div class="container">
+    <div class="container-fluid">
         <a class="navbar-brand" href="{{ url('') }}"><img src="{{ asset('assets/img/logo/logo.png') }}" alt="LokasiHunian.com" style="width:200px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_property" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Properti</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_property">
@@ -38,6 +38,8 @@
                         <a class="dropdown-item" href="{{ url('simulasi_kredit') }}">Simulasi Kredit</a>
                     </div>
                 </li>
+            </ul>
+            <ul class="navbar-nav">
                 <li class="nav-item active">
                     @if(Auth::check())
                     <li class="nav-item dropdown">
@@ -82,7 +84,7 @@
                     </li>
                     @else
                     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#loginModal">
-                        <i class="fa fas fa-user"></i><span id="login-button-text">&nbsp; Login / Daftar</span>
+                        <i class="fa fas fa-user"></i>&nbsp; Login <span id="login-button-text">/ Daftar</span>
                     </button>
                     @endif
                 </li>

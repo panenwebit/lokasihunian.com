@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Intervention\Image\Facades\Image;
 
 use App\Models\Property;
@@ -53,12 +55,12 @@ class PropertyController extends Controller
         // $property = new Property_Image;
         $image = $request->file('file');
         $image_path = $image->store('images/property/'.auth()->user()->username.'/'.date('Y').'/'.date('m').'/'.date('d'), 'public');
-        $watermark = Image::make(public_path('assets/img/logo/wmark_sm.png'));
+        $watermark = Image::make(public_path('assets/img/logo/wmark_sm_180.png'));
         $image_fit = Image::make(public_path('storage/'.$image_path))->fit(900, 675);
         $image_fit->insert($watermark, 'center');
         $image_fit->save();
 
-        return $image->getClientOriginalName();
+        return 'storage/'.$image_path;
     }
 
     public function propertyList(){
@@ -113,11 +115,35 @@ class PropertyController extends Controller
                 }
             }   
         }
-        $SQL .= " AND a.property_status='Live'";
-        $property = DB::select($SQL);
+        $SQL .= " AND a.property_status='Live' ";
+
+        if(isset($_GET['sort']) && $_GET['sort']!='' && $_GET['sort']!='all'){
+            $sort = $_GET['sort'];
+            if($sort=='Baru'){
+                $SQL .= " ORDER BY a.updated_at DESC ";
+            } else if ($sort=='Murah'){
+                $SQL .= " ORDER BY a.property_price ASC ";
+            } else if ($sort=='Mahal'){
+                $SQL .= " ORDER BY a.property_price DESC ";
+            }
+        }
+        $result = DB::select($SQL);
+        if((isset($_GET['page']) && $_GET['page']!='' && $_GET['page']!='all') || !isset($_GET['page'])){
+            //paginator
+            $hasPaginator = true;
+            $property = collect($result); 
+            $total = count($property);
+            $currentPage = LengthAwarePaginator::resolveCurrentPage();
+            $perPage = 9;
+            $currentResults = $property->slice(($currentPage - 1) * $perPage, $perPage)->all();
+            $results = new LengthAwarePaginator($currentResults, $property->count(), $perPage);
+        } else {
+            $hasPaginator = false;
+            $results = $result;
+        }
         // dd($property);
         // dd($SQL);
-        return view('property.list_property', ['property' => $property]);
+        return view('property.list_property', ['property' => $results, 'hasPaginator'=>$hasPaginator]);
     }
 
     public function propertyDetail($slug){

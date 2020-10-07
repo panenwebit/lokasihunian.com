@@ -112,7 +112,8 @@
                                 <h5><a href="{{ url('profile/something') }}">Jonathan Alexandro</a></h5>
                             </span>
                             <button type="button" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.5rem;height:2.5rem;"><i class="fal fa-calculator"></i></button>
-                            <button type="button" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.5rem;height:2.5rem;"><i class="fab fa-whatsapp"></i></button>
+                            <button type="button" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.2rem;height:2.2rem;"><i class="fab fa-whatsapp"></i></button>
+                            <button type="button" class="btn btn-warning btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.0rem;height:2.0rem;"><i class="fas fa-phone"></i></button>
                         </div>
 
                         <!-- <a href="{{ url('property') }}" class="stretched-link"></a> -->
@@ -278,37 +279,43 @@
                 <img src="{{ asset('assets/img/banner/banner_temukan.jpg') }}" alt="" class="img-fluid">
             </div>
         </div>
-        <h2 class="text-center my-4">Hunian Strategis</h2>
-        <div class="row justify-content-around">
-            <div class="col-sm-6 col-md-3">
-                <div class="pl-5 mb-4"><a href="#">Properti di DKI Jakarta</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Bali</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Bandung</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Banten</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Depok</a></div>
-            </div>
-            <div class="col-sm-6 col-md 3">
-                <div class="pl-5 mb-4"><a href="#">Properti di Tanggerang</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Daerah Istimewa Yogyakarta</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Semarang</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Surabaya</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Bekasi</a></div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="pl-5 mb-4"><a href="#">Properti di DKI Jakarta</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Bali</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Bandung</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Banten</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Depok</a></div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <div class="pl-5 mb-4"><a href="#">Properti di Tanggerang</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Daerah Istimewa Yogyakarta</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Semarang</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Surabaya</a></div>
-                <div class="pl-5 mb-4"><a href="#">Properti di Bekasi</a></div>
+        
+        <div class="rounded" style="background-color:#f1f1f1;color:#000;">
+            <br>
+            <h2 class="text-center">Hunian Strategis</h2>
+            <br>
+            <div class="row justify-content-around">
+                <div class="col-sm-6 col-md-3">
+                    <div class="pl-5 mb-4"><a href="#">Properti di DKI Jakarta</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Bali</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Bandung</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Banten</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Depok</a></div>
+                </div>
+                <div class="col-sm-6 col-md 3">
+                    <div class="pl-5 mb-4"><a href="#">Properti di Tanggerang</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Daerah Istimewa Yogyakarta</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Semarang</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Surabaya</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Bekasi</a></div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="pl-5 mb-4"><a href="#">Properti di DKI Jakarta</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Bali</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Bandung</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Banten</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Depok</a></div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="pl-5 mb-4"><a href="#">Properti di Tanggerang</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Daerah Istimewa Yogyakarta</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Semarang</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Surabaya</a></div>
+                    <div class="pl-5 mb-4"><a href="#">Properti di Bekasi</a></div>
+                </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="parlax"></div>
     <!-- <div class="container px-5">

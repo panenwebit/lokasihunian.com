@@ -41,7 +41,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa far fa-city"></i></span>
                         </div>
-                        <select name="property_type" id="property_type" class="form-control" required>
+                        <select name="property_type" id="property_type" class="form-control selectpicker" data-style="btn-secondary" required>
                             <option value="Apartemen">Apartemen</option>
                             <option value="Rumah">Rumah</option>
                             <option value="Tanah">Tanah</option>
@@ -55,7 +55,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa far fa-money-check-edit"></i></span>
                         </div>
-                        <select name="property_term" id="property_term" class="form-control" required>
+                        <select name="property_term" id="property_term" class="form-control selectpicker" data-style="btn-secondary" required>
                             <option value="Beli">Jual</option>
                             <option value="Sewa">Sewa</option>
                         </select>
@@ -66,7 +66,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa far fa-newspaper"></i></span>
                         </div>
-                        <select name="property_condition" id="property_condition" class="form-control" required>
+                        <select name="property_condition" id="property_condition" class="form-control selectpicker" data-style="btn-secondary" required>
                             <option value="Baru">Baru</option>
                             <option value="Bekas">Bekas</option>
                         </select>

@@ -29,7 +29,7 @@
                 <h3 class="text-secondary">Hubungi Kami :</h3>
                 <p style="margin-bottom:0;"><small>Lebak Permai Utara 1, Kenjeran, Surabaya</small></p>
                 <p style="margin-bottom:0;"><small>Call : 0812 - 8662 - 8888</small></p>
-                <p style="margin-bottom:0;"><small>admin@lokasihunian.com</small></p>
+                <!-- <p style="margin-bottom:0;"><small>admin@lokasihunian.com</small></p> -->
             </div>
         </div>
 

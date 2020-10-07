@@ -41,9 +41,20 @@
             </div>
             <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fas fa-phone"></i></span>
+                </div>
+                <input type="number" min="0" step="1" name="handphone_number" id="create_profile_handphone_number" class="form-control form-control-alternative @error('handphone_number') is-invalid @enderror" placeholder="Nomor Handphone" value="{{ old('handphone_number') }}" required>
+                @error('handphone_number')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="input-group input-group-merge input-group-alternative my-3">
+                <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fab fa-whatsapp"></i></span>
                 </div>
-                <input type="number" min="0" step="1" name="wa_number" id="create_profile_wa_number" class="form-control form-control-alternative @error('wa_number') is-invalid @enderror" placeholder="Nomor Handphone / Whatsapp" value="{{ old('wa_number') }}" required>
+                <input type="number" min="0" step="1" name="wa_number" id="create_profile_wa_number" class="form-control form-control-alternative @error('wa_number') is-invalid @enderror" placeholder="Nomor Whatsapp" value="{{ old('wa_number') }}" required>
                 @error('wa_number')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

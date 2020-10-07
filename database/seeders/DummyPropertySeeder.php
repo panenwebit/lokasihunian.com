@@ -16,7 +16,7 @@ class DummyPropertySeeder extends Seeder
      */
     public function run()
     {
-        $seed = 1000;
+        $seed = 500;
         $username = array('agen1', 'agen2', 'agen3', 'developera', 'developerb');
         $term = array('Beli', 'Sewa');
         $condition = array('Baru', 'Bekas');
@@ -25,19 +25,19 @@ class DummyPropertySeeder extends Seeder
         $location = array('31.71.03.1006', '35.78.08.1004', '32.73.13.1002', '32.71.05.1007', '34.04.13.2005');
 
         $images = array(
-            '0lbR2Nr7oIM0tNrat3FEKBQ4Pfe1FvKmeVDq53cp.jpeg',
-            '3EPmYfV12JsUXihtIgDRbp5LSlJuWd3qalCV3UU8.jpeg',
-            'AE497D2pA05FpnJANpAo1qMl5qnzpbugmLMDUXXA.jpeg',
-            'HlXvzifBGVoXbeFuMZjm1ZHlESjy5H6IIQr75UpX.jpeg',
-            'InSHr27XWJ9cGiODUvXB3LvKOsLe5PlXpzyPBRfp.jpeg',
-            'IWSmwwwlHEhN4TwtPVY6WnMDZ3h6EBd8FQu5mm2C.jpeg',
-            'McRKEa59ewGCOImuVBhsZQVUFh4XDi4L8h1aRwV6.jpeg',
-            'mGjG50qG1fINfkXJWrvBduw3TiPejiHOxzSOJP7n.jpeg',
-            'mTuvRma9NZt6eVZzuqTNsixOnDjYL8yQZohAsqep.jpeg',
-            'QeQqGFSEVYmTccHsWW55Y3rLMPjuE0zgL1tlYDlu.jpeg',
-            'siSE5Bcql5dV3GTNk5XDdpNltvrp6nTUQo7WV3EU.jpeg',
-            'WhpWyTi8X4mDZqSxLMAahlYC67oZvfmPyFKtenBg.jpeg',
-            'Xt4E75gtYyDbLZBekGnfPNwTkainaxOOTfJUd7LJ.jpeg'
+            'storage/images/property/dummy/2020/10/07/RMPfru9MBhJrTxBnT3IHx0qTWYpClkVST6yDuFLC.jpeg',
+            'storage/images/property/dummy/2020/10/07/fiwYiq5weep3ZpHi2b1aLeCQG2xxfhS3XRtn0gTt.jpeg',
+            'storage/images/property/dummy/2020/10/07/qxV7nlusOS0qzvqFOA5y0SdqpKSvXvlvjLkzhxcp.jpeg',
+            'storage/images/property/dummy/2020/10/07/LQ3uNYlarWdFZEhMw58EFEbH2jUUdu4erSnKPwzp.jpeg',
+            'storage/images/property/dummy/2020/10/07/emF8OayfJJXooes9oTZrRQIC9MZjulNYpgJvCWAF.jpeg',
+            'storage/images/property/dummy/2020/10/07/1OBJ9ZlCRPbKsu4kc8FAafZYTCecWCK4o4WHCSM1.jpeg',
+            'storage/images/property/dummy/2020/10/07/mi1hHrgQhWhtZEXJgDrflqlMS9k5VA2ua3KKDXZe.jpeg',
+            'storage/images/property/dummy/2020/10/07/7PxOpVFQHKDTA4pJ6F2TPr9FtZf6X5xDNdMBezPy.jpeg',
+            'storage/images/property/dummy/2020/10/07/lJv0tOLZh0DtAhkYmS28yvkljxb7pV3QCja8Qeek.jpeg',
+            'storage/images/property/dummy/2020/10/07/rLwK2PbMINZaJyDUoQVvJIP0KHSjGs4DCfMM5CVH.jpeg',
+            'storage/images/property/dummy/2020/10/07/t5YnlXPVqpfEJer3Ibusol2GwQWWyVKG20F82JNk.jpeg',
+            'storage/images/property/dummy/2020/10/07/f5mA5GcbN1DQNqKswYHiiN9gNWlC0lreiE8Lkaxw.jpeg',
+            'storage/images/property/dummy/2020/10/07/K8uGUT1EfyL2LFf7ig3wuaYcOPc31eXOtsLPiCb5.jpeg'
         );
         
         for($i=1; $i<=$seed; $i++){

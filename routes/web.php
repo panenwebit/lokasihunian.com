@@ -7,6 +7,11 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use BaconQrCode\Writer;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,10 +51,12 @@ Route::prefix('property')->group(function(){
 });
 
 Route::prefix('agen')->group(function(){
-    Route::get('/{username}', [ProfileController::class, 'agenList']);
+    Route::get('/', [ProfileController::class, 'agenList']);
 });
 
 Route::prefix('profile')->group(function(){
+    Route::get('/', [ProfileController::class, 'agenList']);
+
     Route::middleware(['auth', 'verified'])->get('/create', [ProfileController::class, 'create']);
     Route::middleware(['auth', 'verified'])->get('/edit', [ProfileController::class, 'edit']);
     Route::middleware(['auth', 'verified'])->post('/', [ProfileController::class, 'store']);
@@ -79,8 +86,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
 });
 
 Route::get('test', function(){
-    $random = Str::random(32);
-    return $random;
+    return "test";
 });
 
 Route::get('test_map', function() {

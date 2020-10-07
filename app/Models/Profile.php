@@ -26,6 +26,7 @@ class Profile extends Model
         // 'address',
         // 'address_location',
         'wa_number',
+        'handphone_number',
         'about_me',
         'web_address',
         'fb_profile',
@@ -37,6 +38,7 @@ class Profile extends Model
         'company_address',
         'company_location',
         'company_phone',
+        'qr_code',
     ];
 
     public function user(){

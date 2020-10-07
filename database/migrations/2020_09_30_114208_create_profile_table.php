@@ -23,6 +23,7 @@ class CreateProfileTable extends Migration
                 ->onDelete('cascade');
             $table->string('fullname');
             $table->string('wa_number', 15);
+            $table->string('handphone_number', 15);
             // $table->text('address');
             // $table->string('address_location', 13);
             $table->text('about_me')->nullable();
@@ -37,6 +38,7 @@ class CreateProfileTable extends Migration
             $table->string('linkedin_profile')->nullable();
             $table->string('ig_profile')->nullable();
             $table->string('yt_profile')->nullable();
+            $table->string('qr_code')->nullable();
             $table->timestamps();
         });
     }
