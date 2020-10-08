@@ -36,25 +36,25 @@
                         <div class="collapse" id="navbar-properti">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ url('property/listing/create') }}" class="nav-link">Tambah Baru</a>
+                                    <a href="{{ url('dashboard/property/listing/create') }}" class="nav-link">Tambah Baru</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('property/my_listing') }}" class="nav-link">Semua</a>
+                                    <a href="{{ url('dashboard/property/my_listing') }}" class="nav-link">Semua</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('property/my_listing/Live') }}" class="nav-link">Tayang</a>
+                                    <a href="{{ url('dashboard/property/my_listing/Live') }}" class="nav-link">Tayang</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('property/my_listing/Pending') }}" class="nav-link">Pending</a>
+                                    <a href="{{ url('dashboard/property/my_listing/Pending') }}" class="nav-link">Pending</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('property/my_listing/Expired') }}" class="nav-link">Kadaluarsa</a>
+                                    <a href="{{ url('dashboard/property/my_listing/Expired') }}" class="nav-link">Kadaluarsa</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('property/my_listing/Sold') }}" class="nav-link">Terjual</a>
+                                    <a href="{{ url('dashboard/property/my_listing/Sold') }}" class="nav-link">Terjual</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('property/my_listing/Archived') }}" class="nav-link">di-Arsipkan</a>
+                                    <a href="{{ url('dashboard/property/my_listing/Archived') }}" class="nav-link">di-Arsipkan</a>
                                 </li>
                             </ul>
                         </div>
@@ -119,20 +119,26 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url('dashboard/bantu_daftar') }}">
+                            <span class="nav-link-text">Bantu Daftar</span>
+                            <i class="fas fa-hands-helping text-default ml-auto text-left"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#navbar-follow-up" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-follow-up">
-                            <span class="nav-link-text">Data Follow Up</span>
+                            <span class="nav-link-text">Data Follow UP</span>
                             <i class="far fa-people-arrows text-orange ml-auto text-left"></i>
                         </a>
                         <div class="collapse" id="navbar-follow-up">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Follow up saya</a>
+                                    <a href="{{ url('dashboard/follow_up/create') }}" class="nav-link">INPUT Follow UP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Follow up admin</a>
+                                    <a href="{{ url('dashboard/follow_up') }}" class="nav-link">DATA Follow UP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Tampilkan semua</a>
+                                    <a href="{{ url('dashboard/follow_up/my') }}" class="nav-link">Follow UP saya</a>
                                 </li>
                             </ul>
                         </div>

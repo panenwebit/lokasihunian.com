@@ -12,7 +12,9 @@
                     <div class="col d-flex ">
                         <h1 class="flex-fill">{{ $profile->fullname }}</h1>
                         @auth
-                        <a href="{{ url('profile/edit') }}" class="btn btn-link">Edit Profile</a>
+                            @if(auth()->user()->username==$profile->user->username)
+                                <a href="{{ url('profile/edit') }}" class="btn btn-link">Edit Profile</a>
+                            @endif
                         @endauth
                     </div>
                 </div>
@@ -40,12 +42,12 @@
                 </div>
                 <div class="row my-3">
                     <div class="col d-flex justify-content-around">
-                        <a href="{{ $profile->web_address }}" target="_blank"><i class="fa fas fa-globe"></i></a>
+                        <a href="http://{{ $profile->web_address }}" target="_blank"><i class="fa fas fa-globe"></i></a>
                         <a href="https://www.facebook.com/{{ $profile->fb_profile }}" target="_blank"><i class="fa fab fa-facebook-f"></i></a>
-                        <a href="https://www.twitter.com/{{ $profile->twitter_profile }}"><i class="fa fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/{{ $profile->ig_profile }}"><i class="fa fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/{{ $profile->linkedin_profile }}"><i class="fa fab fa-linkedin"></i></a>
-                        <a href="https://www.youtube.com/c/{{ $profile->yt_profile }}"><i class="fa fab fa-youtube"></i></a>
+                        <a href="https://www.twitter.com/{{ $profile->twitter_profile }}" target="_blank"><i class="fa fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/{{ $profile->ig_profile }}" target="_blank"><i class="fa fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/{{ $profile->linkedin_profile }}" target="_blank"><i class="fa fab fa-linkedin"></i></a>
+                        <a href="https://www.youtube.com/c/{{ $profile->yt_profile }}" target="_blank"><i class="fa fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>

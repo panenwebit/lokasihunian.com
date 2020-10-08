@@ -4,44 +4,32 @@
     <div class="card">
         <!-- Card header -->
         <div class="card-header">
-            <h3 class="mb-0">Daftar Pengguna</h3>
+            <h3 class="mb-0">DATA Follow Up</h3>
             <p class="text-sm mb-0">
-                Ini adalah tabel yang menampilkan seluruh pengguna yang terdaftar.
+                Ini adalah tabel yang menampilkan seluruh follow up yang telah didaftarkan oleh admin.
             </p>
         </div>
         <div class="table-responsive py-4">
             <table class="table table-flush" id="datatable-basic">
                 <thead class="thead-light">
                     <tr>
-                        <th>Username</th>
+                        <th>No</th>
+                        <th>Tgl Proses</th>
+                        <th>Nama</th>
+                        <th>No HP</th>
                         <th>Email</th>
-                        <th>Terdaftar pada</th>
-                        <th>Roles (Peran)</th>
-                        <th>Opsi</th>
+                        <th>Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($users as $user)
+                    @foreach($follup as $foll)
                     <tr>
-                        <td>{{ $user->username }}</td>
-                        <td>
-                            @if($user->email_verified_at!='')
-                                <i class="far fa-check-circle text-success"></i>
-                            @else
-                                <i class="far fa-question-circle text-warning"></i>
-                            @endif
-                            &nbsp;{{ $user->email }}
-                        </td>
-                        <td>{{ date('d-m-Y ( H:i:s )', strtotime($user->created_at)) }}</td>
-                        <td>
-                            @foreach($user->getRoleNames() as $role)
-                                <span class="badge badge-default">{{ $role }}</span>&nbsp;
-                            @endforeach
-                        </td>
-                        <td>
-                            <a href="{{ url('profile/'.$user->username) }}" target="_blank" class="btn btn-info btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Profil"><i class="far fa-info"></i></a>
-                            <a href="{{ url('dashboard/setting/user_role/edit/'.$user->username) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Atur Peran"><i class="far fa-user-cog"></i></a>
-                        </td>
+                        <td>{{ $foll->id }}</td>
+                        <td>{{ date('d-m-Y', strtotime($foll->created_at)) }}</td>
+                        <td>{{ $foll->name }}</td>
+                        <td class="@if($foll->handphone_registered=='yes') bg-success text-secondary @endif">{{ $foll->handphone_number }}</td>
+                        <td class="@if($foll->email_registered=='yes') bg-success text-secondary @endif">{{ $foll->email }}</td>
+                        <td>{{ $foll->information }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -64,5 +52,5 @@
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <!-- <script src="{{ asset('assets/argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script> -->
+    <script src="{{ asset('assets/argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
 @endsection

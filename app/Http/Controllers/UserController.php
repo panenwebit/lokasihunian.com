@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Profile;
 use app\Models\User;
 
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
@@ -24,7 +27,7 @@ class UserController extends Controller
 
     public function settingForm(){
         $user = User::find(auth()->user()->username);
-        return view('user.form_setting', ['user' => $user]);
+        return view('dashboard.user.form_setting', ['user' => $user]);
     }
 
     public function passwordUpdate(Request $request){
@@ -68,5 +71,25 @@ class UserController extends Controller
         $profile->save();
 
         return back();
+    }
+
+    public function bantuDaftarForm(){
+        return view('dashboard.user.form_bantu_daftar');
+    }
+
+    public function bantuDaftar(Request $request){
+        return $request;
+    }
+
+    public function editUserRole($username){
+        $roles = Role::all();
+        $user = User::findOrFail($username);
+        return view('dashboard.setting.edit_user_role', ['roles'=>$roles, 'user'=>$user]);
+    }
+
+    public function updateUserRole(Request $request){
+        $user = User::find($request->username);
+        $user->syncRoles([$request->role]);
+        return redirect('dashboard/setting/users');
     }
 }

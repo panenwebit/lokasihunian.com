@@ -276,7 +276,9 @@
             </div>
 
             <div class="col-sm-12 col-md-6 mb-3">
-                <img src="{{ asset('assets/img/banner/banner_temukan.jpg') }}" alt="" class="img-fluid">
+                <a href="{{ url('property') }}">
+                    <img src="{{ asset('assets/img/banner/banner_temukan.jpg') }}" alt="" class="img-fluid">
+                </a>
             </div>
         </div>
         

@@ -329,5 +329,72 @@ class UsersSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
+
+        //Roles Table
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'owner',
+            'role_id' => '1',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'admin',
+            'role_id' => '2',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'admin2',
+            'role_id' => '2',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'techlead',
+            'role_id' => '3',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'developera',
+            'role_id' => '4',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'developerb',
+            'role_id' => '4',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'agen1',
+            'role_id' => '5',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'agen2',
+            'role_id' => '5',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'agen3',
+            'role_id' => '5',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'pub1',
+            'role_id' => '6',
+            'model_type' => 'App\Models\User',
+        ]);
+
+        DB::table('model_has_roles')->insert([
+            'model_username' => 'pub2',
+            'role_id' => '6',
+            'model_type' => 'App\Models\User',
+        ]);
     }
 }

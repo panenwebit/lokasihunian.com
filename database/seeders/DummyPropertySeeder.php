@@ -16,7 +16,7 @@ class DummyPropertySeeder extends Seeder
      */
     public function run()
     {
-        $seed = 500;
+        $seed = 50;
         $username = array('agen1', 'agen2', 'agen3', 'developera', 'developerb');
         $term = array('Beli', 'Sewa');
         $condition = array('Baru', 'Bekas');

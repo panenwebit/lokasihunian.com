@@ -14,14 +14,14 @@
             </div>
         </div>
 
-        <form action="{{ url('property/listing/images') }}" method="post" class="dropzone mb-3" id="drop" style="flex-direction:row;overflow-x: scroll;">
+        <form action="{{ url('dashboard/property/listing/images') }}" method="post" class="dropzone mb-3" id="drop" style="flex-direction:row;overflow-x: scroll;">
             @csrf
             <div class="fallback">
                 <input type="file" name="property_image" multiple>
             </div>
         </form>
 
-        <form action="{{ url('property/listing') }}" method="post">
+        <form action="{{ url('dashboard/property/listing') }}" method="post">
             @csrf
             <div class="input-group input-group-merge input-group-alternative mb-3">
                 <div class="input-group-prepend">

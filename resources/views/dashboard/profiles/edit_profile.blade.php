@@ -15,7 +15,7 @@
                 <button type="submit" class="btn btn-default" style="height:2.6rem;">Update Foto Profil</button>
             </form>
         </div>
-        <form action="{{ url('profile') }}" method="post" id="form-update-profile">
+        <form action="{{ url('dashboard/profile') }}" method="post" id="form-update-profile">
             @csrf
             @method('PATCH')
             <div class="input-group input-group-merge input-group-alternative my-3">

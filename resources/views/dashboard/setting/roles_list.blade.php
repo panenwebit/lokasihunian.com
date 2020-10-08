@@ -16,7 +16,8 @@
                     <tr>
                         <th>Id</th>
                         <th>Role (Peran)</th>
-                        <th>Guard</th>
+                        <th>Permissions (Izin Akses)</th>
+                        <th>Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +25,15 @@
                     <tr>
                         <td>{{ $role->id }}</td>
                         <td>{{ $role->name }}</td>
-                        <td>{{ $role->guard }}</td>
+                        <td>
+                            @foreach($role->getAllPermissions() as $permission)
+                                <span class="badge badge-success">{{ $permission->name }}</span>&nbsp;
+                            @endforeach
+                        </td>
+                        <td>
+                            <a href="{{ url('dashboard/setting/role/edit') }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Role"><i class="far fa-user-cog"></i></a>
+                            <a href="{{ url('dashboard/setting/role_permission/edit') }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Permission"><i class="far fa-cog"></i></a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -47,5 +56,5 @@
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets/argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script> -->
 @endsection
