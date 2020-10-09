@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use App\Models\User;
 
@@ -19,6 +20,17 @@ use BaconQrCode\Writer;
 class ProfileController extends Controller
 {
     public function show($username){
+
+        $profile = Profile::findOrFail($username);
+        $user = Auth::user();
+        if($profile->fullname==''){
+            if($user && $username==auth()->user()->username){
+                return redirect('profile/create');
+            } else {
+                abort(404);
+            }
+        }
+
         $SQL = "SELECT 
                 a.id, a.username, a.property_title, a.property_term, a.property_condition, a.property_type, a.property_price, a.property_surface_area, a.property_building_area, a.property_bedroom_count, a.property_bathroom_count, a.property_parking_count, a.property_slug, a.property_status,
                 b.fullname, b.wa_number, b.photo,
@@ -130,24 +142,34 @@ class ProfileController extends Controller
         $writer = new Writer($renderer);
         $writer->writeFile(url('profile').'/'.auth()->user()->username, 'storage/'.$qr_path.'/qrcode.png');
 
+        $role = auth()->user()->getRoleNames()[0];
+
         $profile = Profile::find(auth()->user()->username);
         $profile->fullname          = $request->fullname;
+        $profile->no_ktp            = $request->no_ktp;
+        if($role=='Agen Perusahaan' || $role=='Developer'){
+            $profile->no_npwp            = $request->no_npwp;
+        }
         $profile->wa_number         = $request->wa_number;
-        $profile->handphone_number         = $request->handphone_number;
-        // $profile->address           = $request->address;
-        // $profile->address_location  = $request->address_kelurahan;
+        $profile->handphone_number  = $request->handphone_number;
+        $profile->address           = $request->address;
+        $profile->address_location  = $request->address_kelurahan;
         $profile->about_me          = $request->about_me;
-        $profile->company_name      = $request->company_name;
-        $profile->company_address   = $request->company_address;
-        $profile->company_location  = $request->company_kelurahan;
-        $profile->company_phone     = $request->company_phone;
-        $profile->web_address       = $request->web_address;
-        $profile->fb_profile        = $request->fb_profile;
-        $profile->twitter_profile   = $request->twitter_profile;
-        $profile->linkedin_profile  = $request->linkedin_profile;
-        $profile->ig_profile = $request->instagram_profile;
-        $profile->yt_profile   = $request->youtube_profile;
-        $profile->qr_code = 'storage/'.$qr_path.'qrcode.png';
+        if($role=='Agen Perusahaan' || $role=='Developer'){
+            $profile->company_name      = $request->company_name;
+            $profile->company_address   = $request->company_address;
+            $profile->company_location  = $request->company_kelurahan;
+            $profile->company_phone     = $request->company_phone;
+        }
+        $profile->web_address         = $request->web_address;
+        $profile->fb_profile          = $request->fb_profile;
+        $profile->twitter_profile     = $request->twitter_profile;
+        $profile->linkedin_profile    = $request->linkedin_profile;
+        $profile->ig_profile          = $request->instagram_profile;
+        $profile->yt_profile          = $request->youtube_profile;
+        $profile->qr_code             = 'storage/'.$qr_path.'qrcode.png';
+        $profile->spesialis_property  = json_decode($request->spesialis_property);
+        $profile->spesialis_area      = $request->spesialis_kelurahan;
         $profile->save();
         
         return redirect('dashboard');
@@ -203,7 +225,7 @@ class ProfileController extends Controller
                 LEFT JOIN model_has_roles b ON a.username = b.model_username 
                 LEFT JOIN roles c ON b.role_id = c.id ";
 
-        $SQL .= " WHERE c.name LIKE '%Agen%' ";
+        $SQL .= " WHERE c.name LIKE '%Agen%' AND a.fullname!='' ";
 
         if(isset($_GET['sort']) && $_GET['sort']!='' && $_GET['sort']!='all'){
             $sort = $_GET['sort'];

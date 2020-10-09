@@ -140,7 +140,7 @@
                     </form>
                 </div>
                 
-                <div class="text-center text-muted">
+                <!-- <div class="text-center text-muted">
                     <small>Or sign in with ...</small>
                 </div>
 
@@ -153,7 +153,7 @@
                         <span class="btn-inner--icon"><img src="{{ asset('assets/argon/img/icons/common/google.svg') }}"></span>
                         <span class="btn-inner--text text-default">Google</span>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -224,6 +224,13 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="form-group">
+                            <select name="reg_as" id="reg_as" class="form-control" required>
+                                <option value="Agen Independen">Agen Independen</option>
+                                <option value="Agen Perusahaan">Agen Perusahaan</option>
+                                <option value="Developer">Developer</option>
+                            </select>
+                        </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-default my-4 btn-block"><i class="fa far fa-pencil-alt"></i> Daftar</button>
                             <!-- <button type="button" class="btn btn-default my-4 btn-block"><i class="fa far fa-pencil-alt"></i> Daftar</button> -->
@@ -231,7 +238,7 @@
                     </form>
                 </div>
                 
-                <div class="text-center text-muted">
+                <!-- <div class="text-center text-muted">
                     <small>Or sign in with ...</small>
                 </div>
 
@@ -245,7 +252,7 @@
                         <span class="btn-inner--text text-default">Google</span>
                     </a>
                     
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

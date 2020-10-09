@@ -24,8 +24,8 @@ class CreateProfileTable extends Migration
             $table->string('fullname');
             $table->string('wa_number', 15);
             $table->string('handphone_number', 15);
-            // $table->text('address');
-            // $table->string('address_location', 13);
+            $table->text('address')->nullable();
+            $table->string('address_location', 13)->nullable();
             $table->text('about_me')->nullable();
             $table->string('photo');
             $table->string('company_name')->nullable();
@@ -39,6 +39,12 @@ class CreateProfileTable extends Migration
             $table->string('ig_profile')->nullable();
             $table->string('yt_profile')->nullable();
             $table->string('qr_code')->nullable();
+            $table->string('no_ktp', 16)->nullable();
+            // $table->string('ktp')->nullable();
+            $table->string('no_npwp', 21)->nullable();
+            // $table->string('npwp')->nullable();
+            $table->string('spesialis_property')->nullable();
+            $table->string('spesialis_area', 13)->nullable();
             $table->timestamps();
         });
     }

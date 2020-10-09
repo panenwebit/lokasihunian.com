@@ -5,7 +5,7 @@
         <div class="card">
             <!-- Card header -->
             <div class="card-header">
-                <h3 class="mb-0">Buat Profil</h3>
+                <h3 class="mb-0">Buat Profil  ({{ auth()->user()->getRoleNames()[0] }})</h3>
                 <p class="text-sm mb-0">
                     Satu langkah lagi. Isi profil anda, dan mulai nikmati semua layanan dari lokasihunian.com  <br>
                     Ini adalah formulir untuk pembuatan profil anda pada website lokasihunian.com.
@@ -41,6 +41,30 @@
             </div>
             <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fas fa-id-card"></i></span>
+                </div>
+                <input type="number" min="0" step="1" name="nomor_ktp" id="create_profile_nomor_ktp" class="form-control form-control-alternative @error('nomor_ktp') is-invalid @enderror" placeholder="Nomor KTP" value="{{ old('nomor_ktp') }}" required>
+                @error('nomor_ktp')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            @if(auth()->user()->getRoleNames()[0] == 'Agen Perusahaan' || auth()->user()->getRoleNames()[0] == 'Developer')
+            <div class="input-group input-group-merge input-group-alternative my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fas fa-id-card"></i></span>
+                </div>
+                <input type="number" min="0" step="1" name="nomor_npwp" id="create_profile_nomor_npwp" class="form-control form-control-alternative @error('nomor_npwp') is-invalid @enderror" placeholder="Nomor NPWP" value="{{ old('nomor_npwp') }}" required>
+                @error('nomor_npwp')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            @endif
+            <div class="input-group input-group-merge input-group-alternative my-3">
+                <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fas fa-phone"></i></span>
                 </div>
                 <input type="number" min="0" step="1" name="handphone_number" id="create_profile_handphone_number" class="form-control form-control-alternative @error('handphone_number') is-invalid @enderror" placeholder="Nomor Handphone" value="{{ old('handphone_number') }}" required>
@@ -67,7 +91,7 @@
                 </div>
                 <input type="email" name="email" id="create_profile_email" class="form-control form-control-alternative" placeholder="Email" value="   {{ auth()->user()->email }}" readonly required>
             </div>
-            <!-- <div class="input-group input-group-merge input-group-alternative my-3">
+            <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa far fa-home"></i></span>
                 </div>&nbsp;
@@ -89,8 +113,16 @@
                 <div class="col-sm-12 col-md-6 mb-3">
                     <select name="address_kelurahan" id="create_profile_address_kelurahan" class="form-control select2" required></select>
                 </div>
-            </div> -->
+            </div>
+
+            <div class="input-group input-group-merge input-group-alternative my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fas fa-smile-wink"></i></span>
+                </div>
+                <textarea type="text" name="about_me" id="create_profile_about_me" class="form-control form-control-alternative" placeholder="Tentang Saya" value="{{ old('about_me') }}" required cols="30" rows="3"></textarea>
+            </div>
             
+            @if(auth()->user()->getRoleNames()[0] == 'Agen Perusahaan' || auth()->user()->getRoleNames()[0] == 'Developer')
             <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa far fa-building"></i></span>
@@ -126,12 +158,58 @@
                 </div>
                 <input type="text" name="company_phone" id="create_profile_company_phone" class="form-control form-control-alternative" placeholder="Nomor Telp. Perusahaan" value="{{ old('company_phone') }}">
             </div>
+            @endif
+            
+            <div class="container"><h4>Spesialis Property :</h4></div>
+            <div class="row container my-3">
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Apartemen" class="custom-control-input" id="Apartemen">
+                        <label class="custom-control-label" for="Apartemen">Apartemen</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Rumah" class="custom-control-input" id="Rumah">
+                        <label class="custom-control-label" for="Rumah">Rumah</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Tanah" class="custom-control-input" id="Tanah">
+                        <label class="custom-control-label" for="Tanah">Tanah</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Ruko" class="custom-control-input" id="Ruko">
+                        <label class="custom-control-label" for="Ruko">Ruko</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Vila" class="custom-control-input" id="Vila">
+                        <label class="custom-control-label" for="Vila">Vila</label>
+                    </div>
+                </div>
+            </div>
 
             <div class="input-group input-group-merge input-group-alternative my-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fas fa-smile-wink"></i></span>
+                <div class="input-group-prepend col-md-1">
+                    <span class="input-group-text"><i class="fa far fa-user"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span>
                 </div>
-                <textarea type="text" name="about_me" id="create_profile_about_me" class="form-control form-control-alternative" placeholder="Tentang Saya" value="{{ old('about_me') }}" required cols="30" rows="3"></textarea>
+                <div class="col-sm-12 col-md-5 mb-3">
+                    <select name="spesialis_provinsi" id="create_profile_spesialis_provinsi" class="form-control select2" required></select>
+                </div>
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <select name="spesialis_kabupaten" id="create_profile_spesialis_kabupaten" class="form-control select2" required></select>
+                </div>
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <select name="spesialis_kecamatan" id="create_profile_spesialis_kecamatan" class="form-control select2" required></select>
+                </div>
+                <div class="col-sm-12 col-md-6 mb-3">
+                    <select name="spesialis_kelurahan" id="create_profile_spesialis_kelurahan" class="form-control select2" required></select>
+                </div>
             </div>
 
             <div class="row mb-0">
@@ -206,8 +284,9 @@
 <script>
     $(document).ready(function(){
         $('.select2').select2();
-        // widgetlokasi('create_profile_address_provinsi', 'create_profile_address_kabupaten', 'create_profile_address_kecamatan', 'create_profile_address_kelurahan');
+        widgetlokasi('create_profile_address_provinsi', 'create_profile_address_kabupaten', 'create_profile_address_kecamatan', 'create_profile_address_kelurahan');
         widgetlokasi('create_profile_company_provinsi', 'create_profile_company_kabupaten', 'create_profile_company_kecamatan', 'create_profile_company_kelurahan');
+        widgetlokasi('create_profile_spesialis_provinsi', 'create_profile_spesialis_kabupaten', 'create_profile_spesialis_kecamatan', 'create_profile_spesialis_kelurahan');
     });
 
     function previewImage(input) {

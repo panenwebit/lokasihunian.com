@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<br>
-<div class="container pb-5">
+<div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card bg-secondary border-0 mb-0">
@@ -68,6 +67,18 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa far fa-lock-alt"></i></span>
+                                    </div>
+                                    <select name="reg_as" id="reg_as" class="form-control" required>
+                                        <option value="Agen Independen">Agen Independen</option>
+                                        <option value="Agen Perusahaan">Agen Perusahaan</option>
+                                        <option value="Developer">Developer</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-default my-4 btn-block"><i class="fa far fa-pencil-alt"></i> Daftar</button>
                                 <!-- <button type="button" class="btn btn-default my-4 btn-block"><i class="fa far fa-pencil-alt"></i> Daftar</button> -->
@@ -79,7 +90,7 @@
                         </form>
                     </div>
                 
-                    <div class="text-center text-muted">
+                    <!-- <div class="text-center text-muted">
                         <small>Or sign in with ...</small>
                     </div>
 
@@ -92,7 +103,7 @@
                             <span class="btn-inner--icon"><img src="{{ asset('assets/argon/img/icons/common/google.svg') }}"></span>
                             <span class="btn-inner--text text-default">Google</span>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

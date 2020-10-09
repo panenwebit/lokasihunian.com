@@ -50,7 +50,7 @@
                         </form>
                     </div>
                 
-                    <div class="text-center text-muted">
+                    <!-- <div class="text-center text-muted">
                         <small>Or sign in with ...</small>
                     </div>
 
@@ -63,7 +63,7 @@
                             <span class="btn-inner--icon"><img src="{{ asset('assets/argon/img/icons/common/google.svg') }}"></span>
                             <span class="btn-inner--text text-default">Google</span>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

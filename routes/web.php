@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
@@ -29,9 +30,7 @@ use BaconQrCode\Writer;
 Route::get('auth/{provider}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PublicController::class, 'root']);
 Route::get('tentang_kami', function(){
     return view('lainnya.tentang_kami');
 });
