@@ -12,6 +12,12 @@ class Package extends Model
     protected $fillable = [
         'name',
         'price',
-        ''
+        'limit_listing',
+        'limit_photo_per_listing',
+        'limit_unggulan',
     ];
+
+    public function member(){
+        return $this->hasMany('App\Models\Membership', 'package_id', 'id');
+    }
 }

@@ -6,6 +6,7 @@
             <div class="text-center">
                 <a  data-fancybox="gallery" href="{{ asset($property->propertyImage[0]['images']) }}">
                     <img src="{{ asset($property->propertyImage[0]['images']) }}" alt="" class="img-fluid w-50">
+                    <!-- <button type="button" class="btn btn-secondary btn-sm" style="position:absolute;"><i class="far fa-camera"></i></button> -->
                 </a>
             </div>
             <div class="d-flex">
@@ -16,17 +17,19 @@
             @endforeach
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-fill">
-                                <h1 class="mb-0">{{ $property->property_title }}</h1>
-                                <h2 class="mb-0">Rp. {{ number_format($property->property_price,0,',', '.') }}</h2>
+                                <h2 class="my-1">{{ substr($property->property_title,0, 59).'...' }}</h2>
+                                <h3 class="mb-0">Rp. {{ number_format($property->property_price,0,',', '.') }}</h3>
                             </div>
                             <div class="d-flex">
-                                <button type="button" class="btn btn-default btn-icon-only" style="height:2.5rem;width:2.5rem;"><i class="far fa-map"></i></button>
+                                <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Photo"><i class="far fa-images"></i></button>
+                                <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Maps"><i class="far fa-map"></i></button>
+                                <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Tambahkan ke Favorit"><i class="far fa-star"></i></button>
                             </div>
                         </div>
                         <div class="d-flex">
@@ -50,7 +53,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-body p-3">
                         <div class="d-flex align-items-center">
                             <img src="{{ $property->user->profile->photo }}" class="rounded-circle mr-2" style="width:5rem;" alt="">

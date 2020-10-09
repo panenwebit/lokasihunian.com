@@ -43,7 +43,14 @@ class RolesSeeder extends Seeder
         ]);
 
         DB::table('roles')->insert([
-            'name' => 'Agen',
+            'name' => 'Agen Independen',
+            'guard_name' => 'web',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'Agen Perusahaan',
             'guard_name' => 'web',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

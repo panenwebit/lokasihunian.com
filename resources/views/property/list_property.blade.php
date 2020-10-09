@@ -37,6 +37,13 @@
             <div class="card shadow">
                 <a href="{{ url('property/'.$prop->property_slug) }}">
                     <img src="{{ asset($prop->images) }}" alt="" class="card-img-top">
+                    <div class="card-img-overlay">
+                        <span class="badge badge-sm badge-secondary">{{ $prop->property_type }}</span>
+                        <span class="badge badge-sm {{ $prop->property_term=='Beli' ? 'badge-success' : 'badge-warning' }}">{{ $prop->property_term=="Beli" ? "Dijual" : $prop->property_term }}</span>
+                        @if($prop->property_term=="Beli")
+                            <span class="badge badge-sm {{ $prop->property_condition=='Baru' ? 'badge-info' : 'badge-danger' }}">{{ $prop->property_condition }}</span>
+                        @endif
+                    </div>
                 </a>
                 <div class="card-body">
                     <div class="d-flex">
@@ -55,10 +62,10 @@
                         <h3>Rp. {{ number_format($prop->property_price, 0, ',', '.') }}</h3>
                     </div>
                     <div class="d-flex align-items-center">
-                        <a href="{{ url('profile/'.$prop->username) }}">
+                        <a href="{{ url('profile/'.$prop->username) }}" style="z-index: 1;">
                             <img src="{{ $prop->photo }}" alt="" class="img-fluid rounded mr-2" style="width:3.35rem;">
                         </a>
-                        <span class="flex-fill">
+                        <span class="flex-fill" style="z-index: 1;">
                             <a href="{{ url('profile/'.$prop->username) }}">
                                 <h5>{{ $prop->fullname }}</h5>
                             </a>

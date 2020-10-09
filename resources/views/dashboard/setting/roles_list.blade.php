@@ -4,7 +4,7 @@
     <div class="card">
         <!-- Card header -->
         <div class="card-header">
-            <h3 class="mb-0">Daftar Roles</h3>
+            <h3 class="mb-0">Daftar Peran & Izin Akses</h3>
             <p class="text-sm mb-0">
                 Ini adalah tabel yang menampilkan seluruh Roles (Peran) yang tersedia untuk pengguna yang terdaftar. <br>
                 Diskusikan dengan tim IT untuk mengatur bagian ini.
@@ -31,8 +31,8 @@
                             @endforeach
                         </td>
                         <td>
-                            <a href="{{ url('dashboard/setting/role/edit') }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Role"><i class="far fa-user-cog"></i></a>
-                            <a href="{{ url('dashboard/setting/role_permission/edit') }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Permission"><i class="far fa-cog"></i></a>
+                            <!-- <a href="{{ url('dashboard/setting/role/edit/'.$role->name) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Role"><i class="far fa-user-cog"></i></a> -->
+                            <a href="{{ url('dashboard/setting/role_permission/edit/'.$role->name) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Permission"><i class="far fa-tools"></i></a>
                         </td>
                     </tr>
                     @endforeach

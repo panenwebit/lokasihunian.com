@@ -375,25 +375,25 @@ class UsersSeeder extends Seeder
 
         DB::table('model_has_roles')->insert([
             'model_username' => 'agen2',
-            'role_id' => '5',
+            'role_id' => '6',
             'model_type' => 'App\Models\User',
         ]);
 
         DB::table('model_has_roles')->insert([
             'model_username' => 'agen3',
-            'role_id' => '5',
+            'role_id' => '6',
             'model_type' => 'App\Models\User',
         ]);
 
         DB::table('model_has_roles')->insert([
             'model_username' => 'pub1',
-            'role_id' => '6',
+            'role_id' => '7',
             'model_type' => 'App\Models\User',
         ]);
 
         DB::table('model_has_roles')->insert([
             'model_username' => 'pub2',
-            'role_id' => '6',
+            'role_id' => '7',
             'model_type' => 'App\Models\User',
         ]);
     }

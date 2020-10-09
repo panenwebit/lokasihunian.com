@@ -7,6 +7,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\FollowUpController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\MembershipController;
 
 use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
@@ -74,8 +76,10 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
         Route::patch('user_role', [UserController::class, 'updateUserRole']);
 
         Route::get('roles', [RoleController::class, 'index']);
-        Route::get('role/edit', [RoleController::class, 'editRole']);
-        Route::get('role_permission/edit', [RoleController::class, 'editRolePermission']);
+        Route::get('role/edit/{name}', [RoleController::class, 'editRole']);
+        Route::patch('role', [RoleController::class, 'updateRole']);
+        Route::get('role_permission/edit/{name}', [RoleController::class, 'editRolePermission']);
+        Route::patch('role_permission', [RoleController::class, 'updateRolePermission']);
 
         Route::get('permissions', [PermissionController::class, 'index']);
     });
@@ -85,6 +89,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
         Route::get('/listing/create', [PropertyController::class, 'create']);
         Route::post('/listing', [PropertyController::class, 'store']);
         Route::post('/listing/images', [PropertyController::class, 'storeImages']);
+        Route::get('/listing/edit/{id}', [PropertyController::class, 'edit']);
+        Route::patch('/listing', [PropertyController::class, 'update']);
         
         Route::get('/my_listing/{status}', [PropertyController::class, 'myListing']);
         Route::get('/my_listing', [PropertyController::class, 'myListing']);
@@ -103,6 +109,16 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
         Route::get('/my', [FollowUpController::class, 'myFollowUp']);
 
         Route::get('/', [FollowUpController::class, 'index']);
+    });
+
+    Route::prefix('/package')->group(function () {
+
+        Route::get('/', [PackageController::class, 'index']);
+        Route::get('/create', [PackageController::class, 'create']);
+        Route::post('/', [PackageController::class, 'store']);
+        Route::get('/edit/{id}', [PackageController::class, 'edit']);
+        Route::patch('/', [PackageController::class, 'update']);
+        Route::get('/delete/{id}', [PackageController::class, 'delete']);
     });
 
     Route::get('/bantu_daftar', [UserController::class, 'bantuDaftarForm']);

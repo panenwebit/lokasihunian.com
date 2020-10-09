@@ -203,7 +203,7 @@ class ProfileController extends Controller
                 LEFT JOIN model_has_roles b ON a.username = b.model_username 
                 LEFT JOIN roles c ON b.role_id = c.id ";
 
-        $SQL .= " WHERE c.name='Agen' ";
+        $SQL .= " WHERE c.name LIKE '%Agen%' ";
 
         if(isset($_GET['sort']) && $_GET['sort']!='' && $_GET['sort']!='all'){
             $sort = $_GET['sort'];

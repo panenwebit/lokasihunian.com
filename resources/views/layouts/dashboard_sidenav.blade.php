@@ -23,7 +23,7 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ url('dashboard') }}">
                             <span class="nav-link-text">Dashboard</span>
                             <i class="far fa-tachometer-fastest text-primary ml-auto text-left"></i>
                         </a>
@@ -156,12 +156,28 @@
                             </ul>
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ url('dashboard/setting/roles') }}" class="nav-link">Roles</a>
+                                    <a href="{{ url('dashboard/setting/roles') }}" class="nav-link">Roles & Permission</a>
                                 </li>
                             </ul>
-                            <ul class="nav nav-sm flex-column">
+                            <!-- <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/setting/permissions') }}" class="nav-link">Permissions</a>
+                                </li>
+                            </ul> -->
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#navbar-paket" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-paket">
+                            <span class="nav-link-text">Paket</span>
+                            <i class="far fa-boxes text-green ml-auto text-left"></i>
+                        </a>
+                        <div class="collapse" id="navbar-paket">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/package/create') }}" class="nav-link">Buat Paket</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/package') }}" class="nav-link">Paket</a>
                                 </li>
                             </ul>
                         </div>

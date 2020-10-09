@@ -5,7 +5,7 @@
         <div class="card">
             <!-- Card header -->
             <div class="card-header">
-                <h3 class="mb-0">Edit Role (Peran)</h3>
+                <h3 class="mb-0">Edit Role (Peran) User</h3>
                 <p class="text-sm mb-0">
                     Atur peran dan hak akses dari setiap pengguna website lokasihunian.com . <br>
                 </p>

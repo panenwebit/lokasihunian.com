@@ -89,6 +89,10 @@
                 <div class="card shadow">
                     <a href="{{ url('property/something') }}">
                         <img src="{{ asset('assets/img/rumah/rumah_1.jpg') }}" alt="" class="card-img-top">
+                        <div class="card-img-overlay">
+                            <span class="badge badge-sm badge-success">Apartemen</span>
+                            <span class="badge badge-sm badge-info">Baru</span>
+                        </div>
                     </a>
                     <div class="card-body">
                         <div class="d-flex">
@@ -105,10 +109,10 @@
                             <h3>Rp. 1.500.000.000</h3>
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('profile/something') }}">
+                            <a href="{{ url('profile/something') }}" style="z-index: 1;">
                                 <img src="{{ asset('assets/img/agen/agent_2.jpg') }}" alt="" class="img-fluid rounded mr-2" style="width:3.35rem;">
                             </a>
-                            <span class="flex-fill">
+                            <span class="flex-fill" style="z-index: 1;">
                                 <h5><a href="{{ url('profile/something') }}">Jonathan Alexandro</a></h5>
                             </span>
                             <button type="button" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.5rem;height:2.5rem;"><i class="fal fa-calculator"></i></button>

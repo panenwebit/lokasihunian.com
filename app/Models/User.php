@@ -54,4 +54,8 @@ class User extends Authenticatable
     public function property() {
         return $this->hasMany('App\Models\Property', 'username', 'username');
     }
+
+    public function membership() {
+        return $this->hasOne('App\Models\Membership', 'username', 'username');
+    }
 }
