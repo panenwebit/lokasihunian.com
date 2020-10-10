@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Package;
 use App\Models\Membership;
+use App\Models\Status_Delete;
 
 class PackageController extends Controller
 {
     public function index(){
         $packages = Package::all();
+        // dd($packages);
         return view('dashboard.package.package', ['packages'=>$packages]);
     }
 
@@ -54,7 +56,15 @@ class PackageController extends Controller
         $member = DB::table('memberships')
                     ->where('package_id', $id)
                     ->update(['package_id' => 1]);
-        $package->delete();
+        
+        $status_delete = Status_Delete::create([
+            'table_name'    => 'Packages',
+            'table_id'      => $id,
+            'status'        => 'deleted',
+            'username'      =>auth()->user()->username
+        ]);
+
+        // $package->delete();
         return redirect('dashboard/package');
     }
 }

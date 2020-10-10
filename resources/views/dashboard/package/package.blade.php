@@ -13,6 +13,7 @@
         </div>
         <div class="row justifiy-content-center">
             @foreach($packages as $package)
+                @if($package->StatusDeleted == null)
                 <div class="col-md-3">
                     <div class="card shadow">
                         <div class="card-body text-center">
@@ -30,6 +31,7 @@
                         </div>
                     </div>    
                 </div>
+                @endif
             @endforeach
         </div>
     </div>

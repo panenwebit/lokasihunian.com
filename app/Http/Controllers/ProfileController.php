@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use App\Models\User;
+use App\Models\Status_Delete;
 
 use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
@@ -82,6 +83,7 @@ class ProfileController extends Controller
                 }
             }   
         }
+
         $SQL .= " AND a.username='$username' AND a.property_status='Live' ";
 
         if(isset($_GET['sort']) && $_GET['sort']!='' && $_GET['sort']!='all'){
@@ -146,9 +148,9 @@ class ProfileController extends Controller
 
         $profile = Profile::find(auth()->user()->username);
         $profile->fullname          = $request->fullname;
-        $profile->no_ktp            = $request->no_ktp;
+        $profile->no_ktp            = $request->nomor_ktp;
         if($role=='Agen Perusahaan' || $role=='Developer'){
-            $profile->no_npwp            = $request->no_npwp;
+            $profile->no_npwp            = $request->nomor_npwp;
         }
         $profile->wa_number         = $request->wa_number;
         $profile->handphone_number  = $request->handphone_number;
@@ -167,8 +169,8 @@ class ProfileController extends Controller
         $profile->linkedin_profile    = $request->linkedin_profile;
         $profile->ig_profile          = $request->instagram_profile;
         $profile->yt_profile          = $request->youtube_profile;
-        $profile->qr_code             = 'storage/'.$qr_path.'qrcode.png';
-        $profile->spesialis_property  = json_decode($request->spesialis_property);
+        $profile->qr_code             = 'storage/'.$qr_path.'/qrcode.png';
+        $profile->spesialis_property  = json_encode($request->spesialis_property);
         $profile->spesialis_area      = $request->spesialis_kelurahan;
         $profile->save();
         
@@ -197,8 +199,8 @@ class ProfileController extends Controller
         $profile = Profile::find(auth()->user()->username);
         $profile->fullname          = $request->fullname;
         $profile->wa_number         = $request->wa_number;
-        // $profile->address           = $request->address;
-        // $profile->address_location  = $request->address_kelurahan;
+        $profile->address           = $request->address;
+        $profile->address_location  = $request->address_kelurahan;
         $profile->about_me          = $request->about_me;
         if($request->company_name){
             $profile->company_name      = $request->company_name;

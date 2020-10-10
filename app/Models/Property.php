@@ -43,6 +43,14 @@ class Property extends Model
         return $this->hasMany('App\Models\Property_Image', 'property_id', 'id');
     }
 
+    public function propertyFavorites(){
+        return $this->hasMany('App\Models\Property_Favorites', 'property_id', 'id');
+    }
+
+    public function StatusDeleted(){
+        return $this->hasOne('App\Models\Status_Delete', 'table_id', 'id');
+    }
+
     public function propertyLocation() {
         $kode = $this->property_location;
         $kode_provinsi = substr($kode,0,2);

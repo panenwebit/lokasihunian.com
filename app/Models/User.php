@@ -58,4 +58,12 @@ class User extends Authenticatable
     public function membership() {
         return $this->hasOne('App\Models\Membership', 'username', 'username');
     }
+
+    public function propertyFavorites(){
+        return $this->hasMany('App\Models\Property_Favorites', 'username', 'username');
+    }
+
+    public function StatusDeleted(){
+        return $this->hasOne('App\Models\Status_Delete', 'username', 'username');
+    }
 }

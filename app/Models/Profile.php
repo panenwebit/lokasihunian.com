@@ -23,8 +23,8 @@ class Profile extends Model
         'username',
         'fullname',
         'photo',
-        // 'address',
-        // 'address_location',
+        'address',
+        'address_location',
         'wa_number',
         'handphone_number',
         'about_me',
@@ -39,14 +39,22 @@ class Profile extends Model
         'company_location',
         'company_phone',
         'qr_code',
+        'no_ktp',
+        'no_npwp',
+        'spesialis_area',
+        'spesialis_property',
     ];
 
     public function user(){
         return $this->belongsTo('App\Models\User', 'username', 'username');
     }
 
+    public function StatusDeleted(){
+        return $this->hasOne('App\Models\Status_Delete', 'username', 'username');
+    }
+
     public function addressLocation() {
-        $kode = $this->company_location;
+        $kode = $this->address_location;
         $kode_provinsi = substr($kode,0,2);
         $kode_kabupaten = substr($kode,0,5);
         $kode_kecamatan = substr($kode,0,8);

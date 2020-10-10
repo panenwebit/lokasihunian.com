@@ -20,4 +20,8 @@ class Package extends Model
     public function member(){
         return $this->hasMany('App\Models\Membership', 'package_id', 'id');
     }
+
+    public function StatusDeleted(){
+        return $this->hasOne('App\Models\Status_Delete', 'table_id', 'id');
+    }
 }

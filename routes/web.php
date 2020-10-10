@@ -120,6 +120,11 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
         Route::get('/delete/{id}', [PackageController::class, 'delete']);
     });
 
+    Route::prefix('/membership')->group(function () {
+
+        Route::get('/', [MembershipController::class, 'show']);
+    });
+
     Route::get('/bantu_daftar', [UserController::class, 'bantuDaftarForm']);
     Route::post('/bantu_daftar', [UserController::class, 'bantuDaftar']);
 });

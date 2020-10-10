@@ -23,4 +23,8 @@ class FollowUp extends Model
     public function admin(){
         return $this->belongsTo('App\Models\Users', 'username', 'admin_username');
     }
+
+    public function StatusDeleted(){
+        return $this->hasOne('App\Models\Status_Delete', 'table_id', 'id');
+    }
 }

@@ -29,7 +29,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <h5><i class="fa far fa-building"></i>&nbsp;&nbsp;{{ $profile->company_name }},&nbsp;<i class="fa far fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $profile->company_name }},&nbsp;{{ $profile->addressLocation() }}</h5>
+                        <h5><i class="fa far fa-building"></i>&nbsp;&nbsp;{{ $profile->company_name }}&nbsp;<i class="fa far fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $profile->company_name }}&nbsp;{{ $profile->addressLocation() }}</h5>
                     </div>
                 </div>
                 <div class="row">

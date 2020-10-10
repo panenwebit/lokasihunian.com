@@ -119,7 +119,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fas fa-smile-wink"></i></span>
                 </div>
-                <textarea type="text" name="about_me" id="create_profile_about_me" class="form-control form-control-alternative" placeholder="Tentang Saya" value="{{ old('about_me') }}" required cols="30" rows="3"></textarea>
+                <textarea type="text" name="about_me" id="create_profile_about_me" class="form-control form-control-alternative" placeholder="Tentang Saya" required cols="30" rows="3">{{ old('about_me') }}</textarea>
             </div>
             
             @if(auth()->user()->getRoleNames()[0] == 'Agen Perusahaan' || auth()->user()->getRoleNames()[0] == 'Developer')

@@ -65,12 +65,12 @@
                             <i class="fas fa-stars text-yellow ml-auto text-left"></i>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span class="nav-link-text">Keanggotaan</span>
                             <i class="fas fa-id-card text-primary ml-auto text-left"></i>
                         </a>
-                    </li>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#navbar-artikel" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-artikel">
                             <i class="ni ni-ungroup text-orange"></i>
@@ -96,7 +96,7 @@
                             </ul>
                         </div>
                     </li> -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#navbar-invoice" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-invoice">
                             <span class="nav-link-text">Invoices</span>
                             <i class="far fa-file-invoice text-green ml-auto text-left"></i>
@@ -117,7 +117,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('dashboard/bantu_daftar') }}">
                             <span class="nav-link-text">Bantu Daftar</span>

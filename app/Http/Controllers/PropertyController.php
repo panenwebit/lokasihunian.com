@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 
 use App\Models\Property;
 use App\Models\Property_Image;
+use App\Models\Status_Delete;
 
 class PropertyController extends Controller
 {
