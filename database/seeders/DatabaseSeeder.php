@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             RolesSeeder::class,
             UsersSeeder::class,
             PackagesSeeder::class,
+            DummyFaqSeeder::class,
+            DummyTopLocationSeeder::class,
             DummyPropertySeeder::class,
         ]);
     }

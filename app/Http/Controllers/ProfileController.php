@@ -229,6 +229,11 @@ class ProfileController extends Controller
 
         $SQL .= " WHERE c.name LIKE '%Agen%' AND a.fullname!='' ";
 
+        if(isset($_GET['keyword']) && $_GET['keyword']!=''){
+            $keyword = $_GET['keyword'];
+            $SQL .= " AND a.fullname LIKE '%$keyword%'";
+        }
+
         if(isset($_GET['sort']) && $_GET['sort']!='' && $_GET['sort']!='all'){
             $sort = $_GET['sort'];
             if($sort=='Terbaru'){

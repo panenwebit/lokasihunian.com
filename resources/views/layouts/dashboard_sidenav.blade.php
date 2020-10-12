@@ -118,12 +118,12 @@
                             </ul>
                         </div>
                     </li> -->
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{{ url('dashboard/bantu_daftar') }}">
                             <span class="nav-link-text">Bantu Daftar</span>
                             <i class="fas fa-hands-helping text-default ml-auto text-left"></i>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-follow-up" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-follow-up">
                             <span class="nav-link-text">Data Follow UP</span>
@@ -139,6 +139,38 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/follow_up/my') }}" class="nav-link">Follow UP saya</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#navbar-faq" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-faq">
+                            <span class="nav-link-text">Faq</span>
+                            <i class="far fa-question-square text-info ml-auto"></i>
+                        </a>
+                        <div class="collapse" id="navbar-faq">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/faq/create') }}" class="nav-link">Tambah Baru</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/faq/index') }}" class="nav-link">Semua</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#navbar-strategis" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-strategis">
+                            <span class="nav-link-text">Lokasi Strategis</span>
+                            <i class="far fa-map-marked-alt text-default ml-auto"></i>
+                        </a>
+                        <div class="collapse" id="navbar-strategis">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/top_location/create') }}" class="nav-link">Tambah Baru</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/top_location/index') }}" class="nav-link">Semua</a>
                                 </li>
                             </ul>
                         </div>

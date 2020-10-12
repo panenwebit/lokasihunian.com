@@ -44,7 +44,7 @@ class Property extends Model
     }
 
     public function propertyFavorites(){
-        return $this->hasMany('App\Models\Property_Favorites', 'property_id', 'id');
+        return $this->hasMany('App\Models\Property_Favorite', 'property_id', 'id');
     }
 
     public function StatusDeleted(){

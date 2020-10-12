@@ -31,16 +31,16 @@ Route::get('auth/{provider}', 'App\Http\Controllers\Auth\LoginController@redirec
 Route::get('auth/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');
 
 Route::get('/', [PublicController::class, 'root']);
-Route::get('tentang_kami', function(){
-    return view('lainnya.tentang_kami');
-});
-Route::get('hubungi_kami', function(){
-    return view('lainnya.hubungi_kami');
-});
+Route::get('tentang_kami', [PublicController::class, 'tentangKami']);
+Route::get('hubungi_kami', [PublicController::class, 'hubungiKami']);
+Route::get('faq', [PublicController::class, 'faq']);
+Route::get('simulasi_kredit', [PublicController::class, 'simulasiKPR']);
 
 Route::prefix('property')->group(function(){
     Route::get('/', [PropertyController::class, 'propertyList']);
     Route::get('/{slug}', [PropertyController::class, 'propertyDetail']);
+
+    Route::post('/toFavorites/{id}', [PropertyController::class, 'toFavorites']);
 });
 
 Route::prefix('profile')->group(function(){
@@ -123,6 +123,24 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
     Route::prefix('/membership')->group(function () {
 
         Route::get('/', [MembershipController::class, 'show']);
+    });
+
+    Route::prefix('faq')->group(function(){
+        Route::get('/index', [PublicController::class, 'indexFaq']);
+        Route::get('/create', [PublicController::class, 'createFaq']);
+        Route::post('/', [PublicController::class, 'storeFaq']);
+        Route::get('/edit/{id}', [PublicController::class, 'editFaq']);
+        Route::patch('/', [PublicController::class, 'updateFaq']);
+        Route::get('/delete/{id}', [PublicController::class, 'deleteFaq']);
+    });
+
+    Route::prefix('top_location')->group(function(){
+        Route::get('/index', [PublicController::class, 'indexTop']);
+        Route::get('/create', [PublicController::class, 'createTop']);
+        Route::post('/', [PublicController::class, 'storeTop']);
+        Route::get('/edit/{id}', [PublicController::class, 'editTop']);
+        Route::patch('/', [PublicController::class, 'updateTop']);
+        Route::get('/delete/{id}', [PublicController::class, 'deleteTop']);
     });
 
     Route::get('/bantu_daftar', [UserController::class, 'bantuDaftarForm']);

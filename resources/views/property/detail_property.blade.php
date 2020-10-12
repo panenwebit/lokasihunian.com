@@ -23,13 +23,13 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-fill">
-                                <h2 class="my-1">{{ substr($property->property_title,0, 59).'...' }}</h2>
+                                <h2 class="my-1">{{ substr($property->property_title,0, 59) }}</h2>
                                 <h3 class="mb-0">Rp. {{ number_format($property->property_price,0,',', '.') }}</h3>
                             </div>
                             <div class="d-flex">
                                 <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Photo"><i class="far fa-images"></i></button>
                                 <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Maps"><i class="far fa-map"></i></button>
-                                <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Tambahkan ke Favorit"><i class="far fa-star"></i></button>
+                                <button type="button" id="btn-favorite" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Tambahkan ke Favorit" data-id="{{ $property->id }}"><i class="far fa-star"></i></button>
                             </div>
                         </div>
                         <div class="d-flex">
@@ -69,4 +69,29 @@
         </div>
     </div>
     <br>
+    <form action="{{ url('property/toFavorites') }}" method="post" id="form-favorite">
+        @csrf
+    </form>
+@endsection
+
+@section('page_js_plugins')
+<script>
+$(document).ready(function(){
+    $('#btn-favorite').on('click', function(){
+        var csrf_token = $('#form-favorite > input[name="_token"]').val();
+        var id = $(this).attr('data-id');
+        var url = "{{ url('property/toFavorites/'.$property->id) }}";
+        // $.ajax({
+        //     url: url,
+        //     method:'post',
+        //     data : {_token:csrf_token, id:id},
+        //     success: function(response){
+        //         // console.log(id);
+        //         // console.log(csrf_token);
+        //     }
+        // });
+        alert(''+csrf_token);
+    });
+});
+</script>
 @endsection

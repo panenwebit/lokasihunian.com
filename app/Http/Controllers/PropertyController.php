@@ -8,10 +8,13 @@ use Illuminate\Support\Str;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Property;
 use App\Models\Property_Image;
+use App\Models\Property_Favorites;
 use App\Models\Status_Delete;
+use App\Models\User;
 
 class PropertyController extends Controller
 {
@@ -188,5 +191,16 @@ class PropertyController extends Controller
             $property = Property::where('username', auth()->user()->username)->get();
         }
         return view('dashboard.property.my_listing', ['property'=> $property, 'status'=>$status]);
+    }
+
+    public function toFavorites(Property $property){
+        // $user = Auth::user();
+        // if(!$user){
+        //     return 'login';
+        // }
+        // dd($property);
+        // dd(auth()->user()->property());
+        $user = User::find('agen1');
+        echo json_encode($user->property->propertyFavorites->toggle($property));
     }
 }

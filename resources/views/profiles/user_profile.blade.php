@@ -29,7 +29,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <h5><i class="fa far fa-building"></i>&nbsp;&nbsp;{{ $profile->company_name }}&nbsp;<i class="fa far fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $profile->company_name }}&nbsp;{{ $profile->addressLocation() }}</h5>
+                        <h5>@if($profile->user->getRoleNames()[0]=='Agen Perusahaan' || $profile->user->getRoleNames()[0]=='Developer')<i class="fa far fa-building"></i>&nbsp;&nbsp;{{ $profile->company_name }}&nbsp;@endif<i class="fa far fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $profile->company_name }}&nbsp;{{ $profile->addressLocation() }}</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -52,7 +52,9 @@
                 </div>
             </div>
             <div class="col-md-3 text-center align-items-center d-sm-none d-md-block" id="qr">
-                <img src="{{ asset($profile->qr_code) }}" alt="qr_user" class="img-fluid pl-3 pb-3 rounded">
+                @if($profile->user->getRoleNames()[0]=='Agen Independen' || $profile->user->getRoleNames()[0]=='Agen Perusahaan' || $profile->user->getRoleNames()[0]=='Developer')
+                    <img src="{{ asset($profile->qr_code) }}" alt="qr_user" class="img-fluid pl-3 pb-3 rounded">
+                @endif
             </div>
         </div>
         <br>

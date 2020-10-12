@@ -9,7 +9,7 @@ class Property_Favorite extends Model
 {
     use HasFactory;
 
-    // protected $table = 'property_favorites';
+    protected $table = 'property_favorites';
 
     protected $fillable = [
         'username',
@@ -17,7 +17,7 @@ class Property_Favorite extends Model
     ];
 
     public function Property(){
-        return $this->belongsTo('App\Models\Property', 'id', 'property_id');
+        return $this->belongsToMany('App\Models\Property', 'id', 'property_id');
     }
 
     public function User(){

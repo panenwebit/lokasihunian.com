@@ -12,13 +12,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa far fa-user"></i></span>
                             </div>
-                            <input type="text" name="nama" id="nama" placeholder="Nama anda" required>
+                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama anda" required>
                         </div>
                         <div class="input-group input-group-merge input-group-alternative my-2">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa far fa-envelope"></i></span>
                             </div>
-                            <input type="email" name="email" id="email" placeholder="E-mail anda" required>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="E-mail anda" required>
                         </div>
                         <div class="input-group input-group-merge input-group-alternative my-2">
                             <div class="input-group-prepend">
