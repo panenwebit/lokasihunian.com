@@ -15,7 +15,7 @@ class DummyTopLocationSeeder extends Seeder
     public function run()
     {
         DB::table('top_locations')->insert([
-            'location_name' => 'KOTA ADM. JAKARTA PUSAT',
+            'location_name' => 'KOTA JAKARTA PUSAT',
             'location' => '31.71',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -106,13 +106,6 @@ class DummyTopLocationSeeder extends Seeder
         ]);
 
         DB::table('top_locations')->insert([
-            'location_name' => '',
-            'location' => '',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('top_locations')->insert([
             'location_name' => 'KOTA BANJARMASIN',
             'location' => '63.71',
             'created_at' => date('Y-m-d H:i:s'),
@@ -162,13 +155,6 @@ class DummyTopLocationSeeder extends Seeder
         ]);
 
         DB::table('top_locations')->insert([
-            'location_name' => 'KOTA MATARAM',
-            'location' => '52.71',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('top_locations')->insert([
             'location_name' => 'KOTA YOGYAKARTA',
             'location' => '34.71',
             'created_at' => date('Y-m-d H:i:s'),
@@ -178,13 +164,6 @@ class DummyTopLocationSeeder extends Seeder
         DB::table('top_locations')->insert([
             'location_name' => 'KOTA MANADO',
             'location' => '71.71',
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('top_locations')->insert([
-            'location_name' => 'KOTA JAMBI',
-            'location' => '15.71',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);

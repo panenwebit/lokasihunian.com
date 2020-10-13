@@ -25,6 +25,6 @@ class FollowUp extends Model
     }
 
     public function StatusDeleted(){
-        return $this->hasOne('App\Models\Status_Delete', 'table_id', 'id');
+        return $this->hasOne('App\Models\StatusDelete', 'table_id', 'id');
     }
 }

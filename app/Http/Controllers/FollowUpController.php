@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FollowUp;
-use App\Models\Status_Delete;
+use App\Models\StatusDelete;
 
 class FollowUpController extends Controller
 {

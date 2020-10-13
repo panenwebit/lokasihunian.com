@@ -7,12 +7,18 @@
                 <h1 class="text-center mt-3">Hubungi Kami</h1>
                 <p>Pertanyaan, kritik, dan saran mengenai lokasihunian.com dapat anda sampaikan menggunakan form berikut. Tim kami akan berusaha menghubungi anda secepatnya !</p>
                 <div class="container">
-                    <form action="" method="post">
+                    @if(session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    <form action="{{ url('public/hubungi_kami') }}" method="post">
+                        @csrf
                         <div class="input-group input-group-merge input-group-alternative my-2">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa far fa-user"></i></span>
                             </div>
-                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama anda" required>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Nama anda" required>
                         </div>
                         <div class="input-group input-group-merge input-group-alternative my-2">
                             <div class="input-group-prepend">

@@ -7,14 +7,15 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Faq;
-use App\Models\Top_Location;
-use App\Models\Status_Delete;
+use App\Models\TopLocation;
+use App\Models\StatusDelete;
 
 class PublicController extends Controller
 {
     public function root(){
         // $role = Role::all();
-        return view('welcome');
+        $top_locations = TopLocation::all();
+        return view('welcome', ['top_locations'=>$top_locations]);
     }
 
     public function tentangKami(){
@@ -23,6 +24,22 @@ class PublicController extends Controller
 
     public function hubungiKami(){
         return view('lainnya.hubungi_kami');
+    }
+
+    public function newPublicMessage(Request $request){
+        DB::table('contact_us')->insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'question' =>$request->question,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+        return back()->with(['status' => 'Pesan telah terkirim.']);;
+    }
+
+    public function indexPublicMessage(){
+        $publicMessages = DB::table('contact_us')->orderByRaw('Status DESC')->get();
+        return view('dashboard.lainnya.contact_us.index', ['public'=>$publicMessages]);
     }
 
     public function faq(){
@@ -73,7 +90,7 @@ class PublicController extends Controller
     }
 
     public function indexTop(){
-        $tops = Top_Location::all();
+        $tops = TopLocation::all();
         return view('dashboard.lainnya.top_location.index', ['tops'=>$tops]);
     }
 

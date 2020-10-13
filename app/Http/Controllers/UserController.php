@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Profile;
 use app\Models\User;
-use App\Models\Status_Delete;
+use App\Models\StatusDelete;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;

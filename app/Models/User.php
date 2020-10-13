@@ -55,11 +55,15 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Property', 'username', 'username');
     }
 
+    public function propertyFavorites(){
+        return $this->hasMany('App\Models\PropertyFavorite', 'username', 'username');
+    }
+
     public function membership() {
         return $this->hasOne('App\Models\Membership', 'username', 'username');
     }
     
     public function StatusDeleted(){
-        return $this->hasOne('App\Models\Status_Delete', 'username', 'username');
+        return $this->hasOne('App\Models\StatusDelete', 'username', 'username');
     }
 }

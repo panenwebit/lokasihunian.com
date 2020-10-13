@@ -15,6 +15,13 @@
                         <a class="dropdown-item" href="{{ url('property') }}?type=Tanah">Tanah</a>
                         <a class="dropdown-item" href="{{ url('property') }}?type=Ruko">Ruko</a>
                         <a class="dropdown-item" href="{{ url('property') }}?type=Vila">Vila</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Gudang">Gudang</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Pabrik">Pabrik</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Kantor">Kantor</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Toko">Toko</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Stand">Stand</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Gedung">Gedung</a>
+                        <a class="dropdown-item" href="{{ url('property') }}?type=Hotel">Hotel</a>
                     </div>
                 </li>
                 <li class="nav-item active">

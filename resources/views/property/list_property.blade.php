@@ -32,7 +32,7 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        @foreach($property as $prop)
+        @forelse($property as $prop)
         <div class="col-sm-6 col-md-4">
             <div class="card shadow">
                 <a href="{{ url('property/'.$prop->property_slug) }}">
@@ -77,7 +77,9 @@
                 </div>
             </div>
         </div>
-        @endforeach
+        @empty
+            <p class="text-disabled display-4">Oops! Properti yang kamu cari belum tersedia.</p>
+        @endforelse
     </div>
     <div class="row justify-content-center">
         @if($hasPaginator)
@@ -150,6 +152,13 @@
                             <option value="Tanah" <?php if(isset($_GET['type']) && $_GET['type']=='Tanah'){ echo 'selected'; } ;?>>Tanah</option>
                             <option value="Ruko" <?php if(isset($_GET['type']) && $_GET['type']=='Ruko'){ echo 'selected'; } ;?>>Ruko</option>
                             <option value="Vila" <?php if(isset($_GET['type']) && $_GET['type']=='Vila'){ echo 'selected'; } ;?>>Vila</option>
+                            <option value="Gudang" <?php if(isset($_GET['type']) && $_GET['type']=='Gudang'){ echo 'selected'; } ;?>>Gudang</option>
+                            <option value="Pabrik" <?php if(isset($_GET['type']) && $_GET['type']=='Pabrik'){ echo 'selected'; } ;?>>Pabrik</option>
+                            <option value="Kantor" <?php if(isset($_GET['type']) && $_GET['type']=='Kantor'){ echo 'selected'; } ;?>>Kantor</option>
+                            <option value="Toko" <?php if(isset($_GET['type']) && $_GET['type']=='Toko'){ echo 'selected'; } ;?>>Toko</option>
+                            <option value="Stand" <?php if(isset($_GET['type']) && $_GET['type']=='Stand'){ echo 'selected'; } ;?>>Stand</option>
+                            <option value="Gedung" <?php if(isset($_GET['type']) && $_GET['type']=='Gedung'){ echo 'selected'; } ;?>>Gedung</option>
+                            <option value="Hotel" <?php if(isset($_GET['type']) && $_GET['type']=='Hotel'){ echo 'selected'; } ;?>>Hotel</option>
                         </select>
                     </div>
                     <div class="form-group mr-3 row">

@@ -41,6 +41,13 @@
                                             <option value="Tanah">Tanah</option>
                                             <option value="Ruko">Ruko</option>
                                             <option value="Vila">Vila</option>
+                                            <option value="Gudang">Gudang</option>
+                                            <option value="Pabrik">Pabrik</option>
+                                            <option value="Kantor">Kantor</option>
+                                            <option value="Toko">Toko</option>
+                                            <option value="Stand">Stand</option>
+                                            <option value="Gedung">Gedung</option>
+                                            <option value="Hotel">Hotel</option>
                                         </select>
                                     </div>
                                     <div class="form-group mr-3">
@@ -291,37 +298,13 @@
             <h2 class="text-center">Hunian Strategis</h2>
             <br>
             <div class="row justify-content-around">
-                <div class="col-sm-6 col-md-3">
-                    <div class="pl-5 mb-4"><a href="#">Properti di DKI Jakarta</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Bali</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Bandung</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Banten</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Depok</a></div>
-                </div>
-                <div class="col-sm-6 col-md 3">
-                    <div class="pl-5 mb-4"><a href="#">Properti di Tanggerang</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Daerah Istimewa Yogyakarta</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Semarang</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Surabaya</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Bekasi</a></div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="pl-5 mb-4"><a href="#">Properti di DKI Jakarta</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Bali</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Bandung</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Banten</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Depok</a></div>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <div class="pl-5 mb-4"><a href="#">Properti di Tanggerang</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Daerah Istimewa Yogyakarta</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Semarang</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Surabaya</a></div>
-                    <div class="pl-5 mb-4"><a href="#">Properti di Bekasi</a></div>
-                </div>
+                @foreach($top_locations as $top_location)
+                    <div class="col-sm-6 col-md-3">
+                        <div class="pl-5 mb-4"><a href="{{ url('property?location='.$top_location->location) }}">Properti di {{ $top_location->location_name }}</a></div>
+                    </div>
+                @endforeach
             </div>
         </div>
-    </div>
     </div>
     <div class="parlax"></div>
     <!-- <div class="container px-5">
@@ -381,6 +364,13 @@
                             <option value="Tanah">Tanah</option>
                             <option value="Ruko">Ruko</option>
                             <option value="Vila">Vila</option>
+                            <option value="Gudang">Gudang</option>
+                            <option value="Pabrik">Pabrik</option>
+                            <option value="Kantor">Kantor</option>
+                            <option value="Toko">Toko</option>
+                            <option value="Stand">Stand</option>
+                            <option value="Gedung">Gedung</option>
+                            <option value="Hotel">Hotel</option>
                         </select>
                     </div>
                     <div class="form-group mr-3 row">

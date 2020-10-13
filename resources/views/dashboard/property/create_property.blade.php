@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
+    @if($package->limit_listing > count(auth()->user()->property))
     <!-- <br> -->
     <div class="container">
         <div class="card">
@@ -47,6 +48,13 @@
                             <option value="Tanah">Tanah</option>
                             <option value="Ruko">Ruko</option>
                             <option value="Vila">Vila</option>
+                            <option value="Gudang">Gudang</option>
+                            <option value="Pabrik">Pabrik</option>
+                            <option value="Kantor">Kantor</option>
+                            <option value="Toko">Toko</option>
+                            <option value="Stand">Stand</option>
+                            <option value="Gedung">Gedung</option>
+                            <option value="Hotel">Hotel</option>
                         </select>
                     </div>
                 </div>
@@ -136,15 +144,22 @@
                     <span class="input-group-text"><i class="fa far fa-home"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span>
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="provinsi">Provinsi</label>
                     <select name="property_provinsi" id="property_provinsi" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="kabupaten">Kabupaten</label>
                     <select name="property_kabupaten" id="property_kabupaten" class="form-control select2" required></select>
                 </div>
-                <div class="col-sm-12 col-md-6 mb-3">
+                <div class="input-group-prepend col-md-1">
+                    <!-- <span class="input-group-text"><i class="fa far fa-home"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
+                </div>
+                <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="kecamatan">Kecamatan</label>
                     <select name="property_kecamatan" id="property_kecamatan" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="Kelurahan">Kelurahan</label>
                     <select name="property_kelurahan" id="property_kelurahan" class="form-control select2" required></select>
                 </div>
             </div>
@@ -161,6 +176,7 @@
             </div>
         </form>
     </div>
+    @endif
     <br>
     <br>
     <br>
@@ -183,8 +199,9 @@
         var myDropzone = new Dropzone("#drop", { 
             url: "{{ url('property/listing/images') }}",
             acceptedFiles : "image/png, image/jpeg",
-            // autoProcessQueue : false,
+            autoProcessQueue : false,
             addRemoveLinks : true,
+            maxFiles : {{ $package->limit_photo_per_listing }},
             dictDefaultMessage : "klik untuk menambahkan gambar untuk property anda. <br> gambar paling awal akan digunakan sebagai thumbnail / gambar utama.",
         });
     </script>

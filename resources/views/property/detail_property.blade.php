@@ -29,7 +29,11 @@
                             <div class="d-flex">
                                 <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Photo"><i class="far fa-images"></i></button>
                                 <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Maps"><i class="far fa-map"></i></button>
-                                <button type="button" id="btn-favorite" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Tambahkan ke Favorit" data-id="{{ $property->id }}"><i class="far fa-star"></i></button>
+                                @if($isFavorite)
+                                    <button type="button" id="btn-favorite" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Hapus dari Favorit" data-id="{{ $property->id }}"><i class="fas fa-star text-primary"></i></button>
+                                @else
+                                    <button type="button" id="btn-favorite" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Tambahkan ke Favorit" data-id="{{ $property->id }}"><i class="far fa-star"></i></button>
+                                @endif
                             </div>
                         </div>
                         <div class="d-flex">
@@ -81,16 +85,25 @@ $(document).ready(function(){
         var csrf_token = $('#form-favorite > input[name="_token"]').val();
         var id = $(this).attr('data-id');
         var url = "{{ url('property/toFavorites/'.$property->id) }}";
-        // $.ajax({
-        //     url: url,
-        //     method:'post',
-        //     data : {_token:csrf_token, id:id},
-        //     success: function(response){
-        //         // console.log(id);
-        //         // console.log(csrf_token);
-        //     }
-        // });
-        alert(''+csrf_token);
+        $.ajax({
+            url: url,
+            method:'get',
+            data : {_token:csrf_token, id:id},
+            success: function(response){
+                if(response=="login"){
+                    window.location.replace('{{ url("login") }}');
+                } else if(response=="added"){
+                    $('#btn-favorite').html('<i class="fas fa-star text-primary"></i>');
+                    $('#btn-favorite').removeAttr('title');
+                    $('#btn-favorite').attr('title', 'Hapus dari Favorite');
+                } else {
+                    $('#btn-favorite').html('<i class="far fa-star"></i>');
+                    $('#btn-favorite').removeAttr('title');
+                    $('#btn-favorite').attr('title', 'Tambahkan ke Favorite');
+                }
+            }
+        });
+        // alert(''+csrf_token);
     });
 });
 </script>

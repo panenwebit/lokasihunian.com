@@ -102,15 +102,22 @@
                     <span class="input-group-text"><i class="fa far fa-home"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span>
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="address_provinsi">Provinsi</label>
                     <select name="address_provinsi" id="create_profile_address_provinsi" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="address_kabupaten">Kabupaten</label>
                     <select name="address_kabupaten" id="create_profile_address_kabupaten" class="form-control select2" required></select>
                 </div>
-                <div class="col-sm-12 col-md-6 mb-3">
+                <div class="input-group-prepend col-md-1">
+                    <!-- <span class="input-group-text"><i class="fa far fa-home"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
+                </div>
+                <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="address_kecamatan">Kecamatan</label>
                     <select name="address_kecamatan" id="create_profile_address_kecamatan" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="address_kelurahan">Kelurahan</label>
                     <select name="address_kelurahan" id="create_profile_address_kelurahan" class="form-control select2" required></select>
                 </div>
             </div>
@@ -140,15 +147,22 @@
                     <span class="input-group-text"><i class="fa far fa-building"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span>
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="company_provinsi">Provinsi</label>
                     <select name="company_provinsi" id="create_profile_company_provinsi" class="form-control select2"></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="company_kabupaten">Kabupaten</label>
                     <select name="company_kabupaten" id="create_profile_company_kabupaten" class="form-control select2"></select>
                 </div>
-                <div class="col-sm-12 col-md-6 mb-3">
+                <div class="input-group-prepend col-md-1">
+                    <!-- <span class="input-group-text"><i class="fa far fa-building"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
+                </div>
+                <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="company_kecamatan">Kecamatan</label>
                     <select name="company_kecamatan" id="create_profile_company_kecamatan" class="form-control select2"></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="company_kelurahan">Kelurahan</label>
                     <select name="company_kelurahan" id="create_profile_company_kelurahan" class="form-control select2"></select>
                 </div>
             </div>
@@ -199,15 +213,22 @@
                     <span class="input-group-text"><i class="fa far fa-user"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span>
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="spesialis_provinsi">Provinsi</label>
                     <select name="spesialis_provinsi" id="create_profile_spesialis_provinsi" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="spesialis_kabupaten">Kabupaten</label>
                     <select name="spesialis_kabupaten" id="create_profile_spesialis_kabupaten" class="form-control select2" required></select>
                 </div>
-                <div class="col-sm-12 col-md-6 mb-3">
+                <div class="input-group-prepend col-md-1">
+                    <!-- <span class="input-group-text"><i class="fa far fa-user"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
+                </div>
+                <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="spesialis_kecamatan">Kecamatan</label>
                     <select name="spesialis_kecamatan" id="create_profile_spesialis_kecamatan" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="spesialis_kelurahan">Kelurahan</label>
                     <select name="spesialis_kelurahan" id="create_profile_spesialis_kelurahan" class="form-control select2" required></select>
                 </div>
             </div>

@@ -11,10 +11,11 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Property;
-use App\Models\Property_Image;
-use App\Models\Property_Favorites;
-use App\Models\Status_Delete;
+use App\Models\PropertyImage;
+use App\Models\PropertyFavorite;
+use App\Models\StatusDelete;
 use App\Models\User;
+use App\Models\Package;
 
 class PropertyController extends Controller
 {
@@ -24,7 +25,8 @@ class PropertyController extends Controller
     }
 
     public function create(){
-        return view('dashboard.property.create_property');
+        $package = Package::find(auth()->user()->membership->package_id);
+        return view('dashboard.property.create_property', ['package' => $package]);
     }
     
     public function store(Request $request){
@@ -85,7 +87,7 @@ class PropertyController extends Controller
     }
 
     public function storeImages(Request $request){
-        // $property = new Property_Image;
+        // $property = new PropertyImage;
         $image = $request->file('file');
         $image_path = $image->store('images/property/'.auth()->user()->username.'/'.date('Y').'/'.date('m').'/'.date('d'), 'public');
         $watermark = Image::make(public_path('assets/img/logo/wmark_sm_180.png'));
@@ -100,7 +102,7 @@ class PropertyController extends Controller
         $SQL = "SELECT 
                 a.id, a.username, a.property_title, a.property_term, a.property_condition, a.property_type, a.property_price, a.property_surface_area, a.property_building_area, a.property_bedroom_count, a.property_bathroom_count, a.property_parking_count, a.property_slug, a.property_status,
                 b.fullname, b.wa_number, b.photo,
-                (SELECT c.images FROM property_images c WHERE c.property_id=a.id LIMIT 1) as images
+                (SELECT c.images FROM Property_Images c WHERE c.property_id=a.id LIMIT 1) as images
                 FROM property a 
                 INNER JOIN `profile` b ON a.username = b.username ";
         if(isset($_GET['term']) || isset($_GET['condition']) || isset($_GET['type']) || isset($_GET['keyword']) || isset($_GET['lprice']) || isset($_GET['hprice']) ) {
@@ -148,6 +150,12 @@ class PropertyController extends Controller
                 }
             }   
         }
+
+        if(isset($_GET['location']) && $_GET['location']!=''){
+            $location = $_GET['location'];
+            $SQL .= " AND a.property_location LIKE '$location%' ";
+        }
+
         $SQL .= " AND a.property_status='Live' ";
 
         if(isset($_GET['sort']) && $_GET['sort']!='' && $_GET['sort']!='all'){
@@ -181,7 +189,18 @@ class PropertyController extends Controller
 
     public function propertyDetail($slug){
         $property = Property::where('property_slug', $slug)->firstOrFail();
-        return view('property.detail_property', ['property'=>$property]);
+        $isFavorite = false;
+        $user = Auth::user();
+        if($user){
+            foreach(auth()->user()->propertyFavorites as $userFavorite){
+                if($userFavorite->property_id == $property->id){
+                    $isFavorite=true;
+                } else {
+                    $isFavorite=false;
+                }
+            }
+        }
+        return view('property.detail_property', ['property'=>$property, 'isFavorite'=>$isFavorite]);
     }
 
     public function myListing($status=false){
@@ -193,14 +212,40 @@ class PropertyController extends Controller
         return view('dashboard.property.my_listing', ['property'=> $property, 'status'=>$status]);
     }
 
-    public function toFavorites(Property $property){
-        // $user = Auth::user();
-        // if(!$user){
-        //     return 'login';
-        // }
-        // dd($property);
-        // dd(auth()->user()->property());
-        $user = User::find('agen1');
-        echo json_encode($user->property->propertyFavorites->toggle($property));
+    public function archive($id){
+        $property = Property::find($id);
+        $property->property_status = 'Archived';
+        $property->save();
+        
+        return back();
+    }
+
+    public function myFavorite(){
+        $SQL = "SELECT a.username, b.property_title, b.property_type, b.property_condition, b.property_term, b.property_status, b.property_slug, b.id FROM property_favorites a INNER JOIN property b ON b.id = a.property_id";
+        $property = DB::select($SQL);
+        return view('dashboard.property.my_favorite', ['property'=> $property]);
+    }
+
+    public function toFavorites(Request $request, $id, $r=false){
+        $user = Auth::user();
+        if(!$user){
+            return 'login';
+        }
+        $favorite = PropertyFavorite::where('property_id', $id)->where('username', $user->username)->get();
+        // dd($favorite);
+        if(collect($favorite)->isEmpty()){
+            $property_favorite = new PropertyFavorite;
+            $property_favorite->username = $user->username;
+            $property_favorite->property_id = $id;
+            $property_favorite->save();
+            return 'added';
+        } else {
+            $favorite2 = PropertyFavorite::where('property_id', $id)->where('username', $user->username);
+            $favorite2->delete();
+            if($r){
+                return back();
+            }
+            return 'removed';
+        }
     }
 }

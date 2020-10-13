@@ -50,7 +50,7 @@
             @endif
             <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fab fa-whatsapp"></i></span>
+                    <span class="input-group-text"><i class="fa fas fa-phone-alt"></i></span>
                 </div>
                 <input type="number" min="0" step="1" name="handphone_number" id="handphone_number" class="form-control form-control-alternative @error('handphone_number') is-invalid @enderror" placeholder="Nomor Handphone" value="{{ $profile->handphone_number }}" required>
                 @error('handphone_number')
@@ -89,15 +89,22 @@
                     <span class="input-group-text"><i class="fa far fa-home"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span>
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="address_provinsi">Provinsi</label>
                     <select name="address_provinsi" id="address_provinsi" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="address_kabupaten">Kabupaten</label>
                     <select name="address_kabupaten" id="address_kabupaten" class="form-control select2" required></select>
                 </div>
-                <div class="col-sm-12 col-md-6 mb-3">
+                <div class="input-group-prepend col-md-1">
+                    <!-- <span class="input-group-text"><i class="fa far fa-home"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
+                </div>
+                <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="address_kecamatan">Kecamatan</label>
                     <select name="address_kecamatan" id="address_kecamatan" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="address_kelurahan">Kelurahan</label>
                     <select name="address_kelurahan" id="address_kelurahan" class="form-control select2" required></select>
                 </div>
             </div>
@@ -120,15 +127,22 @@
                     <span class="input-group-text"><i class="fa far fa-building"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span>
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="company_provinsi">Provinsi</label>
                     <select name="company_provinsi" id="company_provinsi" class="form-control select2"></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="company_kabupaten">Kabupaten</label>
                     <select name="company_kabupaten" id="company_kabupaten" class="form-control select2"></select>
                 </div>
-                <div class="col-sm-12 col-md-6 mb-3">
+                <div class="input-group-prepend col-md-1">
+                    <!-- <span class="input-group-text"><i class="fa far fa-building"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
+                </div>
+                <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="company_kecamatan">Kecamatan</label>
                     <select name="company_kecamatan" id="company_kecamatan" class="form-control select2"></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="company_kelurahan">Kelurahan</label>
                     <select name="company_kelurahan" id="company_kelurahan" class="form-control select2"></select>
                 </div>
             </div>
@@ -179,16 +193,23 @@
                     <span class="input-group-text"><i class="fa far fa-user"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span>
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
-                    <select name="spesialis_provinsi" id="create_profile_spesialis_provinsi" class="form-control select2" required></select>
+                    <label for="spesialis_provinsi">Provinsi</label>
+                    <select name="spesialis_provinsi" id="spesialis_provinsi" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
-                    <select name="spesialis_kabupaten" id="create_profile_spesialis_kabupaten" class="form-control select2" required></select>
+                    <label for="spesialis_kabupaten">Kabupaten</label>
+                    <select name="spesialis_kabupaten" id="spesialis_kabupaten" class="form-control select2" required></select>
+                </div>
+                <div class="input-group-prepend col-md-1">
+                    <!-- <span class="input-group-text"><i class="fa far fa-user"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
+                </div>
+                <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="spesialis_kecamatan">Kecamatan</label>
+                    <select name="spesialis_kecamatan" id="spesialis_kecamatan" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
-                    <select name="spesialis_kecamatan" id="create_profile_spesialis_kecamatan" class="form-control select2" required></select>
-                </div>
-                <div class="col-sm-12 col-md-6 mb-3">
-                    <select name="spesialis_kelurahan" id="create_profile_spesialis_kelurahan" class="form-control select2" required></select>
+                    <label for="spesialis_kelurahan">Kelurahan</label>
+                    <select name="spesialis_kelurahan" id="spesialis_kelurahan" class="form-control select2" required></select>
                 </div>
             </div>
 
@@ -262,6 +283,173 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script>
 function widgetlokasi(SelectorProvinsi, SelectorKabupaten, SelectorKecamatan, SelectorKelurahan, URL=false){
+    if(URL==false){
+        URL = 'http://127.0.0.1:8000/api/lokasi/';
+    }
+
+    var SelectorProvinsi = $('#'+SelectorProvinsi);
+    var SelectorKabupaten = $('#'+SelectorKabupaten);
+    var SelectorKecamatan = $('#'+SelectorKecamatan);
+    var SelectorKelurahan = $('#'+SelectorKelurahan);
+
+    var html_provinsi = '';
+    $.ajax({
+        url: URL+'provinsi',
+        method : 'GET',
+        success : function(response){
+            $.each(response, function(index, value){
+                if(value.kode=="{{ substr($profile->address_location,0,2) }}"){
+                    html_provinsi += '<option value="'+value.kode+'" selected>'+value.wilayah+'</option>';
+                } else {
+                    html_provinsi += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                }
+            });
+            SelectorProvinsi.html(html_provinsi);
+            var html_kabupaten = '';
+            var provinsi = SelectorProvinsi.val();
+            $.ajax({
+                url: URL+'kabupaten',
+                data: {provinsi : provinsi},
+                method : 'GET',
+                success : function(response){
+                    $.each(response, function(index, value){
+                        if(value.kode=="{{ substr($profile->address_location,0,5) }}"){
+                            html_kabupaten += '<option value="'+value.kode+'" selected>'+value.wilayah+'</option>';
+                        } else {
+                            html_kabupaten += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                        }
+                    });
+                    SelectorKabupaten.html(html_kabupaten);
+                    var html_kecamatan = '';
+                    var kabupaten = SelectorKabupaten.val();
+                    $.ajax({
+                        url: URL+'kecamatan',
+                        data: {kabupaten : kabupaten},
+                        method : 'GET',
+                        success : function(response){
+                            $.each(response, function(index, value){
+                                if(value.kode=="{{ substr($profile->address_location,0,8) }}"){
+                                    html_kecamatan += '<option value="'+value.kode+'" selected>'+value.wilayah+'</option>';
+                                } else {
+                                    html_kecamatan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                                }
+                            });
+                            SelectorKecamatan.html(html_kecamatan);
+                            var html_kelurahan = '';
+                            var kecamatan = SelectorKecamatan.val();
+                            $.ajax({
+                                url: URL+'kelurahan',
+                                data: {kecamatan : kecamatan},
+                                method : 'GET',
+                                success : function(response){
+                                    $.each(response, function(index, value){
+                                        if(value.kode=="{{ substr($profile->address_location,0,13) }}"){
+                                            html_kelurahan += '<option value="'+value.kode+'" selected>'+value.wilayah+'</option>';
+                                        } else {
+                                            html_kelurahan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                                        }
+                                    });
+                                    SelectorKelurahan.html(html_kelurahan);
+                                },
+                            });
+                        },
+                    });
+                },
+            });
+        },
+    });
+
+    SelectorProvinsi.on('change', function(){
+        var html_kabupaten = '';
+        var provinsi = SelectorProvinsi.val();
+        $.ajax({
+            url: URL+'kabupaten',
+            data: {provinsi : provinsi},
+            method : 'GET',
+            success : function(response){
+                $.each(response, function(index, value){
+                    html_kabupaten += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                });
+                SelectorKabupaten.html(html_kabupaten);
+                var html_kecamatan = '';
+                var kabupaten = SelectorKabupaten.val();
+                $.ajax({
+                    url: URL+'kecamatan',
+                    data: {kabupaten : kabupaten},
+                    method : 'GET',
+                    success : function(response){
+                        $.each(response, function(index, value){
+                            html_kecamatan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                        });
+                        SelectorKecamatan.html(html_kecamatan);
+                        var html_kelurahan = '';
+                        var kecamatan = SelectorKecamatan.val();
+                        $.ajax({
+                            url: URL+'kelurahan',
+                            data: {kecamatan : kecamatan},
+                            method : 'GET',
+                            success : function(response){
+                                $.each(response, function(index, value){
+                                    html_kelurahan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                                });
+                                SelectorKelurahan.html(html_kelurahan);
+                            },
+                        });
+                    },
+                });
+            },
+        });
+    });
+
+    SelectorKabupaten.on('change', function(){
+        var html_kecamatan = '';
+        var kabupaten = SelectorKabupaten.val();
+        $.ajax({
+            url: URL+'kecamatan',
+            data: {kabupaten : kabupaten},
+            method : 'GET',
+            success : function(response){
+                $.each(response, function(index, value){
+                    html_kecamatan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                });
+                SelectorKecamatan.html(html_kecamatan);
+                var html_kelurahan = '';
+                var kecamatan = SelectorKecamatan.val();
+                $.ajax({
+                    url: URL+'kelurahan',
+                    data: {kecamatan : kecamatan},
+                    method : 'GET',
+                    success : function(response){
+                        $.each(response, function(index, value){
+                            html_kelurahan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                        });
+                        SelectorKelurahan.html(html_kelurahan);
+                    },
+                });
+            },
+        });
+    });
+
+    SelectorKecamatan.on('change', function(){
+        var html_kelurahan = '';
+        var kecamatan = SelectorKecamatan.val();
+        $.ajax({
+            url: URL+'kelurahan',
+            data: {kecamatan : kecamatan},
+            method : 'GET',
+            success : function(response){
+                $.each(response, function(index, value){
+                    html_kelurahan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                });
+                SelectorKelurahan.html(html_kelurahan);
+            },
+        });
+    });
+}
+</script>
+
+<script>
+function widgetlokasi2(SelectorProvinsi, SelectorKabupaten, SelectorKecamatan, SelectorKelurahan, URL=false){
     if(URL==false){
         URL = 'http://127.0.0.1:8000/api/lokasi/';
     }
@@ -426,11 +614,180 @@ function widgetlokasi(SelectorProvinsi, SelectorKabupaten, SelectorKecamatan, Se
     });
 }
 </script>
+
+<script>
+function widgetlokasi3(SelectorProvinsi, SelectorKabupaten, SelectorKecamatan, SelectorKelurahan, URL=false){
+    if(URL==false){
+        URL = 'http://127.0.0.1:8000/api/lokasi/';
+    }
+
+    var SelectorProvinsi = $('#'+SelectorProvinsi);
+    var SelectorKabupaten = $('#'+SelectorKabupaten);
+    var SelectorKecamatan = $('#'+SelectorKecamatan);
+    var SelectorKelurahan = $('#'+SelectorKelurahan);
+
+    var html_provinsi = '';
+    $.ajax({
+        url: URL+'provinsi',
+        method : 'GET',
+        success : function(response){
+            $.each(response, function(index, value){
+                if(value.kode=="{{ substr($profile->spesialis_area,0,2) }}"){
+                    html_provinsi += '<option value="'+value.kode+'" selected>'+value.wilayah+'</option>';
+                } else {
+                    html_provinsi += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                }
+            });
+            SelectorProvinsi.html(html_provinsi);
+            var html_kabupaten = '';
+            var provinsi = SelectorProvinsi.val();
+            $.ajax({
+                url: URL+'kabupaten',
+                data: {provinsi : provinsi},
+                method : 'GET',
+                success : function(response){
+                    $.each(response, function(index, value){
+                        if(value.kode=="{{ substr($profile->spesialis_area,0,5) }}"){
+                            html_kabupaten += '<option value="'+value.kode+'" selected>'+value.wilayah+'</option>';
+                        } else {
+                            html_kabupaten += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                        }
+                    });
+                    SelectorKabupaten.html(html_kabupaten);
+                    var html_kecamatan = '';
+                    var kabupaten = SelectorKabupaten.val();
+                    $.ajax({
+                        url: URL+'kecamatan',
+                        data: {kabupaten : kabupaten},
+                        method : 'GET',
+                        success : function(response){
+                            $.each(response, function(index, value){
+                                if(value.kode=="{{ substr($profile->spesialis_area,0,8) }}"){
+                                    html_kecamatan += '<option value="'+value.kode+'" selected>'+value.wilayah+'</option>';
+                                } else {
+                                    html_kecamatan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                                }
+                            });
+                            SelectorKecamatan.html(html_kecamatan);
+                            var html_kelurahan = '';
+                            var kecamatan = SelectorKecamatan.val();
+                            $.ajax({
+                                url: URL+'kelurahan',
+                                data: {kecamatan : kecamatan},
+                                method : 'GET',
+                                success : function(response){
+                                    $.each(response, function(index, value){
+                                        if(value.kode=="{{ substr($profile->spesialis_area,0,13) }}"){
+                                            html_kelurahan += '<option value="'+value.kode+'" selected>'+value.wilayah+'</option>';
+                                        } else {
+                                            html_kelurahan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                                        }
+                                    });
+                                    SelectorKelurahan.html(html_kelurahan);
+                                },
+                            });
+                        },
+                    });
+                },
+            });
+        },
+    });
+
+    SelectorProvinsi.on('change', function(){
+        var html_kabupaten = '';
+        var provinsi = SelectorProvinsi.val();
+        $.ajax({
+            url: URL+'kabupaten',
+            data: {provinsi : provinsi},
+            method : 'GET',
+            success : function(response){
+                $.each(response, function(index, value){
+                    html_kabupaten += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                });
+                SelectorKabupaten.html(html_kabupaten);
+                var html_kecamatan = '';
+                var kabupaten = SelectorKabupaten.val();
+                $.ajax({
+                    url: URL+'kecamatan',
+                    data: {kabupaten : kabupaten},
+                    method : 'GET',
+                    success : function(response){
+                        $.each(response, function(index, value){
+                            html_kecamatan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                        });
+                        SelectorKecamatan.html(html_kecamatan);
+                        var html_kelurahan = '';
+                        var kecamatan = SelectorKecamatan.val();
+                        $.ajax({
+                            url: URL+'kelurahan',
+                            data: {kecamatan : kecamatan},
+                            method : 'GET',
+                            success : function(response){
+                                $.each(response, function(index, value){
+                                    html_kelurahan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                                });
+                                SelectorKelurahan.html(html_kelurahan);
+                            },
+                        });
+                    },
+                });
+            },
+        });
+    });
+
+    SelectorKabupaten.on('change', function(){
+        var html_kecamatan = '';
+        var kabupaten = SelectorKabupaten.val();
+        $.ajax({
+            url: URL+'kecamatan',
+            data: {kabupaten : kabupaten},
+            method : 'GET',
+            success : function(response){
+                $.each(response, function(index, value){
+                    html_kecamatan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                });
+                SelectorKecamatan.html(html_kecamatan);
+                var html_kelurahan = '';
+                var kecamatan = SelectorKecamatan.val();
+                $.ajax({
+                    url: URL+'kelurahan',
+                    data: {kecamatan : kecamatan},
+                    method : 'GET',
+                    success : function(response){
+                        $.each(response, function(index, value){
+                            html_kelurahan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                        });
+                        SelectorKelurahan.html(html_kelurahan);
+                    },
+                });
+            },
+        });
+    });
+
+    SelectorKecamatan.on('change', function(){
+        var html_kelurahan = '';
+        var kecamatan = SelectorKecamatan.val();
+        $.ajax({
+            url: URL+'kelurahan',
+            data: {kecamatan : kecamatan},
+            method : 'GET',
+            success : function(response){
+                $.each(response, function(index, value){
+                    html_kelurahan += '<option value="'+value.kode+'">'+value.wilayah+'</option>';
+                });
+                SelectorKelurahan.html(html_kelurahan);
+            },
+        });
+    });
+}
+</script>
+
 <script>
     $(document).ready(function(){
         $('.select2').select2();
         widgetlokasi('address_provinsi', 'address_kabupaten', 'address_kecamatan', 'address_kelurahan');
-        widgetlokasi('company_provinsi', 'company_kabupaten', 'company_kecamatan', 'company_kelurahan');
+        widgetlokasi2('company_provinsi', 'company_kabupaten', 'company_kecamatan', 'company_kelurahan');
+        widgetlokasi3('spesialis_provinsi', 'spesialis_kabupaten', 'spesialis_kecamatan', 'spesialis_kelurahan');
     });
 
     function previewImage(input) {

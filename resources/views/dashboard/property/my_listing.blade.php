@@ -34,7 +34,7 @@
                         <td>
                             <a href="{{ url('property/'.$prop->property_slug) }}" target="_blank" class="btn btn-info btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Property"><i class="far fa-info"></i></a>
                             <a href="{{ url('dashboard/property/listing/edit/'.$prop->id) }}" target="_blank" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Detail"><i class="far fa-edit"></i></a>
-                            <a href="{{ url('dashboard/property/listing/edit/'.$prop->id) }}" target="_blank" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Arsipkan"><i class="far fa-cabinet-filing"></i></a>
+                            <a href="{{ url('dashboard/property/listing/archive/'.$prop->id) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Arsipkan"><i class="far fa-cabinet-filing"></i></a>
                         </td>
                     </tr>
                     @endforeach

@@ -7,7 +7,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 use App\Models\User;
-use App\Models\Status_Delete;
+use App\Models\StatusDelete;
 
 class RoleController extends Controller
 {

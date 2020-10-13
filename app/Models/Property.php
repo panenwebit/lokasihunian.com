@@ -40,15 +40,15 @@ class Property extends Model
     }
 
     public function propertyImage(){
-        return $this->hasMany('App\Models\Property_Image', 'property_id', 'id');
+        return $this->hasMany('App\Models\PropertyImage', 'property_id', 'id');
     }
 
     public function propertyFavorites(){
-        return $this->hasMany('App\Models\Property_Favorite', 'property_id', 'id');
+        return $this->hasMany('App\Models\PropertyFavorite', 'property_id', 'id');
     }
 
     public function StatusDeleted(){
-        return $this->hasOne('App\Models\Status_Delete', 'table_id', 'id');
+        return $this->hasOne('App\Models\StatusDelete', 'table_id', 'id');
     }
 
     public function propertyLocation() {

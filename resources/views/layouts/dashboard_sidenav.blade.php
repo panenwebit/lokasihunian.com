@@ -39,32 +39,39 @@
                                     <a href="{{ url('dashboard/property/listing/create') }}" class="nav-link">Tambah Baru</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('dashboard/property/my_listing') }}" class="nav-link">Semua</a>
+                                    <a href="{{ url('dashboard/property/my_listing/Live') }}" class="nav-link">Properti Tayang</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('dashboard/property/my_listing/Live') }}" class="nav-link">Tayang</a>
+                                    <a href="{{ url('dashboard/property/my_listing/Pending') }}" class="nav-link">Properti Pending</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ url('dashboard/property/my_listing/Pending') }}" class="nav-link">Pending</a>
-                                </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a href="{{ url('dashboard/property/my_listing/Expired') }}" class="nav-link">Kadaluarsa</a>
-                                </li>
-                                <li class="nav-item">
+                                </li> -->
+                                <!-- <li class="nav-item">
                                     <a href="{{ url('dashboard/property/my_listing/Sold') }}" class="nav-link">Terjual</a>
+                                </li> -->
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/property/my_listing/Archived') }}" class="nav-link">Properti di-Arsipkan</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('dashboard/property/my_listing/Archived') }}" class="nav-link">di-Arsipkan</a>
+                                    <a href="{{ url('dashboard/property/my_listing') }}" class="nav-link">Tampilkan Semua</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ url('dashboard/property/my_favorite') }}">
                             <span class="nav-link-text">Properti Favorit</span>
                             <i class="fas fa-stars text-yellow ml-auto text-left"></i>
                         </a>
                     </li>
+                    
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="{{ url('dashboard/property/my_favorite') }}">
+                            <span class="nav-link-text">Hubungi Kami</span>
+                            <i class="far fa-envelope text-success ml-auto text-left"></i>
+                        </a>
+                    </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span class="nav-link-text">Keanggotaan</span>
@@ -154,7 +161,7 @@
                                     <a href="{{ url('dashboard/faq/create') }}" class="nav-link">Tambah Baru</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('dashboard/faq/index') }}" class="nav-link">Semua</a>
+                                    <a href="{{ url('dashboard/faq/index') }}" class="nav-link">FAQ</a>
                                 </li>
                             </ul>
                         </div>
@@ -170,7 +177,7 @@
                                     <a href="{{ url('dashboard/top_location/create') }}" class="nav-link">Tambah Baru</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url('dashboard/top_location/index') }}" class="nav-link">Semua</a>
+                                    <a href="{{ url('dashboard/top_location/index') }}" class="nav-link">Lokasi Strategis</a>
                                 </li>
                             </ul>
                         </div>

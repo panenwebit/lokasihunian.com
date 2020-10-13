@@ -36,11 +36,16 @@ Route::get('hubungi_kami', [PublicController::class, 'hubungiKami']);
 Route::get('faq', [PublicController::class, 'faq']);
 Route::get('simulasi_kredit', [PublicController::class, 'simulasiKPR']);
 
+Route::prefix('public')->group(function(){
+    Route::post('/hubungi_kami', [PublicController::class, 'newPublicMessage']);
+});
+
 Route::prefix('property')->group(function(){
     Route::get('/', [PropertyController::class, 'propertyList']);
     Route::get('/{slug}', [PropertyController::class, 'propertyDetail']);
 
-    Route::post('/toFavorites/{id}', [PropertyController::class, 'toFavorites']);
+    Route::get('/toFavorites/{id}', [PropertyController::class, 'toFavorites']);
+    Route::get('/toFavorites/{id}/{r}', [PropertyController::class, 'toFavorites']);
 });
 
 Route::prefix('profile')->group(function(){
@@ -89,10 +94,13 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
         Route::post('/listing', [PropertyController::class, 'store']);
         Route::post('/listing/images', [PropertyController::class, 'storeImages']);
         Route::get('/listing/edit/{id}', [PropertyController::class, 'edit']);
+        Route::get('/listing/archive/{id}', [PropertyController::class, 'archive']);
         Route::patch('/listing', [PropertyController::class, 'update']);
         
         Route::get('/my_listing/{status}', [PropertyController::class, 'myListing']);
         Route::get('/my_listing', [PropertyController::class, 'myListing']);
+
+        Route::get('/my_favorite', [PropertyController::class, 'myFavorite']);
     });
 
     Route::prefix('profile')->group(function(){
@@ -143,12 +151,16 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
         Route::get('/delete/{id}', [PublicController::class, 'deleteTop']);
     });
 
+    Route::prefix('public')->group(function(){
+        Route::get('/hubungi_kami', [PublicController::class, 'indexPublicMessage']);
+    });
+
     Route::get('/bantu_daftar', [UserController::class, 'bantuDaftarForm']);
     Route::post('/bantu_daftar', [UserController::class, 'bantuDaftar']);
 });
 
 Route::get('test', function(){
-    return "test";
+    return auth()->user();
 });
 
 Route::get('test_map', function() {

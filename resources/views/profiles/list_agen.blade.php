@@ -31,7 +31,7 @@
 <br>
 <div class="container-fluid">
     <div class="row justify-content-center">
-        @foreach($agen as $ag)
+        @forelse($agen as $ag)
         <div class="col-sm-6 col-md-3">
             <div class="card shadow">
                 <div class="card-body">
@@ -54,7 +54,9 @@
                 </div>
             </div>
         </div>
-        @endforeach
+        @empty
+            <p class="text-disabled display-4">Oops! Agen yang kamu cari belum tersedia.</p>
+        @endforelse
     </div>
     <div class="row justify-content-center">
         @if($hasPaginator)

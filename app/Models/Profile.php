@@ -50,7 +50,7 @@ class Profile extends Model
     }
 
     public function StatusDeleted(){
-        return $this->hasOne('App\Models\Status_Delete', 'username', 'username');
+        return $this->hasOne('App\Models\StatusDelete', 'username', 'username');
     }
 
     public function addressLocation() {

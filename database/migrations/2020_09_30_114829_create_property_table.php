@@ -25,7 +25,7 @@ class CreatePropertyTable extends Migration
             $table->text('property_description');
             $table->enum('property_term', ['Beli', 'Sewa']);
             $table->enum('property_condition', ['Baru', 'Bekas']);
-            $table->enum('property_type', ['Apartemen', 'Rumah', 'Tanah', 'Ruko', 'Vila']);
+            $table->enum('property_type', ['Apartemen', 'Rumah', 'Tanah', 'Ruko', 'Vila', 'Gudang', 'Pabrik', 'Kantor', 'Toko', 'Stand', 'Gedung', 'Hotel']);
             $table->bigInteger('property_price');
             $table->text('property_address');
             $table->string('property_location', 13);

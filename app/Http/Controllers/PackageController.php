@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Package;
 use App\Models\Membership;
-use App\Models\Status_Delete;
+use App\Models\StatusDelete;
 
 class PackageController extends Controller
 {
@@ -57,7 +57,7 @@ class PackageController extends Controller
                     ->where('package_id', $id)
                     ->update(['package_id' => 1]);
         
-        $status_delete = Status_Delete::create([
+        $StatusDelete = StatusDelete::create([
             'table_name'    => 'Packages',
             'table_id'      => $id,
             'status'        => 'deleted',

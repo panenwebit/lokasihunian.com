@@ -57,7 +57,7 @@ class RolesSeeder extends Seeder
         ]);
 
         DB::table('roles')->insert([
-            'name' => 'Public',
+            'name' => 'Sales',
             'guard_name' => 'web',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

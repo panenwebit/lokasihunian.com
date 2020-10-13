@@ -97,8 +97,8 @@ class UsersSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'username' => 'pub1',
-            'email' => 'pub1@lokasihunian.com',
+            'username' => 'sales1',
+            'email' => 'sales1@lokasihunian.com',
             'email_verified_at' => date('Y-m-d H:i:s'),
             'password' => Hash::make('pub01'),
             'created_at' => date('Y-m-d H:i:s'),
@@ -329,7 +329,7 @@ class UsersSeeder extends Seeder
         ]);
 
         DB::table('profile')->insert([
-            'username' => 'pub1',
+            'username' => 'sales1',
             'fullname' => 'Publik 1',
             'wa_number' => '085104325201',
             'handphone_number' => '085104325201',
@@ -430,7 +430,7 @@ class UsersSeeder extends Seeder
         ]);
 
         DB::table('model_has_roles')->insert([
-            'model_username' => 'pub1',
+            'model_username' => 'sales1',
             'role_id' => '7',
             'model_type' => 'App\Models\User',
         ]);
@@ -439,6 +439,42 @@ class UsersSeeder extends Seeder
             'model_username' => 'pub2',
             'role_id' => '7',
             'model_type' => 'App\Models\User',
+        ]);
+
+        //membership
+        DB::table('memberships')->insert([
+            'username' => 'developera',
+            'package_id' => '1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('memberships')->insert([
+            'username' => 'developerb',
+            'package_id' => '1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('memberships')->insert([
+            'username' => 'agen1',
+            'package_id' => '1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('memberships')->insert([
+            'username' => 'agen2',
+            'package_id' => '1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        DB::table('memberships')->insert([
+            'username' => 'agen3',
+            'package_id' => '1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ]);
     }
 }

@@ -42,6 +42,13 @@
                             <option value="Tanah" <?php if($property->property_type=="Tanah") { echo 'selected'; } ?>>Tanah</option>
                             <option value="Ruko" <?php if($property->property_type=="Ruko") { echo 'selected'; } ?>>Ruko</option>
                             <option value="Vila" <?php if($property->property_type=="Vila") { echo 'selected'; } ?>>Vila</option>
+                            <option value="Gudang" <?php if($property->property_type=="Gedung") { echo 'selected'; } ?>>Gudang</option>
+                            <option value="Pabrik" <?php if($property->property_type=="Pabrik") { echo 'selected'; } ?>>Pabrik</option>
+                            <option value="Kantor" <?php if($property->property_type=="Kantor") { echo 'selected'; } ?>>Kantor</option>
+                            <option value="Toko" <?php if($property->property_type=="Toko") { echo 'selected'; } ?>>Toko</option>
+                            <option value="Stand" <?php if($property->property_type=="Stand") { echo 'selected'; } ?>>Stand</option>
+                            <option value="Gedung" <?php if($property->property_type=="Gedung") { echo 'selected'; } ?>>Gedung</option>
+                            <option value="Hotel" <?php if($property->property_type=="Hotel") { echo 'selected'; } ?>>Hotel</option>
                         </select>
                     </div>
                 </div>
@@ -131,15 +138,22 @@
                     <span class="input-group-text"><i class="fa far fa-home"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span>
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="provinsi">Provinsi</label>
                     <select name="property_provinsi" id="property_provinsi" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="kabupaten">Kabupaten</label>
                     <select name="property_kabupaten" id="property_kabupaten" class="form-control select2" required></select>
                 </div>
-                <div class="col-sm-12 col-md-6 mb-3">
+                <div class="input-group-prepend col-md-1">
+                    <!-- <span class="input-group-text"><i class="fa far fa-home"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
+                </div>
+                <div class="col-sm-12 col-md-5 mb-3">
+                    <label for="kecamatan">Kecamatan</label>
                     <select name="property_kecamatan" id="property_kecamatan" class="form-control select2" required></select>
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
+                    <label for="kelurahan">Kelurahan</label>
                     <select name="property_kelurahan" id="property_kelurahan" class="form-control select2" required></select>
                 </div>
             </div>
