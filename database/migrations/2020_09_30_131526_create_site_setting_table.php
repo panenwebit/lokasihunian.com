@@ -14,17 +14,18 @@ class CreateSiteSettingTable extends Migration
     public function up()
     {
         Schema::create('site_setting', function (Blueprint $table) {
-            $table->text('site_address');
-            $table->string('site_phone_number', 15);
-            $table->string('site_wa_number', 15);
-            $table->text('site_about_us');
+            $table->id();
+            $table->text('address');
+            $table->string('phone_number', 15);
+            $table->string('wa_number', 15);
+            $table->text('about_us');
+            $table->text('privacy_policy');
+            $table->text('tnc');
             $table->string('web_address');
             $table->string('fb_profile');
             $table->string('twitter_profile');
             $table->string('ig_profile');
             $table->string('yt_profile');
-            $table->string('site_latitude', 20);
-            $table->string('site_longitude', 20);
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class CreateTopPropertyTable extends Migration
     {
         Schema::create('top_property', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('property_id');
+            $table->unsignedBigInteger('property_id')->unique();
             $table->foreign('property_id')
                 ->references('id')
                 ->on('property')

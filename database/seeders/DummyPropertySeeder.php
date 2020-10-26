@@ -16,12 +16,12 @@ class DummyPropertySeeder extends Seeder
      */
     public function run()
     {
-        $seed = 50;
+        $seed = 100;
         $username = array('agen1', 'agen2', 'agen3', 'developera', 'developerb');
         $term = array('Beli', 'Sewa');
         $condition = array('Baru', 'Bekas');
-        $type = array('Apartemen', 'Rumah', 'Tanah', 'Ruko', 'Vila');
-        $status = array('Pending', 'Live', 'Expired', 'Sold', 'Archived');
+        $type = array('Apartemen', 'Rumah', 'Tanah', 'Ruko', 'Vila', 'Gudang', 'Pabrik', 'Kantor', 'Toko', 'Stand', 'Gedung', 'Hotel');
+        $status = array('Pending', 'Live', 'Archived');
         $location = array('31.71.03.1006', '35.78.08.1004', '32.73.13.1002', '32.71.05.1007', '34.04.13.2005');
 
         $images = array(
@@ -44,7 +44,7 @@ class DummyPropertySeeder extends Seeder
             $property_id = DB::table('property')->insertGetId([
                 'username' => Arr::random($username),
                 'property_title' => 'Property Mewah '.$i,
-                'property_description' => file_get_contents('http://loripsum.net/api/1/plaintext'),
+                'property_description' => 'Deskripsi properti mewah ke-'.$i,
                 'property_term' => Arr::random($term),
                 'property_condition' => Arr::random($condition),
                 'property_type' => Arr::random($type),
@@ -74,6 +74,8 @@ class DummyPropertySeeder extends Seeder
             }
 
             $this->command->info('Property '.$i.'/'.$seed.' seeded!');
+
+            sleep(1);
         }
     }
 }

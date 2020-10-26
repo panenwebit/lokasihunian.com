@@ -8,11 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Package;
 use App\Models\Membership;
+use App\Models\UserActivity;
 use App\Models\StatusDelete;
 
 class PackageController extends Controller
 {
     public function index(){
+        UserActivity::create([
+            'do'    => 'List-Paket',
+            'description'      => 'Melihat daftar paket yang tersedia',
+            'route'        => '/dashboard/package',
+            'username'      =>auth()->user()->username
+        ]);
+        
         $packages = Package::all();
         // dd($packages);
         return view('dashboard.package.package', ['packages'=>$packages]);
@@ -23,13 +31,28 @@ class PackageController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'name' => ['required', 'unique:packages'],
+            'price' => ['required', 'numeric'],
+            'limit_listing' => ['required', 'numeric'],
+            'limit_unggulan' => ['required', 'numeric'],
+            'limit_photo' => ['required', 'numeric'],
+        ]);
+
         $package = new Package;
-        $package->name                      = Str::upper($request->nama_paket);
-        $package->price                     = $request->harga_paket;
+        $package->name                      = Str::upper($request->name);
+        $package->price                     = $request->price;
         $package->limit_listing             = $request->limit_listing;
         $package->limit_unggulan            = $request->limit_unggulan;
         $package->limit_photo_per_listing   = $request->limit_photo;
         $package->save();
+
+        UserActivity::create([
+            'do'    => 'Tambah-Paket',
+            'description'      => 'Menambahkan paket baru',
+            'route'        => '/dashboard/package/create',
+            'username'      =>auth()->user()->username
+        ]);
 
         return redirect('dashboard/package');
     }
@@ -40,13 +63,28 @@ class PackageController extends Controller
     }
 
     public function update(Request $request){
+        $request->validate([
+            'name' => ['required'],
+            'price' => ['required', 'numeric'],
+            'limit_listing' => ['required', 'numeric'],
+            'limit_unggulan' => ['required', 'numeric'],
+            'limit_photo' => ['required', 'numeric'],
+        ]);
+
         $package = Package::find($request->id);
-        $package->name                      = Str::upper($request->nama_paket);
-        $package->price                     = $request->harga_paket;
+        $package->name                      = Str::upper($request->name);
+        $package->price                     = $request->price;
         $package->limit_listing             = $request->limit_listing;
         $package->limit_unggulan            = $request->limit_unggulan;
         $package->limit_photo_per_listing   = $request->limit_photo;
         $package->save();
+
+        UserActivity::create([
+            'do'    => 'Edit-Paket',
+            'description'      => 'Memperbarui paket',
+            'route'        => '/dashboard/package/edit/'.$request->id,
+            'username'      =>auth()->user()->username
+        ]);
 
         return redirect('dashboard/package');
     }
@@ -64,7 +102,14 @@ class PackageController extends Controller
             'username'      =>auth()->user()->username
         ]);
 
-        // $package->delete();
+        $package->delete();
+
+        UserActivity::create([
+            'do'    => 'Delete-Paket',
+            'description'      => 'Menghapus Paket',
+            'route'        => '/dashboard/package/delete'.$id,
+            'username'      =>auth()->user()->username
+        ]);
         return redirect('dashboard/package');
     }
 }

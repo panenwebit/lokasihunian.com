@@ -28,11 +28,15 @@
                             <i class="far fa-tachometer-fastest text-primary ml-auto text-left"></i>
                         </a>
                     </li>
+
+                    @can('Property-Saya')
                     <li class="nav-item">
+                        @can('Tambah-Property')
                         <a class="nav-link" href="#navbar-properti" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-properti">
                             <span class="nav-link-text">Properti Saya</span>
                             <i class="far fa-house text-orange ml-auto"></i>
                         </a>
+                        @endcan
                         <div class="collapse" id="navbar-properti">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
@@ -59,49 +63,28 @@
                             </ul>
                         </div>
                     </li>
+                    @endcan
+
+                    @can('Property-Favorite')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('dashboard/property/my_favorite') }}">
                             <span class="nav-link-text">Properti Favorit</span>
                             <i class="fas fa-stars text-yellow ml-auto text-left"></i>
                         </a>
                     </li>
+                    @endcan
                     
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="{{ url('dashboard/property/my_favorite') }}">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('dashboard/public/hubungi_kami') }}">
                             <span class="nav-link-text">Hubungi Kami</span>
                             <i class="far fa-envelope text-success ml-auto text-left"></i>
                         </a>
-                    </li> -->
+                    </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span class="nav-link-text">Keanggotaan</span>
                             <i class="fas fa-id-card text-primary ml-auto text-left"></i>
                         </a>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#navbar-artikel" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-artikel">
-                            <i class="ni ni-ungroup text-orange"></i>
-                            <span class="nav-link-text">Artikel Saya</span>
-                        </a>
-                        <div class="collapse" id="navbar-artikel">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Semua</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Tayang</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Pending</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Kadaluarsa</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Draft</a>
-                                </li>
-                            </ul>
-                        </div>
                     </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="#navbar-invoice" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-invoice">
@@ -131,6 +114,8 @@
                             <i class="fas fa-hands-helping text-default ml-auto text-left"></i>
                         </a>
                     </li> -->
+
+                    @canany(['Follow-UP-Saya', 'Data-Follow-UP'])
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-follow-up" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-follow-up">
                             <span class="nav-link-text">Data Follow UP</span>
@@ -138,18 +123,27 @@
                         </a>
                         <div class="collapse" id="navbar-follow-up">
                             <ul class="nav nav-sm flex-column">
+                                @can('Input-Follow-UP')
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/follow_up/create') }}" class="nav-link">INPUT Follow UP</a>
                                 </li>
+                                @endcan
+                                @can('Data-Follow-UP')
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/follow_up') }}" class="nav-link">DATA Follow UP</a>
                                 </li>
+                                @endcan
+                                @can('Follow-UP-Saya')
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/follow_up/my') }}" class="nav-link">Follow UP saya</a>
                                 </li>
+                                @endcan
                             </ul>
                         </div>
                     </li>
+                    @endcan
+
+                    @can('List-FAQ')
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-faq" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-faq">
                             <span class="nav-link-text">Faq</span>
@@ -157,15 +151,20 @@
                         </a>
                         <div class="collapse" id="navbar-faq">
                             <ul class="nav nav-sm flex-column">
+                                @can('Tambah-FAQ')
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/faq/create') }}" class="nav-link">Tambah Baru</a>
                                 </li>
+                                @endcan
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/faq/index') }}" class="nav-link">FAQ</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+                    @endcan
+
+                    @can('List-Lokasi-Strategis')
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-strategis" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-strategis">
                             <span class="nav-link-text">Lokasi Strategis</span>
@@ -173,15 +172,20 @@
                         </a>
                         <div class="collapse" id="navbar-strategis">
                             <ul class="nav nav-sm flex-column">
+                                @can('Tambah-Lokasi-Strategis')
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/top_location/create') }}" class="nav-link">Tambah Baru</a>
                                 </li>
+                                @endcan
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/top_location/index') }}" class="nav-link">Lokasi Strategis</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+                    @endcan
+
+                    @canany(['List-Users', 'List-Roles-Permissions'])
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-setting" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-setting">
                             <span class="nav-link-text">Setting</span>
@@ -189,22 +193,28 @@
                         </a>
                         <div class="collapse" id="navbar-setting">
                             <ul class="nav nav-sm flex-column">
+                                @can('List-Users')
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/setting/users') }}" class="nav-link">Users</a>
                                 </li>
-                            </ul>
-                            <ul class="nav nav-sm flex-column">
+                                @endcan
+                                @can('List-Roles-Permissions')
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/setting/roles') }}" class="nav-link">Roles & Permission</a>
                                 </li>
-                            </ul>
-                            <!-- <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
+                                @endcan
+                                <!-- <li class="nav-item">
                                     <a href="{{ url('dashboard/setting/permissions') }}" class="nav-link">Permissions</a>
+                                </li> -->
+                                <li class="nav-item">
+                                    <a href="{{ url('dashboard/setting/umum') }}" class="nav-link">Umum</a>
                                 </li>
-                            </ul> -->
+                            </ul>
                         </div>
                     </li>
+                    @endcan
+
+                    @can('List-Paket')
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-paket" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-paket">
                             <span class="nav-link-text">Paket</span>
@@ -212,15 +222,20 @@
                         </a>
                         <div class="collapse" id="navbar-paket">
                             <ul class="nav nav-sm flex-column">
+                                @can('Tambah-Paket')
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/package/create') }}" class="nav-link">Buat Paket</a>
                                 </li>
+                                @endcan
                                 <li class="nav-item">
                                     <a href="{{ url('dashboard/package') }}" class="nav-link">Paket</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+                    @endcan
+
+                    @can('Database-Export')
                     <li class="nav-item">
                         <a class="nav-link" href="#navbar-database" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-database">
                             <span class="nav-link-text">Database</span>
@@ -237,6 +252,7 @@
                             </ul>
                         </div>
                     </li>
+                    @endcan
                 </ul>
             </div>
         </div>

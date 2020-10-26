@@ -39,9 +39,9 @@
                 <li class="nav-item dropdown active">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown_lainnya" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lainnya</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown_lainnya">
-                        <a class="dropdown-item" href="{{ url('tentang_kami') }}">Tentang Kami</a>
+                        <a class="dropdown-item" href="{{ url('hubungi_kami') }}">Tentang Kami</a>
                         <a class="dropdown-item" href="{{ url('hubungi_kami') }}">Hubungi Kami</a>
-                        <a class="dropdown-item" href="{{ url('tanya_properti') }}">Tanya Properti</a>
+                        <!-- <a class="dropdown-item" href="{{ url('tanya_properti') }}">Tanya Properti</a> -->
                         <a class="dropdown-item" href="{{ url('simulasi_kredit') }}">Simulasi Kredit</a>
                     </div>
                 </li>
@@ -52,7 +52,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="media align-items-center">
-                                <span class="avatar avatar-sm rounded-circle">
+                                <span class="avatar avatar-sm rounded-circle" style="background-color:#fff;">
                                     <img alt="Image placeholder" src="{{ auth()->user()->profile->photo }}" />
                                 </span>
                                 <div class="media-body ml-2 d-none d-lg-block">
@@ -232,10 +232,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="reg_as" class="text-sm">&nbsp;&nbsp;&nbsp;&nbsp;Daftar sebagai</label>
                             <select name="reg_as" id="reg_as" class="form-control" required>
                                 <option value="Agen Independen">Agen Independen</option>
                                 <option value="Agen Perusahaan">Agen Perusahaan</option>
                                 <option value="Developer">Developer</option>
+                                <option value="Pemilik Properti">Pemilik Properti</option>
                             </select>
                         </div>
                         <div class="text-center">

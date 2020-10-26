@@ -16,16 +16,16 @@
             <img src="{{ auth()->user()->profile->photo }}" id="create_profile_user_avatar" alt="user_avatar" class="rounded-circle user_avatar" style="width:15rem;height:15rem;">
         </div>
         <div class="d-flex justify-content-center my-3">
-            <form action="{{ url('profile/image') }}" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center my-3">
+            <form action="{{ url('profile/image') }}" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center my-3" id="form-foto-profile">
                 @csrf
                 <label class="btn btn-default">
                     <input type="file" name="image_profile" id="image_profile" accept="image/jpeg, image/png" onchange="previewImage(this);">
                     Ganti Foto Profil
                 </label>
-                <button type="submit" class="btn btn-default" style="height:2.6rem;">Update Foto Profil</button>
+                <button type="submit" class="btn btn-default" style="height:2.6rem;" id="form-foto-profile-submit">Update Foto Profil</button>
             </form>
         </div>
-        <form action="{{ url('profile') }}" method="POST" id="form-update-profile">
+        <form action="{{ url('profile') }}" method="POST" id="form-create-profile">
             @csrf
             <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend">
@@ -43,8 +43,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fas fa-id-card"></i></span>
                 </div>
-                <input type="number" min="0" step="1" name="nomor_ktp" id="create_profile_nomor_ktp" class="form-control form-control-alternative @error('nomor_ktp') is-invalid @enderror" placeholder="Nomor KTP" value="{{ old('nomor_ktp') }}" required>
-                @error('nomor_ktp')
+                <input type="number" min="0" step="1" name="no_ktp" id="create_profile_nomor_ktp" class="form-control form-control-alternative @error('no_ktp') is-invalid @enderror" placeholder="Nomor KTP" value="{{ old('no_ktp') }}" required>
+                @error('no_ktp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -55,8 +55,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fas fa-id-card"></i></span>
                 </div>
-                <input type="number" min="0" step="1" name="nomor_npwp" id="create_profile_nomor_npwp" class="form-control form-control-alternative @error('nomor_npwp') is-invalid @enderror" placeholder="Nomor NPWP" value="{{ old('nomor_npwp') }}" required>
-                @error('nomor_npwp')
+                <input type="number" min="0" step="1" name="no_npwp" id="create_profile_nomor_npwp" class="form-control form-control-alternative @error('no_npwp') is-invalid @enderror" placeholder="Nomor NPWP" value="{{ old('no_npwp') }}" required>
+                @error('no_npwp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -91,11 +91,19 @@
                 </div>
                 <input type="email" name="email" id="create_profile_email" class="form-control form-control-alternative" placeholder="Email" value="   {{ auth()->user()->email }}" readonly required>
             </div>
+
+            <div class="input-group input-group-merge input-group-alternative my-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fas fa-smile-wink"></i></span>
+                </div>
+                <textarea type="text" name="about_me" id="create_profile_about_me" class="form-control form-control-alternative" placeholder="Tentang Saya" required cols="30" rows="3">{{ old('about_me') }}</textarea>
+            </div>
+
             <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa far fa-home"></i></span>
                 </div>&nbsp;
-                <textarea type="text" name="address" id="create_profile_address" class="form-control form-control-alternative" placeholder="Alamat" required cols="30" rows="3"></textarea>
+                <textarea type="text" name="address" id="create_profile_address" class="form-control form-control-alternative" placeholder="Alamat" required cols="30" rows="3">{{ old('address') }}</textarea>
             </div>
             <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend col-md-1">
@@ -121,13 +129,6 @@
                     <select name="address_kelurahan" id="create_profile_address_kelurahan" class="form-control select2" required></select>
                 </div>
             </div>
-
-            <div class="input-group input-group-merge input-group-alternative my-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fas fa-smile-wink"></i></span>
-                </div>
-                <textarea type="text" name="about_me" id="create_profile_about_me" class="form-control form-control-alternative" placeholder="Tentang Saya" required cols="30" rows="3">{{ old('about_me') }}</textarea>
-            </div>
             
             @if(auth()->user()->getRoleNames()[0] == 'Agen Perusahaan' || auth()->user()->getRoleNames()[0] == 'Developer')
             <div class="input-group input-group-merge input-group-alternative my-3">
@@ -140,7 +141,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fas fa-building"></i></span>
                 </div>&nbsp;
-                <textarea type="text" name="company_address" id="create_profile_company_address" class="form-control form-control-alternative" placeholder="Alamat Perusahaan" cols="30" rows="3" required></textarea>
+                <textarea type="text" name="company_address" id="create_profile_company_address" class="form-control form-control-alternative" placeholder="Alamat Perusahaan" cols="30" rows="3" required>{{ old('company_address') }}</textarea>
             </div>
             <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend col-md-1">
@@ -204,6 +205,48 @@
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" name="spesialis_property[]" value="Vila" class="custom-control-input" id="Vila">
                         <label class="custom-control-label" for="Vila">Vila</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Gudang" class="custom-control-input" id="Gudang">
+                        <label class="custom-control-label" for="Gudang">Gudang</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Pabrik" class="custom-control-input" id="Pabrik">
+                        <label class="custom-control-label" for="Pabrik">Pabrik</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Kantor" class="custom-control-input" id="Kantor">
+                        <label class="custom-control-label" for="Kantor">Kantor</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Toko" class="custom-control-input" id="Toko">
+                        <label class="custom-control-label" for="Toko">Toko</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Stand" class="custom-control-input" id="Stand">
+                        <label class="custom-control-label" for="Stand">Stand</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Gedung" class="custom-control-input" id="Gedung">
+                        <label class="custom-control-label" for="Gedung">Gedung</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Hotel" class="custom-control-input" id="Hotel">
+                        <label class="custom-control-label" for="Hotel">Hotel</label>
                     </div>
                 </div>
             </div>
@@ -284,14 +327,15 @@
                 </div>
             </div>
             <div class="form-group text-right">
-                <button type="submit" class="btn btn-default btn-block">Update Profile</button>
+                <button type="submit" class="btn btn-default btn-block" id="form-create-profile-submit">Update Profile</button>
             </div>
         </form>
     </div>
 @endsection
 
 @section('page_css_plugins')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> -->
     <style>
         input[type="file"] {
             display: none;
@@ -300,7 +344,8 @@
 @endsection
 
 @section('page_js_plugins')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> -->
 <script src="{{ asset('assets/js/widget_lokasi.js') }}"></script>
 <script>
     $(document).ready(function(){
@@ -308,6 +353,55 @@
         widgetlokasi('create_profile_address_provinsi', 'create_profile_address_kabupaten', 'create_profile_address_kecamatan', 'create_profile_address_kelurahan');
         widgetlokasi('create_profile_company_provinsi', 'create_profile_company_kabupaten', 'create_profile_company_kecamatan', 'create_profile_company_kelurahan');
         widgetlokasi('create_profile_spesialis_provinsi', 'create_profile_spesialis_kabupaten', 'create_profile_spesialis_kecamatan', 'create_profile_spesialis_kelurahan');
+        
+        $('#form-foto-profile-submit').click(function(e){
+            console.log('clik');
+            e.preventDefault();
+            var pesan = "apakah anda yakin akan memperbarui foto profil anda?";
+            bootbox.confirm({
+                message: pesan,
+                locale: "id",
+                buttons: {
+                    confirm : {
+                        className:'btn-default',
+                    }, 
+                    cancel :{
+                        className:'btn-secondary',
+                    }
+                },
+                callback: function(result){
+                    if(result){
+                        $('#form-foto-profile').submit();
+                    } else {
+                        // alert('a');
+                    }
+                }
+            });
+        });
+
+        $('#form-create-profile-submit').click(function(e){
+            e.preventDefault();
+            var pesan = "apakah anda yakin akan memperbarui foto profil anda?";
+            bootbox.confirm({
+                message: pesan,
+                locale: "id",
+                buttons: {
+                    confirm : {
+                        className:'btn-default',
+                    }, 
+                    cancel :{
+                        className:'btn-secondary',
+                    }
+                },
+                callback: function(result){
+                    if(result){
+                        $('#form-create-profile').submit();
+                    } else {
+                        // alert('a');
+                    }
+                }
+            });
+        });
     });
 
     function previewImage(input) {

@@ -7,19 +7,19 @@
             <div class="card-header">
                 <h3 class="mb-0">Follow UP</h3>
                 <p class="text-sm mb-0">
-                    Ini adalah formulir untuk mendaftarkan data hasil follow up yang telah dilakukan admin. <br>
+                    Ini adalah formulir untuk mendaftarkan data hasil follow up yang telah dilakukan sales. <br>
                 </p>
             </div>
         </div>
 
-        <form action="{{ url('dashboard/follow_up') }}" method="post">
+        <form action="{{ url('dashboard/follow_up') }}" method="post" id="form-follup">
             @csrf
             <div class="input-group input-group-merge input-group-alternative mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa far fa-user"></i></span>
                 </div>
-                <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" placeholder="Nama" value="{{ old('nama') }}" required>
-                @error('nama')
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nama" value="{{ old('name') }}" required>
+                @error('name')
                     <span class="invalid-feedback register-error" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -63,8 +63,38 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-default btn-block">Daftar Follow UP</button>
+                <button type="submit" class="btn btn-default btn-block" id="form-follup-submit">Daftar Follow UP</button>
             </div>
         </form>
     </div>
+@endsection
+
+@section('page_js_plugins')
+<script>
+$(document).ready(function(){
+    $('#form-follup-submit').click(function(e){
+        e.preventDefault();
+        var pesan = "Apakah anda sudah yakin akan mendaftarkan kontak berikut?";
+        bootbox.confirm({
+            message: pesan,
+            locale: "id",
+            buttons: {
+                confirm : {
+                    className:'btn-default',
+                }, 
+                cancel :{
+                    className:'btn-secondary',
+                }
+            },
+            callback: function(result){
+                if(result){
+                    $('#form-follup').submit();
+                } else {
+                    // alert('a');
+                }
+            }
+        });
+    }); 
+});
+</script>
 @endsection

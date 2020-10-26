@@ -6,13 +6,13 @@
             <img src="{{ auth()->user()->profile->photo }}" id="user_avatar" alt="user_avatar" class="rounded-circle user_avatar" style="width:15rem;height:15rem;">
         </div>
         <div class="d-flex justify-content-center my-3">
-            <form action="{{ url('profile/image') }}" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center my-3">
+            <form action="{{ url('profile/image') }}" method="POST" enctype="multipart/form-data" class="d-flex justify-content-center my-3" id="form-foto-profile">
                 @csrf
                 <label class="btn btn-default">
                     <input type="file" name="image_profile" id="image_profile" accept="image/jpeg, image/png" onchange="previewImage(this);">
                     Ganti Foto Profil
                 </label>
-                <button type="submit" class="btn btn-default" style="height:2.6rem;">Update Foto Profil</button>
+                <button type="submit" class="btn btn-default" style="height:2.6rem;" id="form-foto-profile-submit">Update Foto Profil</button>
             </form>
         </div>
         <form action="{{ url('dashboard/profile') }}" method="post" id="form-update-profile">
@@ -28,8 +28,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fas fa-id-card"></i></span>
                 </div>
-                <input type="number" min="0" step="1" name="nomor_ktp" id="create_profile_nomor_ktp" class="form-control form-control-alternative @error('nomor_ktp') is-invalid @enderror" placeholder="Nomor KTP" value="{{ old('nomor_ktp') }}" required>
-                @error('nomor_ktp')
+                <input type="number" min="0" step="1" name="no_ktp" id="create_profile_nomor_ktp" class="form-control form-control-alternative @error('no_ktp') is-invalid @enderror" placeholder="Nomor KTP" value="{{ $profile->no_ktp }}" required>
+                @error('no_ktp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -40,8 +40,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fas fa-id-card"></i></span>
                 </div>
-                <input type="number" min="0" step="1" name="nomor_npwp" id="create_profile_nomor_npwp" class="form-control form-control-alternative @error('nomor_npwp') is-invalid @enderror" placeholder="Nomor NPWP" value="{{ old('nomor_npwp') }}" required>
-                @error('nomor_npwp')
+                <input type="number" min="0" step="1" name="no_npwp" id="create_profile_nomor_npwp" class="form-control form-control-alternative @error('no_npwp') is-invalid @enderror" placeholder="Nomor NPWP" value="{{ $profile->no_npwp }}" required>
+                @error('no_npwp')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -97,7 +97,6 @@
                     <select name="address_kabupaten" id="address_kabupaten" class="form-control select2" required></select>
                 </div>
                 <div class="input-group-prepend col-md-1">
-                    <!-- <span class="input-group-text"><i class="fa far fa-home"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
                     <label for="address_kecamatan">Kecamatan</label>
@@ -135,7 +134,6 @@
                     <select name="company_kabupaten" id="company_kabupaten" class="form-control select2"></select>
                 </div>
                 <div class="input-group-prepend col-md-1">
-                    <!-- <span class="input-group-text"><i class="fa far fa-building"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
                     <label for="company_kecamatan">Kecamatan</label>
@@ -158,32 +156,74 @@
             <div class="row container my-3">
                 <div class="col-4">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="spesialis_property[]" value="Apartemen" class="custom-control-input" id="Apartemen">
+                        <input type="checkbox" name="spesialis_property[]" value="Apartemen" class="custom-control-input" id="Apartemen" <?php if(in_array('Apartemen', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
                         <label class="custom-control-label" for="Apartemen">Apartemen</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="spesialis_property[]" value="Rumah" class="custom-control-input" id="Rumah">
+                        <input type="checkbox" name="spesialis_property[]" value="Rumah" class="custom-control-input" id="Rumah" <?php if(in_array('Rumah', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
                         <label class="custom-control-label" for="Rumah">Rumah</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="spesialis_property[]" value="Tanah" class="custom-control-input" id="Tanah">
+                        <input type="checkbox" name="spesialis_property[]" value="Tanah" class="custom-control-input" id="Tanah" <?php if(in_array('Tanah', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
                         <label class="custom-control-label" for="Tanah">Tanah</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="spesialis_property[]" value="Ruko" class="custom-control-input" id="Ruko">
+                        <input type="checkbox" name="spesialis_property[]" value="Ruko" class="custom-control-input" id="Ruko" <?php if(in_array('Ruko', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
                         <label class="custom-control-label" for="Ruko">Ruko</label>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="spesialis_property[]" value="Vila" class="custom-control-input" id="Vila">
+                        <input type="checkbox" name="spesialis_property[]" value="Vila" class="custom-control-input" id="Vila" <?php if(in_array('Vila', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
                         <label class="custom-control-label" for="Vila">Vila</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Gudang" class="custom-control-input" id="Gudang" <?php if(in_array('Gudang', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
+                        <label class="custom-control-label" for="Gudang">Gudang</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Pabrik" class="custom-control-input" id="Pabrik" <?php if(in_array('Pabrik', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
+                        <label class="custom-control-label" for="Pabrik">Pabrik</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Kantor" class="custom-control-input" id="Kantor" <?php if(in_array('Kantor', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
+                        <label class="custom-control-label" for="Kantor">Kantor</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Toko" class="custom-control-input" id="Toko" <?php if(in_array('Toko', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
+                        <label class="custom-control-label" for="Toko">Toko</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Stand" class="custom-control-input" id="Stand" <?php if(in_array('Stand', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
+                        <label class="custom-control-label" for="Stand">Stand</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Gedung" class="custom-control-input" id="Gedung" <?php if(in_array('Gedung', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
+                        <label class="custom-control-label" for="Gedung">Gedung</label>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="spesialis_property[]" value="Hotel" class="custom-control-input" id="Hotel" <?php if(in_array('Hotel', json_decode($profile->spesialis_property))){ echo 'checked';} ?>>
+                        <label class="custom-control-label" for="Hotel">Hotel</label>
                     </div>
                 </div>
             </div>
@@ -201,7 +241,6 @@
                     <select name="spesialis_kabupaten" id="spesialis_kabupaten" class="form-control select2" required></select>
                 </div>
                 <div class="input-group-prepend col-md-1">
-                    <!-- <span class="input-group-text"><i class="fa far fa-user"></i>&nbsp;&nbsp;<i class="fa far fa-map-marker-alt"></i></span> -->
                 </div>
                 <div class="col-sm-12 col-md-5 mb-3">
                     <label for="spesialis_kecamatan">Kecamatan</label>
@@ -264,14 +303,15 @@
                 </div>
             </div>
             <div class="form-group text-right">
-                <button type="submit" class="btn btn-default btn-block">Update Profile</button>
+                <button type="submit" class="btn btn-default btn-block" id="form-update-profile-submit">Update Profile</button>
             </div>
         </form>
     </div>
 @endsection
 
 @section('page_css_plugins')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> -->
     <style>
         input[type="file"] {
             display: none;
@@ -280,7 +320,8 @@
 @endsection
 
 @section('page_js_plugins')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> -->
 <script>
 function widgetlokasi(SelectorProvinsi, SelectorKabupaten, SelectorKecamatan, SelectorKelurahan, URL=false){
     if(URL==false){
@@ -788,6 +829,55 @@ function widgetlokasi3(SelectorProvinsi, SelectorKabupaten, SelectorKecamatan, S
         widgetlokasi('address_provinsi', 'address_kabupaten', 'address_kecamatan', 'address_kelurahan');
         widgetlokasi2('company_provinsi', 'company_kabupaten', 'company_kecamatan', 'company_kelurahan');
         widgetlokasi3('spesialis_provinsi', 'spesialis_kabupaten', 'spesialis_kecamatan', 'spesialis_kelurahan');
+    
+        $('#form-foto-profile-submit').click(function(e){
+            console.log('clik');
+            e.preventDefault();
+            var pesan = "apakah anda yakin akan memperbarui foto profil anda?";
+            bootbox.confirm({
+                message: pesan,
+                locale: "id",
+                buttons: {
+                    confirm : {
+                        className:'btn-default',
+                    }, 
+                    cancel :{
+                        className:'btn-secondary',
+                    }
+                },
+                callback: function(result){
+                    if(result){
+                        $('#form-foto-profile').submit();
+                    } else {
+                        // alert('a');
+                    }
+                }
+            });
+        });
+
+        $('#form-update-profile-submit').click(function(e){
+            e.preventDefault();
+            var pesan = "apakah anda yakin akan memperbarui foto profil anda?";
+            bootbox.confirm({
+                message: pesan,
+                locale: "id",
+                buttons: {
+                    confirm : {
+                        className:'btn-default',
+                    }, 
+                    cancel :{
+                        className:'btn-secondary',
+                    }
+                },
+                callback: function(result){
+                    if(result){
+                        $('#form-update-profile').submit();
+                    } else {
+                        // alert('a');
+                    }
+                }
+            });
+        });
     });
 
     function previewImage(input) {

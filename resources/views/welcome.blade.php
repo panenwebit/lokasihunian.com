@@ -91,192 +91,58 @@
     </div>
     <br>
     <div class="container-fluid">
+        <h2 class="text-center">Property Terbaru</h2>
+        <br>
         <div class="row justify-content-center">
+            @foreach($property as $prop)
             <div class="col-sm-6 col-md-4">
                 <div class="card shadow">
-                    <a href="{{ url('property/something') }}">
+                    <a href="{{ url('property/'.$prop->property_slug) }}">
                         <img src="{{ asset('assets/img/rumah/rumah_1.jpg') }}" alt="" class="card-img-top">
                         <div class="card-img-overlay">
-                            <span class="badge badge-sm badge-success">Apartemen</span>
-                            <span class="badge badge-sm badge-info">Baru</span>
+                            <span class="badge badge-sm badge-secondary">{{ $prop->property_type }}</span>
+                            <span class="badge badge-sm {{ $prop->property_term=='Beli' ? 'badge-secondary' : 'badge-secondary' }}">{{ $prop->property_term=="Beli" ? "Dijual" : $prop->property_term }}</span>
+                            @if($prop->property_term=="Beli")
+                                <span class="badge badge-sm {{ $prop->property_condition=='Baru' ? 'badge-secondary' : 'badge-secondary' }}">{{ $prop->property_condition }}</span>
+                            @endif
                         </div>
                     </a>
                     <div class="card-body">
                         <div class="d-flex">
-                            <h5><a href="{{ url('property/something') }}">RUMAH DIJUAL KOMPLEK MEWAH SAN DIEGO PAKUWON CITY</a></h5>
+                            <h5><a href="{{ url('property/something') }}">{{ $prop->property_title }}</a></h5>
                         </div>
                         <div class="d-flex justify-content-between">
-                            <p><small><i class="fal fa-building"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-arrows"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-bed"></i> 4 </small></p>
-                            <p><small><i class="fal fa-bath"></i> 2 </small></p>
-                            <p><small><i class="fal fa-parking-circle"></i> 1 </small></p>
+                            <p><small><i class="fal fa-building"></i> {{ $prop->property_building_area }} m<sup>2</sup></small></p>
+                            <p><small><i class="fal fa-arrows"></i> {{ $prop->property_surface_area }} m<sup>2</sup></small></p>
+                            <p><small><i class="fal fa-bed"></i> {{ $prop->property_bedroom_count }} </small></p>
+                            <p><small><i class="fal fa-bath"></i> {{ $prop->property_bathroom_count }} </small></p>
+                            <p><small><i class="fal fa-parking-circle"></i> {{ $prop->property_parking_count }} </small></p>
                         </div>
                         <div class="d-flex">
-                            <h3>Rp. 1.500.000.000</h3>
+                            <h3>Rp. {{ number_format($prop->property_price,0, ',', '.') }}</h3>
                         </div>
                         <div class="d-flex align-items-center">
-                            <a href="{{ url('profile/something') }}" style="z-index: 1;">
-                                <img src="{{ asset('assets/img/agen/agent_2.jpg') }}" alt="" class="img-fluid rounded mr-2" style="width:3.35rem;">
+                            <a href="{{ url('profile/'.$prop->user->username) }}" style="z-index: 1;">
+                                <img src="{{ $prop->user->profile->photo }}" alt="" class="img-fluid rounded mr-2" style="width:3.35rem;">
                             </a>
                             <span class="flex-fill" style="z-index: 1;">
-                                <h5><a href="{{ url('profile/something') }}">Jonathan Alexandro</a></h5>
+                                <h5><a href="{{ url('profile/'.$prop->user->username) }}">{{ $prop->user->profile->fullname }}</a></h5>
                             </span>
-                            <button type="button" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.5rem;height:2.5rem;"><i class="fal fa-calculator"></i></button>
-                            <button type="button" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.2rem;height:2.2rem;"><i class="fab fa-whatsapp"></i></button>
-                            <button type="button" class="btn btn-warning btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.0rem;height:2.0rem;"><i class="fas fa-phone"></i></button>
+                            <a href="{{ url('/simulasi_kredit?harga='.$prop->property_price) }}" target="_blank" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.2rem;height:2.2rem;"><i class="fal fa-calculator"></i></a>
+                            <a href="https://wa.me/62{{ substr($prop->user->profile->wa_number,1) }}" target="_blank" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.2rem;height:2.2rem;"><i class="fab fa-whatsapp"></i></a>
+                            <a href="tel:{{ $prop->user->profile->wa_number }}" class="btn btn-warning btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Hubungi Agen" style="width:2.2rem;height:2.2rem;"><i class="fas fa-phone"></i></a>
                         </div>
 
                         <!-- <a href="{{ url('property') }}" class="stretched-link"></a> -->
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="card shadow">
-                    <img src="{{ asset('assets/img/rumah/rumah_1.jpg') }}" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <h5>RUMAH DIJUAL KOMPLEK MEWAH SAN DIEGO PAKUWON CITY</h5>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p><small><i class="fal fa-building"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-arrows"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-bed"></i> 4 </small></p>
-                            <p><small><i class="fal fa-bath"></i> 2 </small></p>
-                            <p><small><i class="fal fa-parking-circle"></i> 1 </small></p>
-                        </div>
-                        <div class="d-flex">
-                            <h3>Rp. 1.500.000.000</h3>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('assets/img/agen/agent_2.jpg') }}" alt="" class="img-fluid rounded mr-2" style="width:3.35rem;">
-                            <span class="flex-fill">
-                                <h5>Jonathan Alexandro</h5>
-                            </span>
-                            <button type="button" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.5rem;height:2.5rem;"><i class="fal fa-calculator"></i></button>
-                            <button type="button" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.5rem;height:2.5rem;"><i class="fab fa-whatsapp"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="card shadow">
-                    <img src="{{ asset('assets/img/rumah/rumah_1.jpg') }}" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <h5>RUMAH DIJUAL KOMPLEK MEWAH SAN DIEGO PAKUWON CITY</h5>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p><small><i class="fal fa-building"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-arrows"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-bed"></i> 4 </small></p>
-                            <p><small><i class="fal fa-bath"></i> 2 </small></p>
-                            <p><small><i class="fal fa-parking-circle"></i> 1 </small></p>
-                        </div>
-                        <div class="d-flex">
-                            <h3>Rp. 1.500.000.000</h3>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('assets/img/agen/agent_2.jpg') }}" alt="" class="img-fluid rounded mr-2" style="width:3.35rem;">
-                            <span class="flex-fill">
-                                <h5>Jonathan Alexandro</h5>
-                            </span>
-                            <button type="button" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.5rem;height:2.5rem;"><i class="fal fa-calculator"></i></button>
-                            <button type="button" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.5rem;height:2.5rem;"><i class="fab fa-whatsapp"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="card shadow">
-                    <img src="{{ asset('assets/img/rumah/rumah_1.jpg') }}" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <h5>RUMAH DIJUAL KOMPLEK MEWAH SAN DIEGO PAKUWON CITY</h5>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p><small><i class="fal fa-building"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-arrows"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-bed"></i> 4 </small></p>
-                            <p><small><i class="fal fa-bath"></i> 2 </small></p>
-                            <p><small><i class="fal fa-parking-circle"></i> 1 </small></p>
-                        </div>
-                        <div class="d-flex">
-                            <h3>Rp. 1.500.000.000</h3>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('assets/img/agen/agent_2.jpg') }}" alt="" class="img-fluid rounded mr-2" style="width:3.35rem;">
-                            <span class="flex-fill">
-                                <h5>Jonathan Alexandro</h5>
-                            </span>
-                            <button type="button" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.5rem;height:2.5rem;"><i class="fal fa-calculator"></i></button>
-                            <button type="button" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.5rem;height:2.5rem;"><i class="fab fa-whatsapp"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="card shadow">
-                    <img src="{{ asset('assets/img/rumah/rumah_1.jpg') }}" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <h5>RUMAH DIJUAL KOMPLEK MEWAH SAN DIEGO PAKUWON CITY</h5>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p><small><i class="fal fa-building"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-arrows"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-bed"></i> 4 </small></p>
-                            <p><small><i class="fal fa-bath"></i> 2 </small></p>
-                            <p><small><i class="fal fa-parking-circle"></i> 1 </small></p>
-                        </div>
-                        <div class="d-flex">
-                            <h3>Rp. 1.500.000.000</h3>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('assets/img/agen/agent_2.jpg') }}" alt="" class="img-fluid rounded mr-2" style="width:3.35rem;">
-                            <span class="flex-fill">
-                                <h5>Jonathan Alexandro</h5>
-                            </span>
-                            <button type="button" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.5rem;height:2.5rem;"><i class="fal fa-calculator"></i></button>
-                            <button type="button" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.5rem;height:2.5rem;"><i class="fab fa-whatsapp"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4">
-                <div class="card shadow">
-                    <img src="{{ asset('assets/img/rumah/rumah_1.jpg') }}" alt="" class="card-img-top">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <h5>RUMAH DIJUAL KOMPLEK MEWAH SAN DIEGO PAKUWON CITY</h5>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <p><small><i class="fal fa-building"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-arrows"></i> 300 m<sup>2</sup></small></p>
-                            <p><small><i class="fal fa-bed"></i> 4 </small></p>
-                            <p><small><i class="fal fa-bath"></i> 2 </small></p>
-                            <p><small><i class="fal fa-parking-circle"></i> 1 </small></p>
-                        </div>
-                        <div class="d-flex">
-                            <h3>Rp. 1.500.000.000</h3>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <img src="{{ asset('assets/img/agen/agent_2.jpg') }}" alt="" class="img-fluid rounded mr-2" style="width:3.35rem;">
-                            <span class="flex-fill">
-                                <h5>Jonathan Alexandro</h5>
-                            </span>
-                            <button type="button" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.5rem;height:2.5rem;"><i class="fal fa-calculator"></i></button>
-                            <button type="button" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.5rem;height:2.5rem;"><i class="fab fa-whatsapp"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+        <div class="text-center">
+            <a href="{{ url('/property') }}" class="btn btn-default btn-pill">Lihat lebih banyak</a>
+        </div>
+        <br>
     </div>
     <!-- <div class="parlax"></div> -->
 
@@ -373,6 +239,13 @@
                             <option value="Hotel">Hotel</option>
                         </select>
                     </div>
+                    <div class="form-group mr-3">
+                        <select id="property-search2-provinsi" class="form-control select2" required></select>
+                    </div>
+                    <div class="form-group mr-3">
+                        <select name="location" id="property-search2-kabupaten" class="form-control select2" required></select>
+                        <!-- <input type="hidden" name="location" value="#" id="property-search2-location"> -->
+                    </div>
                     <div class="form-group mr-3 row">
                         <div class="col-6">
                             <select name="lprice" id="property-search2-lprice" class="form-control selectpicker" data-style="btn-secondary">
@@ -407,24 +280,18 @@
 </div>
 @endsection
 
+@section('page_css_plugins')
+    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> -->
+@endsection
+
 @section('page_js_plugins')
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/js/widget_lokasi.js') }}"></script>
 <script>
     $(document).ready(function(){
-        // $('#property-search-lprice').on('change', function(){
-        //     var lprice = $('#property-search-lprice').val();
-        //     var hprice = $('#property-search-hprice').val();
-        //     if(lprice!='all'){
-        //         if(lprice > hprice){
-        //             $("#property-search-hprice > option").each(function() {
-        //                 if(this.value > lprice){
-        //                     $('#property-search-hprice option').removeAttr('selected');
-        //                     $('#property-search-hprice option').text(this.text);
-        //                     $('#property-search-hprice option[value='+this.value+']').attr('selected','selected');
-        //                 }
-        //             });
-        //         }
-        //     }
-        // });
+        $('.select2').select2();
+        widgetlokasi('property-search2-provinsi', 'property-search2-kabupaten', 'kecamatan', 'kelurahan');
     });
 </script>
 @endsection

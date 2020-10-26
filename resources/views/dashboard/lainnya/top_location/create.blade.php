@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form action="{{ url('dashboard/top_location') }}" method="post">
+    <form action="{{ url('dashboard/top_location') }}" method="post" id="form-lokasi-strategis">
         @csrf
         
         <div class="form-group">
@@ -20,15 +20,20 @@
                 <div class="col-sm-12 col-md-5 mb-3">
                     <label for="provinsi">Provinsi</label>
                     <select name="provinsi" id="provinsi" class="form-control select2 @error('location') is-invalid @enderror" required></select>
+                    <!-- @error('location')
+                        <span class="invalid-feedback register-error" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror -->
                 </div>
                 <div class="col-sm-12 col-md-6 mb-3">
                     <label for="kabupaten">Kabupaten / Kota</label>
                     <select name="location" id="kabupaten" class="form-control select2 @error('location') is-invalid @enderror" required></select>
                     @error('location')
-                    <span class="invalid-feedback register-error" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+                        <span class="invalid-feedback register-error" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                 </div>
             </div>
         </div>
@@ -36,18 +41,20 @@
         <input type="hidden" name="nama_lokasi" value="#" id="nama_lokasi">
 
         <div class="form-group">
-            <button type="submit" class="btn btn-default btn-block">Simpan Lokasi</button>
+            <button type="submit" class="btn btn-default btn-block" id="form-lokasi-strategis-submit">Simpan Lokasi</button>
         </div>
     </form>
 </div>
 @endsection
 
 @section('page_css_plugins')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> -->
 @endsection
 
 @section('page_js_plugins')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> -->
     <script src="{{ asset('assets/js/widget_lokasi.js') }}"></script>
     <script>
         $('.select2').select2();
@@ -64,6 +71,30 @@
             var selectedText = $("#kabupaten option:selected").html();
             $('#nama_lokasi').val(selectedText);
             // alert(selectedText);
+        });
+
+        $('#form-lokasi-strategis-submit').click(function(e){
+            e.preventDefault();
+            var pesan = "Daftarkan Lokasi Strategis?";
+            bootbox.confirm({
+                message: pesan,
+                locale: "id",
+                buttons: {
+                    confirm : {
+                        className:'btn-default',
+                    }, 
+                    cancel :{
+                        className:'btn-secondary',
+                    }
+                },
+                callback: function(result){
+                    if(result){
+                        $('#form-lokasi-strategis').submit();
+                    } else {
+                        // alert('a');
+                    }
+                }
+            });
         });
     </script>
 @endsection

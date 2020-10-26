@@ -7,17 +7,20 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <input type="number" min="1" step="1" name="harga_property" id="harga_property" class="form-control" placeholder="Harga Properti" autofocus>
+                <label for="harga_property">Harga Properti</label>
+                <input type="number" min="1" step="1" name="harga_property" id="harga_property" class="form-control" placeholder="Harga Properti" value="<?php if(isset($_GET['harga'])){ echo $_GET['harga']; }else{  echo '880000000'; };?>" autofocus>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <input type="number" min="1" step="1" name="um_property" id="um_property" class="form-control" placeholder="Uang Muka / DP" readonly>
+                <label for="um_property">Uang Muka / DP</label>
+                <input type="text" name="um_property" id="um_property" class="form-control" placeholder="Uang Muka / DP" readonly>
             </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <input type="number" min="1" step="1" name="jumlah_pinjaman" id="jumlah_pinjaman" class="form-control" placeholder="Jumlah Pinjaman" readonly>
+                <label for="jumlah_pinjaman">Jumlah Pinjaman</label>
+                <input type="text" name="jumlah_pinjaman" id="jumlah_pinjaman" class="form-control" placeholder="Jumlah Pinjaman" readonly>
             </div>
         </div>
     </div>
@@ -40,7 +43,7 @@
                     <option value="12">12</option>
                     <option value="13">13</option>
                     <option value="14">14</option>
-                    <option value="15">15</option>
+                    <option value="15" selected>15</option>
                     <option value="16">16</option>
                     <option value="17">17</option>
                     <option value="18">18</option>
@@ -54,7 +57,7 @@
                 <select name="suku_bunga" id="suku_bunga" class="form-control">
                     <option value="6.00">6.00</option>
                     <option value="6.68">6.68</option>
-                    <option value="7.70">7.70</option>
+                    <option value="7.70" selected>7.70</option>
                     <option value="7.75">7.75</option>
                     <option value="8.00">8.00</option>
                     <option value="9.25">9.25</option>
@@ -70,8 +73,16 @@
         <div class="col-md-8">
             <div class="d-flex">Angsuran per bulan</div>
             <div class="d-flex">
-                <h2 id="angsuran">Rp. 0</h2>
+                <h2 id="angsuran" class="display-4 mt-2">Rp. 0</h2>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>
+                * Simulasi diatas hanya melakukan perhitungan dengan suku bunga flat. <br>
+                * Hasil perhitungan belum termasuk biaya layanan dan dapat berbeda dengan masing-masing Bank penyedia KPR.
+            </p>
         </div>
     </div>
 </div>
@@ -81,27 +92,49 @@
 <script>
 $(document).ready(function(){
     var field_harga = $('#harga_property');
-    var field_pinjaman = $('#jumlah_pinjaman');
     var field_dp = $('#um_property');
+    var field_pinjaman = $('#jumlah_pinjaman');
+
     var field_waktu = $('#lama_pinjaman');
     var field_bunga = $('#suku_bunga');
+
     var field_angsuran = $('#angsuran');
 
-    field_harga.on('input', function(){
+    function hitungKPR(){
         var harga = parseFloat($('#harga_property').val());
         var waktu = parseFloat($('#lama_pinjaman').val())*12;
         var bunga = parseFloat($('#suku_bunga').val());
-        dp = ((20/100)*harga);
-        pinjaman = (harga - dp);
+        dp = Number((20/100)*harga);
+        pinjaman = Number(harga - dp);
 
         cicilan_pokok = pinjaman / waktu;
-        bunga_per_bulan = (bunga / waktu) * cicilan_pokok;
-        angsuran = Number(cicilan_pokok) + Number(bunga_per_bulan);
+        bunga_per_bulan = (pinjaman*(bunga/100))/waktu;
+        angsuran2 = Number(cicilan_pokok) + Number(bunga_per_bulan);
+        angsuran = angsuran2.toFixed(0);
+        // alert(bunga_per_bulan);
 
-        field_dp.val(dp);
-        field_pinjaman.val(pinjaman);
-        field_angsuran.text('Rp. '+angsuran);
+        rp_angsuran = new Intl.NumberFormat('id-ID', {style: 'currency', currency: 'IDR'}).format(angsuran);
+        rp_dp = new Intl.NumberFormat('id-ID', {style: 'currency', currency: 'IDR'}).format(dp);
+        rp_pinjaman = new Intl.NumberFormat('id-ID', {style: 'currency', currency: 'IDR'}).format(pinjaman);
+
+        field_dp.val(rp_dp);
+        field_pinjaman.val(rp_pinjaman);
+        field_angsuran.text(rp_angsuran);
+    }
+
+    field_harga.on('input', function(){
+        hitungKPR();
     });
+
+    field_waktu.on('change', function(){
+        hitungKPR();
+    });
+
+    field_bunga.on('change', function(){
+        hitungKPR();
+    });
+
+    hitungKPR();
 });
 </script>
 @endsection

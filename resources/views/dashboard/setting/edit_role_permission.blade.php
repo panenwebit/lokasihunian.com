@@ -11,7 +11,7 @@
                 </p>
             </div>
         </div>
-        <form action="{{ url('dashboard/setting/role_permission') }}" method="post">
+        <form action="{{ url('dashboard/setting/role_permission') }}" method="post" id="form-role-permission">
             @csrf
             @method('PATCH')
             <div class="input-group input-group-merge input-group-alternative mb-3">
@@ -46,8 +46,38 @@
             </div>
             <br>
             <div class="form-group">
-                <button type="submit" class="btn btn-default btn-block">Update Peran</button>
+                <button type="submit" class="btn btn-default btn-block" id="form-role-permission-submit">Update Peran</button>
             </div>
         </form>
     </div>
+@endsection
+
+@section('page_js_plugins')
+<script>
+$(document).ready(function(){
+    $('#form-role-permission-submit').click(function(e){
+        e.preventDefault();
+        var pesan = "Apakah anda sudah yakin akan memperbarui Izin Akses dari Role (peran) berikut?";
+        bootbox.confirm({
+            message: pesan,
+            locale: "id",
+            buttons: {
+                confirm : {
+                    className:'btn-default',
+                }, 
+                cancel :{
+                    className:'btn-secondary',
+                }
+            },
+            callback: function(result){
+                if(result){
+                    $('#form-role-permission').submit();
+                } else {
+                    // alert('a');
+                }
+            }
+        });
+    }); 
+});
+</script>
 @endsection

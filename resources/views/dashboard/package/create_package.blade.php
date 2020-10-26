@@ -12,14 +12,14 @@
             </div>
         </div>
 
-        <form action="{{ url('dashboard/package/') }}" method="post">
+        <form action="{{ url('dashboard/package/') }}" method="post" id="form-package">
             @csrf
             <div class="input-group input-group-merge input-group-alternative mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa far fa-box"></i></span>
                 </div>
-                <input type="text" name="nama_paket" id="nama_paket" class="form-control @error('nama_paket') is-invalid @enderror" placeholder="Nama Paket" value="{{ old('nama_paket') }}" required>
-                @error('nama_paket')
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nama Paket" value="{{ old('name') }}" required>
+                @error('name')
                     <span class="invalid-feedback register-error" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -30,8 +30,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa far fa-money-bill-alt"></i></span>
                 </div>
-                <input type="number" min="0" step="1" name="harga_paket" id="harga_paket" class="form-control @error('harga_paket') is-invalid @enderror" placeholder="Harga Paket" value="{{ old('harga_paket') }}" required>
-                @error('harga_paket')
+                <input type="number" min="0" step="1" name="price" id="price" class="form-control @error('price') is-invalid @enderror" placeholder="Harga Paket" value="{{ old('price') }}" required>
+                @error('price')
                     <span class="invalid-feedback register-error" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -83,8 +83,38 @@
             </div>
             
             <div class="form-group">
-                <button type="submit" class="btn btn-default btn-block">Buat Paket</button>
+                <button type="submit" class="btn btn-default btn-block" id="form-package-submit">Buat Paket</button>
             </div>
         </form>
     </div>
+@endsection
+
+@section('page_js_plugins')
+<script>
+$(document).ready(function(){
+    $('#form-package-submit').click(function(e){
+        e.preventDefault();
+        var pesan = "Apakah anda sudah yakin akan mendaftarkan paket berikut?";
+        bootbox.confirm({
+            message: pesan,
+            locale: "id",
+            buttons: {
+                confirm : {
+                    className:'btn-default',
+                }, 
+                cancel :{
+                    className:'btn-secondary',
+                }
+            },
+            callback: function(result){
+                if(result){
+                    $('#form-package').submit();
+                } else {
+                    // alert('a');
+                }
+            }
+        });
+    }); 
+});
+</script>
 @endsection

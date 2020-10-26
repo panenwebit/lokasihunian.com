@@ -5,6 +5,8 @@ namespace App\Actions\Fortify;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\Membership;
+use App\Models\FollowUp;
+use App\Models\UserActivity;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -35,6 +37,12 @@ class CreateNewUser implements CreatesNewUsers
             'password'  => Hash::make($input['password']),
         ]);
 
+        $FollowUp = FollowUp::where('email', strtolower($input['email']))->where('email_registered', 'no')->get();
+        if($FollowUp){
+            $FollowUp = FollowUp::where('email', strtolower($input['email']))->where('email_registered', 'no')
+            ->update(['email_registered'=>'yes', 'updated_at'=>date('Y-m-d H:i:s')]);
+        }
+        
         Profile::create([
             'username'          => strtolower($input['username']),
             'fullname'          => '',
@@ -52,6 +60,13 @@ class CreateNewUser implements CreatesNewUsers
         Membership::create([
             'username'   => strtolower($input['username']),
             'package_id' => '1'
+        ]);
+
+        UserActivity::create([
+            'do'    => 'Register',
+            'description'      => 'Pendaftaran akun sebagai '.$input['reg_as'].' dengan username '.strtolower($input['username']),
+            'route'        => '/register',
+            'username'      => strtolower($input['username'])
         ]);
 
         return $justCreatedUser;

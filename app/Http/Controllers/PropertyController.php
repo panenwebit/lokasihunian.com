@@ -13,13 +13,22 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Property;
 use App\Models\PropertyImage;
 use App\Models\PropertyFavorite;
+use App\Models\UserActivity;
 use App\Models\StatusDelete;
 use App\Models\User;
 use App\Models\Package;
+use App\Models\Membership;
 
 class PropertyController extends Controller
 {
     public function index(){
+        UserActivity::create([
+            'do'    => 'Index-Property',
+            'description'      => 'Melihat list seluruh property yang ada di lokasi hunian',
+            'route'        => '/dashboard/property/listing',
+            'username'      =>auth()->user()->username
+        ]);
+
         $property = Property::all();
         return view('dashboard.property.property_all', ['property'=>$property]);
     }
@@ -32,6 +41,14 @@ class PropertyController extends Controller
     public function store(Request $request){
         $request->validate([
             'property_title' => ['required', 'unique:property'],
+            'property_price' => ['required'],
+            'property_surface_area' => ['required'],
+            'property_building_area' => ['required'],
+            'property_bedroom_count' => ['required'],
+            'property_bathroom_count' => ['required'],
+            'property_parking_count' => ['required'],
+            'property_address' => ['required'],
+            'property_description' => ['required'],
         ]);
 
         $property                           = new Property;
@@ -49,15 +66,56 @@ class PropertyController extends Controller
         $property->property_address         = $request->property_address;
         $property->property_location        = $request->property_kelurahan;
         $property->property_description     = $request->property_description;
-        // $property->property_feature      = $request->property_feature;
         $property->property_slug            = Str::slug($request->property_title, '_');
         $property->property_status          = 'Live';
         $property->save();
 
+        if(count($request->property_image)>1){
+            for($i=0;$i<count($request->property_image)+1;$i++){
+                if($i>0){
+                    $images = $request->file('property_image');
+                    $image = $images[$i];
+                    $image_path = $image->store('images/property/'.auth()->user()->username.'/'.date('Y').'/'.date('m').'/'.date('d').'/'.$property->id, 'public');
+                    $watermark = Image::make(public_path('assets/img/logo/wmark_sm_180.png'));
+                    $image_fit = Image::make(public_path('storage/'.$image_path))->fit(900, 675);
+                    $image_fit->insert($watermark, 'center');
+                    $image_fit->save();
+                    $path = 'storage/'.$image_path;
+
+                    $property_image = new PropertyImage;
+                    $property_image->property_id = $property->id;
+                    $property_image->images = $path;
+                    $property_image->save();
+                }
+            }
+        } else {
+
+        }
+
+        UserActivity::create([
+            'do'    => 'Tambah-Property',
+            'description'      => 'Menambahkan property baru',
+            'route'        => '/dashboard/property/listing/create',
+            'username'      =>auth()->user()->username
+        ]);
+
         return redirect('dashboard');
+        // return back();
     }
 
     public function update(Request $request){
+        $request->validate([
+            'property_title' => ['required', 'unique:property'],
+            'property_price' => ['required'],
+            'property_surface_area' => ['required'],
+            'property_building_area' => ['required'],
+            'property_bedroom_count' => ['required'],
+            'property_bathroom_count' => ['required'],
+            'property_parking_count' => ['required'],
+            'property_address' => ['required'],
+            'property_description' => ['required'],
+        ]);
+        
         $property                           = Property::find($request->id);
         $property->username                 = auth()->user()->username;
         $property->property_title           = $request->property_title;
@@ -73,10 +131,16 @@ class PropertyController extends Controller
         $property->property_address         = $request->property_address;
         $property->property_location        = $request->property_kelurahan;
         $property->property_description     = $request->property_description;
-        // $property->property_feature      = $request->property_feature;
         $property->property_slug            = Str::slug($request->property_title, '_');
         $property->property_status          = 'Live';
         $property->save();
+
+        UserActivity::create([
+            'do'    => 'Update-Property',
+            'description'      => 'Memperbarui property dengan id '.$request->id,
+            'route'        => '/dashboard/property/listing/edit/'.$request->id,
+            'username'      =>auth()->user()->username
+        ]);
 
         return redirect('dashboard');
     }
@@ -86,25 +150,38 @@ class PropertyController extends Controller
         return view('dashboard.property.edit_property', ['property'=>$property]);
     }
 
-    public function storeImages(Request $request){
-        // $property = new PropertyImage;
-        $image = $request->file('file');
-        $image_path = $image->store('images/property/'.auth()->user()->username.'/'.date('Y').'/'.date('m').'/'.date('d'), 'public');
-        $watermark = Image::make(public_path('assets/img/logo/wmark_sm_180.png'));
-        $image_fit = Image::make(public_path('storage/'.$image_path))->fit(900, 675);
-        $image_fit->insert($watermark, 'center');
-        $image_fit->save();
+    // public function storeImages(Request $request){
+    //     // $property = new PropertyImage;
+    //     $image = $request->file('file');
+    //     $image_path = $image->store('images/property/'.auth()->user()->username.'/'.date('Y').'/'.date('m').'/'.date('d'), 'public');
+    //     $watermark = Image::make(public_path('assets/img/logo/wmark_sm_180.png'));
+    //     $image_fit = Image::make(public_path('storage/'.$image_path))->fit(900, 675);
+    //     $image_fit->insert($watermark, 'center');
+    //     $image_fit->save();
 
-        return 'storage/'.$image_path;
-    }
+    //     return 'storage/'.$image_path;
+    // }
 
     public function propertyList(){
+        $user = Auth::user();
+        if($user){
+            UserActivity::create([
+                'do'    => 'Property-List',
+                'description'      => 'Melihat berbagai macam property yang live.',
+                'route'        => '/property',
+                'username'      =>auth()->user()->username
+            ]);
+        }
+
         $SQL = "SELECT 
                 a.id, a.username, a.property_title, a.property_term, a.property_condition, a.property_type, a.property_price, a.property_surface_area, a.property_building_area, a.property_bedroom_count, a.property_bathroom_count, a.property_parking_count, a.property_slug, a.property_status,
                 b.fullname, b.wa_number, b.photo,
+                d1.wilayah AS provinsi, d2.wilayah AS kota, d1.kode AS kode_provinsi, d2.kode AS kode_kota, 
                 (SELECT c.images FROM Property_Images c WHERE c.property_id=a.id LIMIT 1) as images
                 FROM property a 
-                INNER JOIN `profile` b ON a.username = b.username ";
+                INNER JOIN `profile` b ON a.username = b.username 
+                INNER JOIN lokasi_indonesia d1 ON SUBSTRING(a.property_location,1,2) = d1.kode 
+                INNER JOIN lokasi_indonesia d2 ON SUBSTRING(a.property_location,1,5) = d2.kode ";
         if(isset($_GET['term']) || isset($_GET['condition']) || isset($_GET['type']) || isset($_GET['keyword']) || isset($_GET['lprice']) || isset($_GET['hprice']) ) {
 
             if(isset($_GET['term']) && $_GET['term']!='' && $_GET['term']!='all'){
@@ -126,7 +203,7 @@ class PropertyController extends Controller
     
             if(isset($_GET['keyword']) && $_GET['keyword']!=''){
                 $keyword = $_GET['keyword'];
-                $SQL .= "AND a.property_title LIKE '%$keyword%' OR a.property_description LIKE '%$keyword%' ";
+                $SQL .= "AND a.property_title LIKE '%$keyword%' OR a.property_description LIKE '%$keyword%' OR d1.wilayah LIKE '%$keyword%' OR d2.wilayah LIKE '%$keyword%' ";
             }
 
             if(isset($_GET['lprice']) || isset($_GET['hprice'])){
@@ -153,7 +230,7 @@ class PropertyController extends Controller
 
         if(isset($_GET['location']) && $_GET['location']!=''){
             $location = $_GET['location'];
-            $SQL .= " AND a.property_location LIKE '$location%' ";
+            $SQL .= " AND a.property_location LIKE '$location%' OR d2.kode LIKE '%$location%' ";
         }
 
         $SQL .= " AND a.property_status='Live' ";
@@ -188,6 +265,17 @@ class PropertyController extends Controller
     }
 
     public function propertyDetail($slug){
+        $user = Auth::user();
+
+        if($user){
+            UserActivity::create([
+                'do'    => 'Detail-Property',
+                'description'      => 'Melihat detail dari propery dengan url '.$slug,
+                'route'        => '/property/'.$slug,
+                'username'      =>auth()->user()->username
+            ]);
+        }
+
         $property = Property::where('property_slug', $slug)->firstOrFail();
         $isFavorite = false;
         $user = Auth::user();
@@ -205,8 +293,22 @@ class PropertyController extends Controller
 
     public function myListing($status=false){
         if($status){
+            UserActivity::create([
+                'do'    => 'Listing-Saya',
+                'description'      => 'Melihat property yang user tambahkan dengan status '.$status,
+                'route'        => '/dashboard/property/my_listing/'.$status,
+                'username'      =>auth()->user()->username
+            ]);
+
             $property = Property::where('username', auth()->user()->username)->where('property_status', $status)->get();
         } else {
+            UserActivity::create([
+                'do'    => 'Listing-Saya',
+                'description'      => 'Melihat semua property yang user tambahkan',
+                'route'        => '/dashboard/property/my_listing',
+                'username'      =>auth()->user()->username
+            ]);
+
             $property = Property::where('username', auth()->user()->username)->get();
         }
         return view('dashboard.property.my_listing', ['property'=> $property, 'status'=>$status]);
@@ -216,12 +318,44 @@ class PropertyController extends Controller
         $property = Property::find($id);
         $property->property_status = 'Archived';
         $property->save();
+
+        UserActivity::create([
+            'do'    => 'Archive-Property',
+            'description'      => 'Mengarsipkan property dengan ID '.$id,
+            'route'        => '/dashboard/property/archive/'.$id,
+            'username'      =>auth()->user()->username
+        ]);
+        
+        return back();
+    }
+
+    public function live($id){
+        $property = Property::find($id);
+        $property->property_status = 'Live';
+        $property->save();
+
+        UserActivity::create([
+            'do'    => 'Live-Property',
+            'description'      => 'Menayangkan kembali property dengan ID '.$id,
+            'route'        => '/dashboard/property/listing/live/'.$id,
+            'username'      =>auth()->user()->username
+        ]);
         
         return back();
     }
 
     public function myFavorite(){
-        $SQL = "SELECT a.username, b.property_title, b.property_type, b.property_condition, b.property_term, b.property_status, b.property_slug, b.id FROM property_favorites a INNER JOIN property b ON b.id = a.property_id";
+        UserActivity::create([
+            'do'    => 'List-Property-Favorite',
+            'description'      => 'Melihat daftar property yang saya favoritkan',
+            'route'        => '/dashboard/property/my_favorite',
+            'username'      =>auth()->user()->username
+        ]);
+
+        $user = Auth::user();
+        $SQL = "SELECT a.username, b.property_title, b.property_type, b.property_condition, b.property_term, b.property_status, b.property_slug, b.id
+                FROM property_favorites a INNER JOIN property b ON b.id = a.property_id 
+                WHERE a.username='$user->username'";
         $property = DB::select($SQL);
         return view('dashboard.property.my_favorite', ['property'=> $property]);
     }
@@ -238,10 +372,26 @@ class PropertyController extends Controller
             $property_favorite->username = $user->username;
             $property_favorite->property_id = $id;
             $property_favorite->save();
+
+            UserActivity::create([
+                'do'    => 'Property-To-Favorite',
+                'description'      => 'Menambah property dengan ID '.$id.' ke daftar favorit',
+                'route'        => '/property/toFavorites/'.$id,
+                'username'      =>auth()->user()->username
+            ]);
+
             return 'added';
         } else {
             $favorite2 = PropertyFavorite::where('property_id', $id)->where('username', $user->username);
             $favorite2->delete();
+
+            UserActivity::create([
+                'do'    => 'Property-To-Favorite',
+                'description'      => 'Menghapus property dengan ID '.$id.' dari daftar favorit',
+                'route'        => '/property/toFavorites/'.$id,
+                'username'      =>auth()->user()->username
+            ]);
+
             if($r){
                 return back();
             }

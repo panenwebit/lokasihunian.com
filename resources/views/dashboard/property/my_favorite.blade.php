@@ -17,7 +17,6 @@
                         <th>Type</th>
                         <th>Condition</th>
                         <th>Term</th>
-                        <th>Username</th>
                         <th>Status</th>
                         <th>Opsi</th>
                     </tr>
@@ -29,11 +28,10 @@
                         <td>{{ $prop->property_type }}</td>
                         <td>{{ $prop->property_condition }}</td>
                         <td>{{ $prop->property_term }}</td>
-                        <td>{{ $prop->username }}</td>
                         <td>{{ $prop->property_status }}</td>
                         <td>
                             <a href="{{ url('property/'.$prop->property_slug) }}" target="_blank" class="btn btn-info btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Property"><i class="far fa-info"></i></a>
-                            <a href="{{ url('property/toFavorites/'.$prop->id.'/r') }}" class="btn btn-danger btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus dari Favorit"><i class="far fa-trash"></i></a>
+                            <a href="#" data-id="{{ $prop->id }}" id="btn-remove-fav" class="btn btn-danger btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus dari Favorit"><i class="far fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -58,4 +56,28 @@
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
     <!-- <script src="{{ asset('assets/argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script> -->
+    <script>
+        $('#btn-remove-fav').click(function(){
+            var id = $(this).attr('data-id');
+            bootbox.confirm({
+                message: "Hapus dari daftar properti favorit?",
+                locale: "id",
+                buttons: {
+                    confirm : {
+                        className:'btn-default',
+                    }, 
+                    cancel :{
+                        className:'btn-secondary',
+                    }
+                },
+                callback: function(result){
+                    if(result){
+                        window.location.href="{{ url('property/toFavorites') }}"+"/"+id+"/r";
+                    } else {
+                        // alert(id);
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

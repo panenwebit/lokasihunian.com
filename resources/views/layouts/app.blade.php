@@ -21,11 +21,14 @@
     @yield('page_css_plugins', '')
 
     <!-- bootstrap-select -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}" type="text/css">
+    <!-- <script src="{{ asset('assets/js/bootstrap-select.min.js') }}"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script> -->
 
     <!-- fancy box -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" /> -->
 
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('assets/argon/css/argon.css?v=1.1.0') }}" type="text/css">
@@ -60,7 +63,7 @@
     <!-- <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDY7KXDCH8pYaoOycJTAkhER2f-QzCRgI8&callback=initMap"></script> -->
     <!-- Argon Scripts -->
     <!-- Core -->
-    <!-- <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script> -->
+    <script src="{{ asset('assets/argon/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/js-cookie/js.cookie.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
@@ -72,10 +75,14 @@
     <!-- font-awesome -->
     <script src="{{ asset('assets/font-awesome/js/all.min.js') }}"></script>
     <!-- bootstrap-select -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script> -->
     <!-- fancy box -->
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-    
+    <script src="{{ asset('assets/js/jquery.fancybox.min.js') }}"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
+    <!-- bootbox js -->
+    <script src="{{ asset('assets/js/bootbox.all.min.js') }}"></script>
+
     <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 </html>

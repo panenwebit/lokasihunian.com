@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Profile;
 use App\Models\User;
+use App\Models\UserActivity;
+use App\Models\FollowUp;
 use App\Models\StatusDelete;
 
 use BaconQrCode\Renderer\ImageRenderer;
@@ -21,9 +23,19 @@ use BaconQrCode\Writer;
 class ProfileController extends Controller
 {
     public function show($username){
-
         $profile = Profile::findOrFail($username);
         $user = Auth::user();
+
+        if($user){
+            UserActivity::create([
+                'do'    => 'Lihat-Profile',
+                'description'      => 'Melihat profile dari user '.$username,
+                'route'        => '/profile/'.$username,
+                'username'      =>auth()->user()->username
+            ]);
+        }
+
+        
         if($profile->fullname==''){
             if($user && $username==auth()->user()->username){
                 return redirect('profile/create');
@@ -110,12 +122,20 @@ class ProfileController extends Controller
             $hasPaginator = false;
             $results = $result;
         }
-
-        $profile = Profile::findOrFail($username);
-        return view('profiles.user_profile', ['profile'=>$profile, 'property'=>$results, 'hasPaginator'=>$hasPaginator]);
+        $isFollowing = false;
+        foreach($profile->user->followers as $followers){
+            if($followers->username==$user->username){
+                $isFollowing = true;
+            }
+        }
+        return view('profiles.user_profile', ['profile'=>$profile, 'property'=>$results, 'hasPaginator'=>$hasPaginator, 'isFollowing'=>$isFollowing]);
     }
 
     public function create(){
+        $user = Auth::user();
+        if($user->profile->fullname!=''){
+            return redirect('dashboard');
+        }
         return view('profiles.create_profile');
     }
 
@@ -127,10 +147,27 @@ class ProfileController extends Controller
     public function store(Request $request){
         // dd($request);
 
-        $request->validate([
-            'handphone_number' => ['required', 'numeric', 'unique:profile'],
-            'wa_number' => ['required', 'numeric', 'unique:profile'],
-        ]);
+        $role = auth()->user()->getRoleNames()[0];
+        if($role=='Agen Perusahaan' || $role=='Developer'){
+            $request->validate([
+                'no_ktp' => ['required', 'digits:16', 'unique:profile'],
+                'no_npwp' => ['required', 'string', 'size:20', 'unique:profile'],
+                'handphone_number' => ['required', 'digits_between:10,14', 'unique:profile'],
+                'wa_number' => ['required', 'digits_between:10,14', 'unique:profile'],
+                'address' => ['required'],
+                'about_me' => ['required'],
+                'company_name' => ['required'],
+                'company_address' => ['required'],
+                'company_phone' => ['required'],
+            ]);
+        } else {
+            $request->validate([
+                'no_ktp' => ['required', 'digits:16', 'unique:profile'],
+                'handphone_number' => ['required', 'digits_between:10,14', 'unique:profile'],
+                'wa_number' => ['required', 'digits_between:10,14', 'unique:profile'],
+                'address' => ['required'],
+            ]);
+        }
 
         $qr_path = 'images/qrcode/'.auth()->user()->username;
         if(!file_exists('storage/'.$qr_path)){
@@ -144,13 +181,11 @@ class ProfileController extends Controller
         $writer = new Writer($renderer);
         $writer->writeFile(url('profile').'/'.auth()->user()->username, 'storage/'.$qr_path.'/qrcode.png');
 
-        $role = auth()->user()->getRoleNames()[0];
-
         $profile = Profile::find(auth()->user()->username);
         $profile->fullname          = $request->fullname;
-        $profile->no_ktp            = $request->nomor_ktp;
+        $profile->no_ktp            = $request->no_ktp;
         if($role=='Agen Perusahaan' || $role=='Developer'){
-            $profile->no_npwp            = $request->nomor_npwp;
+            $profile->no_npwp            = $request->no_npwp;
         }
         $profile->wa_number         = $request->wa_number;
         $profile->handphone_number  = $request->handphone_number;
@@ -174,6 +209,19 @@ class ProfileController extends Controller
         $profile->spesialis_area      = $request->spesialis_kelurahan;
         $profile->save();
         
+        $FollowUp = FollowUp::where('handphone_number', $request->handphone_number)->orWhere('handphone_number', $request->wa_number)->where('handphone_registered', 'no')->get();
+        if($FollowUp){
+            $FollowUp = FollowUp::where('handphone_number', $request->handphone_number)->orWhere('handphone_number', $request->wa_number)->where('handphone_registered', 'no')
+            ->update(['handphone_registered'=>'yes', 'updated_at'=>date('Y-m-d H:i:s')]);
+        }
+
+        UserActivity::create([
+            'do'    => 'Create-Profile',
+            'description'      => 'Membuat profile dari user '.auth()->user()->username,
+            'route'        => '/profile/create',
+            'username'      =>auth()->user()->username
+        ]);
+        
         return redirect('dashboard');
     }
 
@@ -187,52 +235,112 @@ class ProfileController extends Controller
             $profile = Profile::find(auth()->user()->username);
             $profile->photo = url('storage/'.$image_path);
             $profile->save();
+
+            UserActivity::create([
+                'do'    => 'Update-Photo-Profile',
+                'description'      => 'Memperbarui foto profile dari user '.auth()->user()->username,
+                'route'        => '/profile/image',
+                'username'      =>auth()->user()->username
+            ]);
         }
         return back();
     }
 
     public function update(Request $request){
-        // $request->validate([
-        //     'wa_number' => ['required', 'string', 'max:255', 'unique:profile'],
-        // ]);
+        $role = auth()->user()->getRoleNames()[0];
+        if($role=='Agen Perusahaan' || $role=='Developer'){
+            $request->validate([
+                'no_ktp' => ['required', 'digits:16', 'unique:profile'],
+                'no_npwp' => ['required', 'string', 'size:20', 'unique:profile'],
+                'handphone_number' => ['required', 'digits_between:10,14', 'unique:profile'],
+                'wa_number' => ['required', 'digits_between:10,14', 'unique:profile'],
+                'address' => ['required'],
+                'about_me' => ['required'],
+                'company_name' => ['required'],
+                'company_address' => ['required'],
+                'company_phone' => ['required'],
+            ]);
+        } else {
+            $request->validate([
+                'no_ktp' => ['required', 'digits:16', 'unique:profile'],
+                'handphone_number' => ['required', 'digits_between:10,14', 'unique:profile'],
+                'wa_number' => ['required', 'digits_between:10,14', 'unique:profile'],
+                'address' => ['required'],
+            ]);
+        }
 
         $profile = Profile::find(auth()->user()->username);
         $profile->fullname          = $request->fullname;
+        $profile->no_ktp            = $request->no_ktp;
+        if($role=='Agen Perusahaan' || $role=='Developer'){
+            $profile->no_npwp            = $request->no_npwp;
+        }
         $profile->wa_number         = $request->wa_number;
+        $profile->handphone_number  = $request->handphone_number;
         $profile->address           = $request->address;
         $profile->address_location  = $request->address_kelurahan;
         $profile->about_me          = $request->about_me;
-        if($request->company_name){
+        if($role=='Agen Perusahaan' || $role=='Developer'){
             $profile->company_name      = $request->company_name;
             $profile->company_address   = $request->company_address;
             $profile->company_location  = $request->company_kelurahan;
             $profile->company_phone     = $request->company_phone;
         }
-        $profile->web_address       = $request->web_address;
-        $profile->fb_profile        = $request->fb_profile;
-        $profile->twitter_profile   = $request->twitter_profile;
-        $profile->linkedin_profile  = $request->linkedin_profile;
-        $profile->ig_profile = $request->instagram_profile;
-        $profile->yt_profile   = $request->youtube_profile;
+        $profile->web_address         = $request->web_address;
+        $profile->fb_profile          = $request->fb_profile;
+        $profile->twitter_profile     = $request->twitter_profile;
+        $profile->linkedin_profile    = $request->linkedin_profile;
+        $profile->ig_profile          = $request->instagram_profile;
+        $profile->yt_profile          = $request->youtube_profile;
+        $profile->spesialis_property  = json_encode($request->spesialis_property);
+        $profile->spesialis_area      = $request->spesialis_kelurahan;
         $profile->save();
+
+        UserActivity::create([
+            'do'    => 'Edit-Profile',
+            'description'      => 'Memperbarui profile dari user '.auth()->user()->username,
+            'route'        => 'dashboard/profile/edit',
+            'username'      =>auth()->user()->username
+        ]);
         
         return redirect('dashboard');
     }
 
     public function agenList(){
+        $user = Auth::user();
+
+        if($user){
+            UserActivity::create([
+                'do'    => 'Agen-List',
+                'description'      => 'Melihat daftar agen yang terdaftar pada lokasi hunian.',
+                'route'        => '/agen',
+                'username'      =>auth()->user()->username
+            ]);
+        }
+
         $SQL = "SELECT 
                 a.username, a.fullname, a.wa_number, a.handphone_number, a.photo, a.company_name, a.company_location, a.web_address, a.fb_profile, a.twitter_profile, a.linkedin_profile, a.ig_profile, a.yt_profile, a.qr_code,
+                d1.wilayah AS provinsi, d2.wilayah AS kota, d1.kode AS kode_provinsi, d2.kode AS kode_kota, 
                 c.name AS roles
                 FROM `profile` a 
                 LEFT JOIN model_has_roles b ON a.username = b.model_username 
-                LEFT JOIN roles c ON b.role_id = c.id ";
+                LEFT JOIN roles c ON b.role_id = c.id
+                LEFT JOIN lokasi_indonesia d1 ON SUBSTRING(a.spesialis_area, 1, 2) = d1.kode
+                LEFT JOIN lokasi_indonesia d2 ON SUBSTRING(a.spesialis_area, 1, 5) = d2.kode ";
 
-        $SQL .= " WHERE c.name LIKE '%Agen%' AND a.fullname!='' ";
+        $SQL .= " WHERE a.fullname!='' ";
 
         if(isset($_GET['keyword']) && $_GET['keyword']!=''){
             $keyword = $_GET['keyword'];
-            $SQL .= " AND a.fullname LIKE '%$keyword%'";
+            $SQL .= " AND a.fullname LIKE '%$keyword%' AND d1.wilayah LIKE '%$keyword%' OR d2.wilayah LIKE '%$keyword%' ";
         }
+
+        if(isset($_GET['location']) && $_GET['location']!=''){
+            $location = $_GET['location'];
+            $SQL .= " AND a.spesialis_area LIKE '$location%' AND d2.kode LIKE '%$location%' ";
+        }
+
+        $SQL .= " AND c.name LIKE 'Agen%'";
 
         if(isset($_GET['sort']) && $_GET['sort']!='' && $_GET['sort']!='all'){
             $sort = $_GET['sort'];

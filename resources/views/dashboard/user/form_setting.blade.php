@@ -12,7 +12,7 @@
             </div>
         </div>
         <h3>Ganti Username</h3>
-        <form action="{{ url('account/username') }}" method="post">
+        <form action="{{ url('account/username') }}" method="post" id="form-username">
             @csrf
             @method('PATCH')
             <div class="input-group input-group-merge input-group-alternative my-3">
@@ -27,14 +27,14 @@
                 @enderror
             </div>
             <div class="form-group text-right">
-                <button type="submit" class="btn btn-default" onclick="return confirm('Update Username ?');">Update Username</button>
+                <button type="submit" class="btn btn-default" id="form-username-submit">Update Username</button>
             </div>
         </form>
     </div>
 
     <div class="container my-3">
         <h3>Ganti Password</h3>
-        <form action="{{ url('account/password') }}" method="post">
+        <form action="{{ url('account/password') }}" method="post" id="form-password">
             @csrf
             @method('PATCH')
             <div class="row">
@@ -81,8 +81,62 @@
                 </div>
             </div>
             <div class="form-group text-right">
-                <button type="submit" class="btn btn-default" onclick="return confirm('Update Password ?');">Update Password</button>
+                <button type="submit" class="btn btn-default" id="form-password-submit">Update Password</button>
             </div>
         </form>
     </div>
+@endsection
+
+@section('page_js_plugins')
+<script>
+$(document).ready(function(){
+    $('#form-username-submit').click(function(e){
+        e.preventDefault();
+        var pesan = "yakin akan memperbarui username anda?";
+        bootbox.confirm({
+            message: pesan,
+            locale: "id",
+            buttons: {
+                confirm : {
+                    className:'btn-default',
+                }, 
+                cancel :{
+                    className:'btn-secondary',
+                }
+            },
+            callback: function(result){
+                if(result){
+                    $('#form-username').submit();
+                } else {
+                    // alert('a');
+                }
+            }
+        });
+    });
+
+    $('#form-password-submit').click(function(e){
+        e.preventDefault();
+        var pesan = "yakin akan memperbarui kata sandi anda?";
+        bootbox.confirm({
+            message: pesan,
+            locale: "id",
+            buttons: {
+                confirm : {
+                    className:'btn-default',
+                }, 
+                cancel :{
+                    className:'btn-secondary',
+                }
+            },
+            callback: function(result){
+                if(result){
+                    $('#form-password').submit();
+                } else {
+                    // alert('a');
+                }
+            }
+        });
+    });
+});
+</script>
 @endsection

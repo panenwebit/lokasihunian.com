@@ -21,6 +21,7 @@ class CreatePackagesTable extends Migration
             $table->integer('limit_photo_per_listing');
             $table->integer('limit_unggulan');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

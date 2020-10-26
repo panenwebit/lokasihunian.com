@@ -15,12 +15,6 @@ class CreatePropertyTable extends Migration
     {
         Schema::create('property', function (Blueprint $table) {
             $table->id();
-            $table->string('username', 64);
-            $table->foreign('username')
-                ->references('username')
-                ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->string('property_title');
             $table->text('property_description');
             $table->enum('property_term', ['Beli', 'Sewa']);
@@ -40,6 +34,13 @@ class CreatePropertyTable extends Migration
             $table->string('property_slug');
             $table->enum('property_status', ['Pending', 'Live', 'Expired', 'Sold', 'Archived']);
             $table->timestamps();
+            $table->softDeletes();
+            $table->string('username', 64);
+            $table->foreign('username')
+                ->references('username')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

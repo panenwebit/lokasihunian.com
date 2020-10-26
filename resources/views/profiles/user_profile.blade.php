@@ -2,6 +2,15 @@
 
 @section('content')
     <br>
+    <style>
+        .premium-badge{
+            background-color:#000;
+            font-size:0.75rem;
+            padding: 2.5px;
+            color:#fff;
+            border-radius:5%;
+        }
+    </style>
     <div class="container-fluid">
         <div class="row my-3">
             <div class="col-md-4 text-center">
@@ -10,10 +19,16 @@
             <div class="col-md-5">
                 <div class="row">
                     <div class="col d-flex ">
-                        <h1 class="flex-fill">{{ $profile->fullname }}</h1>
+                        <h1 class="flex-fill">{{ $profile->fullname }}&nbsp;@if(isset($profile->user->membership->package->price) && $profile->user->membership->package->price!=0)<span class="premium-badge"><i class="fas fa-star text-yellow"></i> PREMIUM</span>@endif</h1>
                         @auth
                             @if(auth()->user()->username==$profile->user->username)
                                 <a href="{{ url('dashboard/profile/edit') }}" class="btn btn-link">Edit Profile</a>
+                            @else
+                                @if($isFollowing)
+                                    <button type="button" class="btn btn-secondary" id="btn-follow" data-id="{{ $profile->user->username }}" style="height:2.5rem;"><span><i class="fas fa-heart text-danger"></i>&nbsp;&nbsp;Follow</span></button>
+                                @else
+                                    <button type="button" class="btn btn-secondary" id="btn-follow" data-id="{{ $profile->user->username }}" style="height:2.5rem;"><span><i class="far fa-heart"></i>&nbsp;&nbsp;Follow</span></button>
+                                @endif
                             @endif
                         @endauth
                     </div>
@@ -29,7 +44,18 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <h5>@if($profile->user->getRoleNames()[0]=='Agen Perusahaan' || $profile->user->getRoleNames()[0]=='Developer')<i class="fa far fa-building"></i>&nbsp;&nbsp;{{ $profile->company_name }}&nbsp;@endif<i class="fa far fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $profile->company_name }}&nbsp;{{ $profile->addressLocation() }}</h5>
+                        <h5>@if($profile->user->getRoleNames()[0]=='Agen Perusahaan' || $profile->user->getRoleNames()[0]=='Developer')<i class="fa far fa-building"></i>&nbsp;&nbsp;{{ $profile->company_name }}&nbsp;@endif<i class="fa far fa-map-marker-alt"></i>&nbsp;&nbsp;{{ $profile->addressLocation() }}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>{{ $property->total() }}&nbsp;&nbsp;Property</p>
+                    </div>
+                    <div class="col">
+                        <p><span id="follower">{{ $profile->user->followers->count() }}</span>&nbsp;&nbsp;Follower</p>
+                    </div>
+                    <div class="col">
+                        <p><span id="following">{{ $profile->user->followings->count() }}</span>&nbsp;&nbsp;Following</p>
                     </div>
                 </div>
                 <div class="row">
@@ -67,9 +93,9 @@
                             <img src="{{ asset($prop->images) }}" alt="" class="card-img-top">
                             <div class="card-img-overlay">
                                 <span class="badge badge-sm badge-secondary">{{ $prop->property_type }}</span>
-                                <span class="badge badge-sm {{ $prop->property_term=='Beli' ? 'badge-success' : 'badge-warning' }}">{{ $prop->property_term=="Beli" ? "Dijual" : $prop->property_term }}</span>
+                                <span class="badge badge-sm {{ $prop->property_term=='Beli' ? 'badge-secondary' : 'badge-secondary' }}">{{ $prop->property_term=="Beli" ? "Dijual" : $prop->property_term }}</span>
                                 @if($prop->property_term=="Beli")
-                                    <span class="badge badge-sm {{ $prop->property_condition=='Baru' ? 'badge-info' : 'badge-danger' }}">{{ $prop->property_condition }}</span>
+                                    <span class="badge badge-sm {{ $prop->property_condition=='Baru' ? 'badge-secondary' : 'badge-secondary' }}">{{ $prop->property_condition }}</span>
                                 @endif
                             </div>
                         </a>
@@ -98,7 +124,7 @@
                                         <h5>{{ $prop->fullname }}</h5>
                                     </a>
                                 </span>
-                                <button type="button" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.2rem;height:2.2rem;"><i class="fal fa-calculator"></i></button>
+                                <a href="{{ url('/simulasi_kredit?harga='.$prop->property_price) }}" target="_blank" class="btn btn-default btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Simulasi Kredit" style="width:2.2rem;height:2.2rem;"><i class="fal fa-calculator"></i></a>
                                 <a href="https://wa.me/62{{ substr($prop->wa_number,1) }}" target="_blank" class="btn btn-slack btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Whatsapp Agen" style="width:2.2rem;height:2.2rem;"><i class="fab fa-whatsapp"></i></a>
                                 <a href="tel:{{ $prop->wa_number }}" class="btn btn-warning btn-icon-only rounded-circle" data-toggle="tooltip" data-placement="top" title="Hubungi Agen" style="width:2.2rem;height:2.2rem;"><i class="fas fa-phone"></i></a>
                             </div>
@@ -140,6 +166,9 @@
             <br>
         </div>
     </div>
+    <form action="{{ url('profile/toFollow') }}" method="post" id="form-follow">
+        @csrf
+    </form>
 @endsection
 
 @section('page_css_plugins')
@@ -150,4 +179,33 @@
     }
 }
 </style>
+@endsection
+
+@section('page_js_plugins')
+<script>
+$(document).ready(function(){
+    $('#btn-follow').on('click', function(){
+        var csrf_token = $('#form-follow > input[name="_token"]').val();
+        var id = $(this).attr('data-id');
+        var url = "{{ url('profile/toFollow/'.$profile->user->username) }}";
+        var current_follower = $('#follower').text();
+        $.ajax({
+            url: url,
+            method:'get',
+            data : {_token:csrf_token, id:id},
+            success: function(response){
+                if(response=="login"){
+                    window.location.replace('{{ url("login") }}');
+                } else if(response=="added"){
+                    $('#btn-follow').html('<span><i class="fas fa-heart text-danger"></i>&nbsp;&nbsp;Unfollow</span>');
+                    $('#follower').text(Number(current_follower)+1);
+                } else {
+                    $('#btn-follow').html('<span><i class="far fa-heart"></i>&nbsp;&nbsp;Follow</span>');
+                    $('#follower').text(Number(current_follower)-1);
+                }
+            }
+        });
+    });
+});
+</script>
 @endsection

@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <form action="{{ url('dashboard/property/listing') }}" method="post">
+        <form action="{{ url('dashboard/property/listing') }}" method="post" id="form-update-listing">
             @csrf
             @method('PATCH')
             <input type="hidden" name="id" value="{{ $property->id }}" readonly>
@@ -82,7 +82,12 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa far fa-money-bill-alt"></i></span>
                         </div>
-                        <input type="number" min="1" step="1" name="property_price" id="property_price" class="form-control" placeholder="Harga Property" value="{{ $property->property_price }}" required>
+                        <input type="number" min="1" step="1" name="property_price" id="property_price" class="form-control @error('property_price') is-invalid @enderror" placeholder="Harga Property" value="{{ $property->property_price }}" required>
+                        @error('property_price')
+                            <span class="invalid-feedback register-error" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-4 mb-1">
@@ -90,7 +95,12 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa far fa-arrows-alt"></i></span>
                         </div>
-                        <input type="number" min="1" step="1" name="property_surface_area" id="property_surface_area" class="form-control" placeholder="Luas Tanah" value="{{ $property->property_surface_area }}" required>
+                        <input type="number" min="1" step="1" name="property_surface_area" id="property_surface_area" class="form-control @error('property_surface_area') is-invalid @enderror" placeholder="Luas Tanah"  value="{{ $property->property_surface_area }}" required>
+                        @error('property_surface_area')
+                            <span class="invalid-feedback register-error" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-4 mb-1">
@@ -98,7 +108,12 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa far fa-building"></i></span>
                         </div>
-                        <input type="number" min="1" step="1" name="property_building_area" id="property_building_area" class="form-control" placeholder="Luas Bangunan" value="{{ $property->property_building_area }}" required>
+                        <input type="number" min="1" step="1" name="property_building_area" id="property_building_area" class="form-control @error('property_building_area') is-invalid @enderror" placeholder="Luas Bangunan" value="{{ $property->property_building_area }}" required>
+                        @error('property_building_area')
+                            <span class="invalid-feedback register-error" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-4 mb-1">
@@ -106,7 +121,12 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa far fa-bed"></i></span>
                         </div>
-                        <input type="number" min="0" step="1" name="property_bedroom_count" id="property_bedroom_count" class="form-control" placeholder="Jumlah Kamar Tidur" value="{{ $property->property_bedroom_count }}" required>
+                        <input type="number" min="0" step="1" name="property_bedroom_count" id="property_bedroom_count" class="form-control @error('property_bedroom_count') is-invalid @enderror" placeholder="Jumlah Kamar Tidur" value="{{ $property->property_bedroom_count }}" required>
+                        @error('property_bedroom_count')
+                            <span class="invalid-feedback register-error" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-4 mb-1">
@@ -114,7 +134,12 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa far fa-bath"></i></span>
                         </div>
-                        <input type="number" min="0" step="1" name="property_bathroom_count" id="property_bathroom_count" class="form-control" placeholder="Jumlah Kamar Mandi" value="{{ $property->property_bathroom_count }}" required>
+                        <input type="number" min="0" step="1" name="property_bathroom_count" id="property_bathroom_count" class="form-control @error('property_bathroom_count') is-invalid @enderror" placeholder="Jumlah Kamar Mandi" value="{{ $property->property_bathroom_count }}" required>
+                        @error('property_bathroom_count')
+                            <span class="invalid-feedback register-error" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
                 <div class="col-md-4 mb-1">
@@ -122,7 +147,12 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa far fa-parking-circle"></i></span>
                         </div>
-                        <input type="number" min="0" step="1" name="property_parking_count" id="property_parking_count" class="form-control" placeholder="Jumlah Area Parkir" value="{{ $property->property_parking_count }}" required>
+                        <input type="number" min="0" step="1" name="property_parking_count" id="property_parking_count" class="form-control @error('property_parking_count') is-invalid @enderror" placeholder="Jumlah Area Parkir" value="{{ $property->property_parking_count }}" required>
+                        @error('property_parking_count')
+                            <span class="invalid-feedback register-error" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                 </div>
             </div>
@@ -131,7 +161,12 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa far fa-home"></i></span>
                 </div>
-                <textarea name="property_address" id="property_address" cols="30" rows="3" class="form-control" placeholder="Alamat Property" required>{{ $property->property_address }}</textarea>
+                <textarea name="property_address" id="property_address" cols="30" rows="3" class="form-control @error('property_address') is-invalid @enderror" placeholder="Alamat Property" required>{{ $property->property_address }}</textarea>
+                @error('property_address')
+                    <span class="invalid-feedback register-error" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="input-group input-group-merge input-group-alternative my-3">
                 <div class="input-group-prepend col-md-1">
@@ -162,11 +197,16 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa far fa-info-circle"></i></span>
                 </div>
-                <textarea name="property_description" id="property_description" class="form-control" cols="30" rows="5" placeholder="Deskripsi" required>{{ $property->property_description }}</textarea>
+                <textarea name="property_description" id="property_description" class="form-control @error('property_description') is-invalid @enderror" cols="30" rows="5" placeholder="Deskripsi" required>{{ $property->property_description }}</textarea>
+                @error('property_description')
+                    <span class="invalid-feedback register-error" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-default btn-block">Ajukan Listing</button>
+                <button type="submit" class="btn btn-default btn-block" id="form-update-listing-submit">Update listing</button>
             </div>
         </form>
     </div>
@@ -175,11 +215,13 @@
     <br>
 @endsection
 @section('page_css_plugins')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> -->
 @endsection
 
 @section('page_js_plugins')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script> -->
 <script>
 function widgetlokasi(SelectorProvinsi, SelectorKabupaten, SelectorKecamatan, SelectorKelurahan, URL=false){
     if(URL==false){
@@ -350,6 +392,30 @@ function widgetlokasi(SelectorProvinsi, SelectorKabupaten, SelectorKecamatan, Se
         $('.select2').select2();
         $(document).ready(function(){
             widgetlokasi('property_provinsi', 'property_kabupaten', 'property_kecamatan', 'property_kelurahan');
+
+            $('#form-update-listing-submit').click(function(e){
+                e.preventDefault();
+                var pesan = "Apakah anda sudah yakin akan memperbarui listing berikut?";
+                bootbox.confirm({
+                    message: pesan,
+                    locale: "id",
+                    buttons: {
+                        confirm : {
+                            className:'btn-default',
+                        }, 
+                        cancel :{
+                            className:'btn-secondary',
+                        }
+                    },
+                    callback: function(result){
+                        if(result){
+                            $('#form-update-listing').submit();
+                        } else {
+                            // alert('a');
+                        }
+                    }
+                });
+            });
         });
     </script>
 @endsection

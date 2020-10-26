@@ -20,6 +20,7 @@ class CreateHubungiKamiTable extends Migration
             $table->string('question');
             $table->enum('status', ['New', 'Read']);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

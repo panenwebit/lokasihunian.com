@@ -13,7 +13,6 @@
         </div>
         <div class="row justifiy-content-center">
             @foreach($packages as $package)
-                @if($package->StatusDeleted == null)
                 <div class="col-md-3">
                     <div class="card shadow">
                         <div class="card-body text-center">
@@ -24,34 +23,49 @@
                             <p class="text-sm">{{  $package->limit_unggulan  }} Listing Unggulan</p>
                             <p class="text-sm">{{  $package->limit_photo_per_listing   }} Foto / Listing</p>
                             <hr class="mt-0">
-                            <a href="{{ url('dashboard/package/edit/'.$package->id) }}" class="">Edit</a>&nbsp;
+                            @can('Edit-Paket')
+                                <a href="{{ url('dashboard/package/edit/'.$package->id) }}" class="">Edit</a>&nbsp;
+                            @endcan
                             @if(!$loop->first)
-                            |&nbsp;&nbsp;<a href="{{ url('dashboard/package/delete/'.$package->id) }}" class="delete" data-paket="{{ $package->id }}">Hapus</a>
+                                @can('Delete-Paket')
+                                    |&nbsp;&nbsp;<a href="#" data-id="{{ $package->id }}" class="delete" data-paket="{{ $package->id }}">Hapus</a>
+                                @endcan
                             @endif
                         </div>
                     </div>    
                 </div>
-                @endif
             @endforeach
         </div>
     </div>
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <h1 id="id"></h1>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 
 @section('page_js_plugins')
 <script>
-    $(document).ready(function(){
-        $('.delete').on('click', function(e){
-            $('#id').html($(this).attr('data-paket'));
+$(document).ready(function(){
+    $('.delete').click(function(e){
+        e.preventDefault();
+        var id = $(this).attr('data-id');
+        var pesan = "Apakah anda sudah yakin akan menghapus paket berikut?";
+        bootbox.confirm({
+            message: pesan,
+            locale: "id",
+            buttons: {
+                confirm : {
+                    className:'btn-default',
+                }, 
+                cancel :{
+                    className:'btn-secondary',
+                }
+            },
+            callback: function(result){
+                if(result){
+                    window.location.href='{{ url("dashboard/package/delete") }}'+'/'+id;
+                } else {
+                    // alert('a');
+                }
+            }
         });
-    });
+    }); 
+});
 </script>
 @endsection

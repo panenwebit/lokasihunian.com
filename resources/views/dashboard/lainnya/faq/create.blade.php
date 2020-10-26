@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form action="{{ url('dashboard/faq') }}" method="post">
+    <form action="{{ url('dashboard/faq') }}" method="post" id="form-faq">
         @csrf
         <div class="form-group">
             <div class="input-group input-group-merge input-group-alternative my-3">
@@ -33,8 +33,39 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-default btn-block">Simpan FAQ</button>
+            <button type="submit" class="btn btn-default btn-block" id="form-faq-submit">Simpan FAQ</button>
         </div>
     </form>
 </div>
+@endsection
+
+@section('page_js_plugins')
+<script>
+$(document).ready(function(){
+    $('#form-faq-submit').click(function(e){
+        console.log('clik');
+        e.preventDefault();
+        var pesan = "Menambahkan FAQ?";
+        bootbox.confirm({
+            message: pesan,
+            locale: "id",
+            buttons: {
+                confirm : {
+                    className:'btn-default',
+                }, 
+                cancel :{
+                    className:'btn-secondary',
+                }
+            },
+            callback: function(result){
+                if(result){
+                    $('#form-faq').submit();
+                } else {
+                    // alert('a');
+                }
+            }
+        });
+    });
+});
+</script>
 @endsection

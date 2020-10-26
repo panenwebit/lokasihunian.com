@@ -6,11 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, Notifiable, HasRoles, SoftDeletes;
 
     protected $keyType = 'string';
     public $incrementing = false;
@@ -26,6 +27,7 @@ class User extends Authenticatable
         'password',
         'provider',
         'provider_id',
+        'last_login'
     ];
 
     /**
@@ -61,6 +63,14 @@ class User extends Authenticatable
 
     public function membership() {
         return $this->hasOne('App\Models\Membership', 'username', 'username');
+    }
+
+    public function followings() {
+        return $this->hasMany('App\Models\UserFollowing', 'username', 'username');
+    }
+
+    public function followers() {
+        return $this->hasMany('App\Models\UserFollowing', 'following', 'username');
     }
     
     public function StatusDeleted(){

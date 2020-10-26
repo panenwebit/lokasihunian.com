@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <form action="{{ url('dashboard/faq') }}" method="post">
+    <form action="{{ url('dashboard/faq') }}" method="post" id="form-faq">
         @csrf
         @method('PATCH')
         <input type="hidden" name="id" value="{{ $faq->id }}" readonly>
@@ -35,8 +35,39 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-default btn-block">Update FAQ</button>
+            <button type="submit" class="btn btn-default btn-block" id="form-faq-submit">Update FAQ</button>
         </div>
     </form>
 </div>
+@endsection
+
+@section('page_js_plugins')
+<script>
+$(document).ready(function(){
+    $('#form-faq-submit').click(function(e){
+        console.log('clik');
+        e.preventDefault();
+        var pesan = "Perbarui FAQ?";
+        bootbox.confirm({
+            message: pesan,
+            locale: "id",
+            buttons: {
+                confirm : {
+                    className:'btn-default',
+                }, 
+                cancel :{
+                    className:'btn-secondary',
+                }
+            },
+            callback: function(result){
+                if(result){
+                    $('#form-faq').submit();
+                } else {
+                    // alert('a');
+                }
+            }
+        });
+    });
+});
+</script>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\UserActivity;
 use App\Models\StatusDelete;
 
 class MembershipController extends Controller

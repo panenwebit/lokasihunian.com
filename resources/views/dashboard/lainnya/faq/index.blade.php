@@ -28,7 +28,9 @@
                             <td>{{ $faq->answer }}</td>
                             <td>
                                 <a href="{{ url('dashboard/faq/edit/'.$faq->id) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit FAQ"><i class="far fa-pencil"></i></a>
-                                <a href="{{ url('dashboard/faq/delete/'.$faq->id) }}" class="btn btn-danger btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus FAQ"><i class="far fa-trash"></i></a>
+                                @can('Delete-Faq')
+                                    <a href="#" class="btn btn-danger btn-icon-only btn-sm btn-delete" data-id="{{ $faq->id }}" data-toggle="tooltip" data-placement="top" title="Hapus FAQ"><i class="far fa-trash"></i></a>
+                                @endcan
                             </td>
                         </tr>
                         @endforeach
@@ -54,4 +56,28 @@
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
     <!-- <script src="{{ asset('assets/argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script> -->
+    <script>
+        $('.btn-delete').click(function(){
+            var id = $(this).attr('data-id');
+            bootbox.confirm({
+                message: "Hapus Faq?",
+                locale: "id",
+                buttons: {
+                    confirm : {
+                        className:'btn-default',
+                    }, 
+                    cancel :{
+                        className:'btn-secondary',
+                    }
+                },
+                callback: function(result){
+                    if(result){
+                        window.location.href="{{ url('dashboard/faq/delete') }}"+"/"+id;
+                    } else {
+                        // alert(id);
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

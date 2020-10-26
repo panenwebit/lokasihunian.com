@@ -18,6 +18,7 @@ class CreateFAQTable extends Migration
             $table->string('question', 1000);
             $table->text('answer');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

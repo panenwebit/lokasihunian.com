@@ -15,29 +15,29 @@ class DummyFaqSeeder extends Seeder
     public function run()
     {
         DB::table('faqs')->insert([
-            'question' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, doloribus.?',
-            'answer' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident harum excepturi odit numquam eum sint temporibus recusandae. Quibusdam, perferendis quas?',
+            'question' => 'Bagaimana Saya mencari properti?',
+            'answer' => 'Anda dapat mengetikan kata kunci (keyword) sesuai dengan properti yang anda cari pada kotak pencarian.',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
         DB::table('faqs')->insert([
-            'question' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non quam neque pariatur a consequuntur. Magnam?',
-            'answer' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi dignissimos perferendis explicabo assumenda nobis ipsum.',
+            'question' => 'Jika saya menemukan properti yang menarik, Apa yang harus saya lakukan ?',
+            'answer' => 'Anda dapat langsung menghubungi agen dengan menggunakan kontak telepon yang telah disediakan, atau mendaftarkan diri anda untuk mendapatkan akun dan menyimpan daftar properti favorit anda.',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
         DB::table('faqs')->insert([
-            'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam vitae maxime distinctio esse repudiandae illum officiis velit expedita corrupti aspernatur, doloribus at dolores quam! Ipsa!',
-            'answer' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur ea quod doloremque magni eligendi explicabo quis suscipit quas impedit et. Adipisci veniam recusandae quas provident assumenda ullam ab vitae libero, impedit accusantium asperiores aspernatur deleniti odit corporis quae repellat esse.',
+            'question' => 'Bagaimana cara mendaftar ke lokasihunian.com ?',
+            'answer' => 'Jika anda merupakan Developer atau Agen baik Independen maupun Agen yang tergabung dalam perusahaan properti. Maka anda dapat mendaftarkan diri Anda dengan mengklik tombol Login/Daftar yang terdapat pada sisi kanan atas.',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
         DB::table('faqs')->insert([
-            'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam dolor expedita fugit amet. Eligendi cumque explicabo atque magni dolorem totam nulla ducimus iure? Delectus sapiente modi reiciendis inventore saepe aliquam! Aperiam reprehenderit deleniti optio nisi.',
-            'answer' => 'Lorem ipsum dolor sit amet.',
+            'question' => 'Saya kehilangan password untuk mengakses akun saya, apa yang harus saya lakukan?',
+            'answer' => 'Anda dapat mengklik tombol Login/Daftar yang terdapat pada sisi kanan atas, lalu pilih menu reset password. gunakan email yang telah anda daftarkan untuk mengatur ulang kata sandi akun anda.',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ]); 

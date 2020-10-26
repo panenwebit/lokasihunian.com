@@ -9,6 +9,9 @@
                 Ini adalah tabel yang menampilkan seluruh pengguna yang terdaftar.
             </p>
         </div>
+        <div class="card-body">
+            <a href="{{ url('dashboard/setting/users/new_intern') }}" class="btn btn-default btn-sm">Tambah Pengguna Internal</a>
+        </div>
         <div class="table-responsive py-4">
             <table class="table table-flush" id="datatable-basic">
                 <thead class="thead-light">
@@ -40,7 +43,11 @@
                         </td>
                         <td>
                             <a href="{{ url('profile/'.$user->username) }}" target="_blank" class="btn btn-info btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Profil"><i class="far fa-info"></i></a>
-                            <a href="{{ url('dashboard/setting/user_role/edit/'.$user->username) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Atur Peran"><i class="far fa-user-cog"></i></a>
+                            @if($user->getRoleNames()[0]!='Owner')
+                                @can('Setting-Users')
+                                    <a href="{{ url('dashboard/setting/user_role/edit/'.$user->username) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Atur Peran"><i class="far fa-user-cog"></i></a>
+                                @endcan
+                            @endif
                         </td>
                     </tr>
                     @endforeach

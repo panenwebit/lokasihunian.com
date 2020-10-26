@@ -29,10 +29,13 @@ use BaconQrCode\Writer;
 
 Route::get('auth/{provider}', 'App\Http\Controllers\Auth\LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'App\Http\Controllers\Auth\LoginController@handleProviderCallback');
+Route::get('after-login', [UserController::class, 'afterLogin']);
 
 Route::get('/', [PublicController::class, 'root']);
 Route::get('tentang_kami', [PublicController::class, 'tentangKami']);
 Route::get('hubungi_kami', [PublicController::class, 'hubungiKami']);
+Route::get('kebijakan_privasi', [PublicController::class, 'kebijakanPrivasi']);
+Route::get('syarat_penggunaan', [PublicController::class, 'syaratPenggunaan']);
 Route::get('faq', [PublicController::class, 'faq']);
 Route::get('simulasi_kredit', [PublicController::class, 'simulasiKPR']);
 
@@ -54,6 +57,8 @@ Route::prefix('profile')->group(function(){
     Route::middleware(['auth', 'verified'])->post('/', [ProfileController::class, 'store']);
     Route::middleware(['auth', 'verified'])->post('/image', [ProfileController::class, 'imageUpdate']);
 
+    Route::get('/toFollow/{username}', [UserController::class, 'toFollow']);
+
     Route::get('/', [ProfileController::class, 'agenList']);
     Route::get('/{username}', [ProfileController::class, 'show']);
 });
@@ -70,12 +75,12 @@ Route::prefix('account')->middleware(['auth', 'verified', 'profile_basic'])->gro
 
 Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->group(function () {
 
-    Route::get('/', function() {
-        return view('dashboard.dashboard');
-    });
+    Route::get('/', [PublicController::class, 'dashboard']);
 
     Route::prefix('/setting')->group(function () {
         Route::get('users', [UserController::class, 'index']);
+        Route::get('users/new_intern', [UserController::class, 'newInternForm']);
+        Route::post('users/new_intern', [UserController::class, 'newIntern']);
         Route::get('user_role/edit/{username}', [UserController::class, 'editUserRole']);
         Route::patch('user_role', [UserController::class, 'updateUserRole']);
 
@@ -86,15 +91,21 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
         Route::patch('role_permission', [RoleController::class, 'updateRolePermission']);
 
         Route::get('permissions', [PermissionController::class, 'index']);
+
+        Route::get('umum', [PublicController::class, 'umumForm']);
+        Route::patch('umum/site_detail', [PublicController::class, 'updateSiteDetail']);
+        Route::patch('umum/privacy_policy', [PublicController::class, 'updatePrivacyPolicy']);
+        Route::patch('umum/tnc', [PublicController::class, 'updateTnc']);
     });
     
     Route::prefix('property')->group(function(){
         Route::get('/listing', [PropertyController::class, 'index']);
         Route::get('/listing/create', [PropertyController::class, 'create']);
         Route::post('/listing', [PropertyController::class, 'store']);
-        Route::post('/listing/images', [PropertyController::class, 'storeImages']);
+        // Route::post('/listing/images', [PropertyController::class, 'storeImages']);
         Route::get('/listing/edit/{id}', [PropertyController::class, 'edit']);
         Route::get('/listing/archive/{id}', [PropertyController::class, 'archive']);
+        Route::get('/listing/live/{id}', [PropertyController::class, 'live']);
         Route::patch('/listing', [PropertyController::class, 'update']);
         
         Route::get('/my_listing/{status}', [PropertyController::class, 'myListing']);
@@ -153,6 +164,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified', 'profile_basic'])->g
 
     Route::prefix('public')->group(function(){
         Route::get('/hubungi_kami', [PublicController::class, 'indexPublicMessage']);
+        Route::get('/hubungi_kami/{id}', [PublicController::class, 'publicMessageDetail']);
     });
 
     Route::get('/bantu_daftar', [UserController::class, 'bantuDaftarForm']);

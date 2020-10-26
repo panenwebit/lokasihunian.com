@@ -25,6 +25,7 @@ class CreateStatusDeleteTable extends Migration
             //     ->onUpdate('cascade')
             //     ->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

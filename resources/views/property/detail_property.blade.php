@@ -4,7 +4,7 @@
     <div class="container">
         <div class="mb-2">
             <div class="text-center">
-                <a  data-fancybox="gallery" href="{{ asset($property->propertyImage[0]['images']) }}">
+                <a data-fancybox="gallery" href="{{ asset($property->propertyImage[0]['images']) }}">
                     <img src="{{ asset($property->propertyImage[0]['images']) }}" alt="" class="img-fluid w-50">
                     <!-- <button type="button" class="btn btn-secondary btn-sm" style="position:absolute;"><i class="far fa-camera"></i></button> -->
                 </a>
@@ -27,8 +27,8 @@
                                 <h3 class="mb-0">Rp. {{ number_format($property->property_price,0,',', '.') }}</h3>
                             </div>
                             <div class="d-flex">
-                                <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Photo"><i class="far fa-images"></i></button>
-                                <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Maps"><i class="far fa-map"></i></button>
+                                <!-- <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Photo"><i class="far fa-images"></i>&nbsp;{{ $property->propertyImage->count() }}</button>
+                                <button type="button" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Maps"><i class="far fa-map"></i></button> -->
                                 @if($isFavorite)
                                     <button type="button" id="btn-favorite" class="btn btn-secondary btn-icon-only" style="height:2.5rem;width:2.5rem;" data-toggle="tooltip" data-placement="top" title="Hapus dari Favorit" data-id="{{ $property->id }}"><i class="fas fa-star text-primary"></i></button>
                                 @else

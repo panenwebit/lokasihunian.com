@@ -26,7 +26,8 @@
     <!-- Bulma CSS -->
     <!-- <link rel="stylesheet" href="{{ asset('assets/css/bulma.css') }}"> -->
     <!-- bootstrap-select -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-select.min.css') }}">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"> -->
     
     <!-- Styles -->
     <style>
@@ -69,6 +70,8 @@
     <!-- Optional JS -->
     <script src="{{ asset('assets/argon/vendor/chart.js/dist/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/chart.js/dist/Chart.extension.js') }}"></script>
+    <!-- CKEditor -->
+    <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
     @yield('page_js_plugins', '')
     
     <!-- Argon JS -->
@@ -77,7 +80,10 @@
     <!-- font-awesome -->
     <script src="{{ asset('assets/font-awesome/js/all.min.js') }}"></script>
     <!-- bootstrap-select -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap-select.min.js') }}"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script> -->
+    <!-- bootbox js -->
+    <script src="{{ asset('assets/js/bootbox.all.min.js') }}"></script>
 
     <script src="{{ asset('assets/js/app.js') }}"></script>
 </body>

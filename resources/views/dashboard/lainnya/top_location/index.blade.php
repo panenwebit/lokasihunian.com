@@ -26,7 +26,9 @@
                             <td>{{ $top->location_name }}</td>
                             <td>
                                 <a href="{{ url('dashboard/top_location/edit/'.$top->id) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Lokasi"><i class="far fa-pencil"></i></a>
-                                <a href="{{ url('dashboard/top_location/delete/'.$top->id) }}" class="btn btn-danger btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus Lokasi"><i class="far fa-trash"></i></a>
+                                @can('Delete-Faq')
+                                    <a href="#" data-id="{{ $top->id }}" class="btn btn-danger btn-icon-only btn-sm btn-delete" data-toggle="tooltip" data-placement="top" title="Hapus Lokasi"><i class="far fa-trash"></i></a>
+                                @endcan
                             </td>
                         </tr>
                         @endforeach
@@ -52,4 +54,32 @@
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
     <!-- <script src="{{ asset('assets/argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script> -->
+    <script>
+        $(document).ready(function(){
+            $('.btn-delete').click(function(e){
+                e.preventDefault();
+                var id = $(this).attr('data-id');
+                var pesan = "Hapus Lokasi Strategis?";
+                bootbox.confirm({
+                    message: pesan,
+                    locale: "id",
+                    buttons: {
+                        confirm : {
+                            className:'btn-default',
+                        }, 
+                        cancel :{
+                            className:'btn-secondary',
+                        }
+                    },
+                    callback: function(result){
+                        if(result){
+                            window.location.href="{{ url('dashboard/top_location/delete') }}"+"/"+id;
+                        } else {
+                            // alert('a');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

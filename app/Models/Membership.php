@@ -13,4 +13,8 @@ class Membership extends Model
         'username',
         'package_id',
     ];
+
+    public function package(){
+        return $this->hasOne('App\Models\Package', 'id', 'package_id');
+    }
 }

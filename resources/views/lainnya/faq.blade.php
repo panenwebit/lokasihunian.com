@@ -23,5 +23,8 @@
         </div>
     </div>
     @endforeach
+    <br>
+    <br>
+    <P>Untuk pertanyaan lebih lanjut, anda dapat menghubungi kami dengan mengirimkan email ke: <a href="mailto:customercare@lokasihunian.com">customercare@lokasihunian.com</a></P>
 </div>
 @endsection

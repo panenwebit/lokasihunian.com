@@ -32,7 +32,9 @@
                         </td>
                         <td>
                             <!-- <a href="{{ url('dashboard/setting/role/edit/'.$role->name) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Role"><i class="far fa-user-cog"></i></a> -->
-                            <a href="{{ url('dashboard/setting/role_permission/edit/'.$role->name) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Permission"><i class="far fa-tools"></i></a>
+                            @can('Setting-Roles-Permissions')
+                                <a href="{{ url('dashboard/setting/role_permission/edit/'.$role->name) }}" class="btn btn-warning btn-icon-only btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Permission"><i class="far fa-tools"></i></a>
+                            @endcan
                         </td>
                     </tr>
                     @endforeach

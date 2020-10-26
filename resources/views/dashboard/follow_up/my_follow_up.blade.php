@@ -6,7 +6,7 @@
         <div class="card-header">
             <h3 class="mb-0">DATA Follow Up</h3>
             <p class="text-sm mb-0">
-                Ini adalah tabel yang menampilkan seluruh follow up yang telah didaftarkan oleh admin.
+                Ini adalah tabel yang menampilkan seluruh follow up yang telah didaftarkan oleh sales.
             </p>
         </div>
         <div class="table-responsive py-4">
@@ -24,12 +24,12 @@
                 <tbody>
                     @foreach($follup as $foll)
                     <tr>
-                        <td>{{ $foll->id }}</td>
-                        <td>{{ date('d-m-Y', strtotime($foll->created_at)) }}</td>
-                        <td>{{ $foll->name }}</td>
+                        <td class="@if($foll->handphone_registered=='yes' && $foll->email_registered=='yes') bg-success text-secondary @endif">{{ $foll->id }}</td>
+                        <td class="@if($foll->handphone_registered=='yes' && $foll->email_registered=='yes') bg-success text-secondary @endif">{{ date('d-m-Y', strtotime($foll->created_at)) }}</td>
+                        <td class="@if($foll->handphone_registered=='yes' && $foll->email_registered=='yes') bg-success text-secondary @endif">{{ $foll->name }}</td>
                         <td class="@if($foll->handphone_registered=='yes') bg-success text-secondary @endif">{{ $foll->handphone_number }}</td>
                         <td class="@if($foll->email_registered=='yes') bg-success text-secondary @endif">{{ $foll->email }}</td>
-                        <td>{{ $foll->information }}</td>
+                        <td class="@if($foll->handphone_registered=='yes' && $foll->email_registered=='yes') bg-success text-secondary @endif">{{ $foll->information }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -52,5 +52,5 @@
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
     <script src="{{ asset('assets/argon/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('assets/argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <!-- <script src="{{ asset('assets/argon/vendor/datatables.net-select/js/dataTables.select.min.js') }}"></script> -->
 @endsection

@@ -68,16 +68,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="input-group input-group-merge input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa far fa-lock-alt"></i></span>
-                                    </div>
-                                    <select name="reg_as" id="reg_as" class="form-control" required>
-                                        <option value="Agen Independen">Agen Independen</option>
-                                        <option value="Agen Perusahaan">Agen Perusahaan</option>
-                                        <option value="Developer">Developer</option>
-                                    </select>
-                                </div>
+                                <label for="reg_as" class="text-sm">&nbsp;&nbsp;&nbsp;&nbsp;Daftar sebagai</label>
+                                <select name="reg_as" id="reg_as" class="form-control" required>
+                                    <option value="Agen Independen">Agen Independen</option>
+                                    <option value="Agen Perusahaan">Agen Perusahaan</option>
+                                    <option value="Developer">Developer</option>
+                                    <option value="Pemilik Properti">Pemilik Properti</option>
+                                </select>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-default my-4 btn-block"><i class="fa far fa-pencil-alt"></i> Daftar</button>
